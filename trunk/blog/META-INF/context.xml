@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<Context
+    privileged="true"
+    reloadable="true"
+    workDir="work\Catalina\localhost\blog">
+
+  <!-- Pool de conexões -->
+
+  <Resource
+    name="jdbc/blog"
+    type="javax.sql.DataSource"
+    username="bloglog3_bloglog"
+    password="pqp1000x"
+    maxActive="300"
+    maxIdle="50"
+    maxWait="10000"
+    driverClassName="org.gjt.mm.mysql.Driver"
+    url="jdbc:mysql://www3.bloglog.com.br/bloglog3_bloglog"
+    />
+
+	  <Realm  
+    className="org.apache.catalina.realm.JDBCRealm" debug="99"
+    driverName="org.gjt.mm.mysql.Driver"
+    connectionURL="jdbc:mysql://www3.bloglog.com.br/bloglog3_bloglog"
+    connectionName="bloglog3_bloglog" connectionPassword="pqp1000x"
+     />
+    
+    
+ 
+  <WatchedResource>WEB-INF/web.xml</WatchedResource>
+  <WatchedResource>META-INF/context.xml</WatchedResource>
+
+ </Context>
+
+
+

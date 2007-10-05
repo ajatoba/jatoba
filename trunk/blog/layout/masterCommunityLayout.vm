@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+<HEAD>
+    <TITLE>$tiles.getAttribute("title")</TITLE>    
+	<link href="/blog/template_community/css/comunidade.css" rel="stylesheet" type="text/css" />    
+	<script language="Javascript" src="/blog/template_community/js/topicos.js" />    
+</HEAD>
+
+<BODY style="background-color:#FFFFFF; margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; ">
+
+		$tiles.menu
+		$tiles.body
+
+</BODY>
+</HTML>

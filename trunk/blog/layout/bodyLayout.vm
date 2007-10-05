@@ -1,0 +1,17 @@
+<!-- HEADER -->
+$tiles.header
+
+<div id="meio">
+	<div id="esquerda">
+		<!-- BARRA LATERAL-->
+		$tiles.sideBar		
+	</div>
+		
+	<div id="direita">
+		<!-- BODY -->
+		$tiles.body
+	</div>
+</div>
+
+<!-- FOOTER -->
+$tiles.footer

@@ -1,0 +1,11 @@
+<!-- BARRA LATERAL-->
+$tiles.sideBar		
+
+<!-- HEADER -->
+$tiles.header
+
+<!-- BODY -->
+$tiles.body
+
+<!-- FOOTER -->
+$tiles.footer

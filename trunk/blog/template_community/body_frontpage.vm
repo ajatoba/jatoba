@@ -1,0 +1,17 @@
+<div id="topicos" align="left">
+
+<h1>
+$community.title
+</h1>
+
+$community.description</br>
+
+</br>TÓPICOS</br></br>
+#foreach($topic in $community.topics)
+<b>Título:$topic.title</b></br>    
+  Descrição:$topic.description</br>
+  <a href="javascript:openWindow('/blog/communityMessage.do?act=list&topic=$topic.id',400,400)">[[ COMENTAR TÓPICO ]]</a>
+  </br></br>
+#end
+
+</div>

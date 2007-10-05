@@ -1,0 +1,74 @@
+
+#corpo_pagina {
+	position:absolute;
+	left:0px;
+	top:0px;
+	background-color:#EDEEF0;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#header_imagem_titulo {
+	position:relative;
+	left:12px;
+	width:756px;
+	height:116px;
+	background-color:#A9A9A9;
+}
+
+#topicos {
+	position:relative;
+	left:238px;
+	width:530px;
+	height:800px;
+	background-color:#DEDEDC;
+}
+
+#rodape {
+	position:relative;	
+	left:12px;	
+	width:756px;
+	height:50px;
+	background:#EDEEF0;
+}
+
+#opcoes {
+	position:absolute;
+	left:12px;
+	top:150px;
+	width:209px;
+	height:80px;
+	background-color:#C1C1C1;
+}
+
+#perfil {
+	position:absolute;
+	left:12px;
+	top:236;
+	width:209px;
+	height:100px;
+}
+
+#comunidades {
+	position:absolute;
+	left:12px;
+	top:330px;
+	width:200px;
+	height:219px;
+}
+
+#ranking {
+	position:absolute;
+	left:12px;
+	top:450px;
+	width:210px;
+	height:17px;
+}
+
+/* Estilos do Texto */
+
+#perfil,#opcoes, #comunidades, #topicos, #header_imagem_titulo, #rodape, #barra_patrocinador {
+	font-family:"Trebuchet MS";
+	font-size:15px;
+}
+

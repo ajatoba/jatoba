@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+    <TITLE>$tiles.getAttribute("title")</TITLE> 
+   	<link href="/$blogPath/blog.css" rel="stylesheet" type="text/css" />
+</HEAD>
+
+<BODY style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; ">
+<div id="blog">		
+		$tiles.menu
+		$tiles.body
+</div>
+</BODY>
+</HTML>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="adminUserForm"
+			type="com.vanguarda.blog.form.AdminUserForm" />
+		<form-bean name="blogUserForm"
+			type="com.vanguarda.blog.form.BlogUserForm" />
+		<form-bean name="blogForm"
+			type="com.vanguarda.blog.form.BlogForm" />
+		<form-bean name="postForm"
+			type="com.vanguarda.blog.form.PostForm" />
+		<form-bean name="commentForm"
+			type="com.vanguarda.blog.form.CommentForm" />			
+		<form-bean name="censureForm"
+			type="com.vanguarda.blog.form.SendCensuredForm" />
+		<form-bean name="wordForm"
+			type="com.vanguarda.blog.form.WordForm" />
+		
+		<form-bean name="userCommentatorForm"
+			type="com.vanguarda.blog.form.UserCommentatorForm" />	
+			
+		<form-bean name="topicForm"
+			type="com.vanguarda.blog.form.TopicForm" />
+		<form-bean name="messageForm"
+			type="com.vanguarda.blog.form.MessageForm" />		
+		<form-bean name="communityForm"
+			type="com.vanguarda.blog.form.CommunityForm" />
+		<form-bean name="communityUserForm"
+			type="com.vanguarda.blog.form.CommunityUserForm" />		
+		<form-bean name="communityTopicForm"
+			type="com.vanguarda.blog.form.CommunityTopicForm" />	
+		<form-bean name="communityMessageForm"
+			type="com.vanguarda.blog.form.CommunityMessageForm" />	
+		<form-bean name="communityUserLoginForm"
+			type="com.vanguarda.blog.form.CommunityUserLoginForm" />
+		
+	</form-beans>
+
+	<global-exceptions>
+		<exception key="global.error" type="java.lang.Exception"
+			handler="com.vanguarda.blog.exception.GlobalExceptionHandler" />
+	</global-exceptions>
+
+	<global-forwards>
+		<forward name="error" path="/error.jsp" />
+		<forward name="bloglog" path="/index_vm.do" redirect="true" />
+		<forward name="bloglog2" path="/index2_vm.do" redirect="true" />
+		<forward name="community_template" path="/community_template.do" redirect="true" />
+	</global-forwards>
+
+	<action-mappings>
+	
+	 <action forward="/index.vm" path="/index" />
+	 <action forward="/index2.vm" path="/index2" />
+     <action forward="/examples.vm" path="/examples" />
+
+	<!--*********** actions do administrador **************-->
+		<action path="/adminUser"
+			type="com.vanguarda.blog.action.AdminUserAction" scope="session"
+			parameter="act" name="adminUserForm" validate="false">
+			
+			<forward name="login_sucess" path="/admin/home.jsp" />
+			<forward name="login_error" path="/gerenciador.jsp" />
+		</action>
+		
+				
+		<action path="/admin/blogUser"
+			type="com.vanguarda.blog.action.BlogUserAction" scope="request"
+			parameter="act" name="blogUserForm" validate="false">
+			
+			<forward name="user_add" path="/admin/users/form_user_out.jsp" />
+			<forward name="user_form" path="/admin/users/add_user_in.jsp" />
+			<forward name="user_form_update" path="/admin/users/update_user_in.jsp" />			
+			<forward name="user_list" path="/admin/users/list_user.jsp" />	
+			<forward name="user_load" path="/admin/users/update_user_in.jsp" />	
+			<forward name="user_update" path="/admin/users/form_user_out.jsp" />		
+		</action>
+		
+		<action path="/admin/blog"
+			type="com.vanguarda.blog.action.BlogAction" scope="request"
+			parameter="act" name="blogForm" validate="false">
+			
+			<forward name="blog_add" path="/admin/blogs/admin/home.jsp" />
+			<forward name="blog_error" path="/admin/blogs/form_blog_out.jsp" />	
+			<forward name="blog_list" path="/admin/blogs/list_blog.jsp" />
+			<forward name="blog_load" path="/admin/blogs/update_blog_in.jsp" />		
+			<forward name="blog_form" path="/admin/blogs/add_blog_in.jsp" />	
+					
+		</action>
+		
+		<action path="/admin/topic"
+			type="com.vanguarda.blog.action.TopicAction" scope="request"
+			parameter="act" name="topicForm" validate="false">
+			<forward name="topic_form" path="/admin/forum/add_topic_in.jsp" />	
+			<forward name="list_topics" path="/admin/forum/list_topics.jsp" />
+			<forward name="topic_load" path="/admin/forum/update_topic_in.jsp" />	
+		</action>		
+		
+		<action path="/admin/message"
+			type="com.vanguarda.blog.action.MessageAction" scope="request"
+			parameter="act" name="messageForm" validate="false">
+			<forward name="list_messages" path="/admin/forum/list_messages.jsp" />
+		</action>
+		
+		<!-- fim  actions do administrador-->		
+		
+		<!--  **************** actions do blogueiro **************-->
+		<action path="/blogs/blogUser"
+			type="com.vanguarda.blog.action.BlogUserAction" scope="request"
+			parameter="act" name="blogUserForm" validate="false">
+			
+			<forward name="login_sucess" path="/blogs/admin/home.jsp" />
+			<forward name="login_error" path="/blogs/gerenciador.jsp" />
+			<forward name="password_reminder_out" path="/blogs/content/password_reminder_out.jsp" />				
+					
+		</action>
+		
+		<action path="/blogs/admin/post"
+			type="com.vanguarda.blog.action.PostAction" scope="request"
+			parameter="act" name="postForm" validate="false">			
+			<forward name="post_add" path="/blogs/admin/post/form_post_out.jsp" />	
+			<forward name="post_list" path="/blogs/admin/post/list_post.jsp" />			
+			<forward name="post_load" path="/blogs/admin/post/update_post_in.jsp" />		
+			
+		</action>
+		<action path="/blogs/admin/comment"
+			type="com.vanguarda.blog.action.CommentAction" scope="request"
+			parameter="act" name="commentForm" validate="false">			
+			<forward name="comment_add" path="/blogs/admin/comments/form_comment_out.jsp" />	
+			<forward name="comment_list" path="/blogs/admin/comments/list_comment.jsp" />			
+			<forward name="comment_load" path="/blogs/admin/comments/update_comment_in.jsp" />		
+		</action>
+		
+		<action path="/blogs/admin/word"
+			type="com.vanguarda.blog.action.WordAction" scope="request"
+			parameter="act" name="wordForm" validate="false">
+			<forward name="load" path="/blogs/admin/edit_word_in.jsp" />
+			<forward name="sucess" path="/blogs/admin/home.jsp" />				
+		</action>
+		
+		<action path="/blogs/admin/community"
+			type="com.vanguarda.blog.action.CommunityAction" scope="request"
+			parameter="act" name="communityForm" validate="false">			
+			<forward name="community_form" path="/blogs/admin/comunidades/add_community_in.jsp" />			
+			<forward name="community_load" path="/blogs/admin/comunidades/update_community_in.jsp" />			
+			<forward name="list_communities" path="/blogs/admin/comunidades/list_communities.jsp" />			
+		</action>
+
+		<action path="/blogs/admin/communityUser"
+			type="com.vanguarda.blog.action.CommunityUserAction" scope="request"
+			parameter="act" name="communityUserForm" validate="false">			
+			<forward name="list_user_communities" path="/blogs/admin/comunidades/list_user_communities.jsp" />			
+			<forward name="community_user_out" path="/blogs/content/communities/restrict/community_user_out.jsp" />			
+		</action>
+		
+		<action path="/blogs/admin/communityTopic"
+			type="com.vanguarda.blog.action.CommunityTopicAction" scope="request"
+			parameter="act" name="communityTopicForm" validate="false">			
+			<forward name="community_topic_form" path="/blogs/admin/comunidades/add_community_topic_in.jsp" />			
+			<forward name="community_topic_site_form" path="/blogs/content/communities/restrict/add_community_topic_in.jsp" />			
+			<forward name="list_community_topics" path="/blogs/admin/comunidades/list_community_topics.jsp" />			
+		</action>
+		
+		<action path="/blog/communityUserLogin"
+			type="com.vanguarda.blog.action.CommunityUserLoginAction" scope="request"
+			parameter="act" name="communityUserLoginForm" validate="false">			
+			<forward name="login_error" path="/communities/blogger_login.jsp" />
+		</action>
+		
+		<action path="/blogs/communityUserLogin"
+			type="com.vanguarda.blog.action.CommunityUserLoginAction" scope="request"
+			parameter="act" name="communityUserLoginForm" validate="false">
+			
+			<forward name="login_error" path="/blogs/blogger_login.jsp" />					
+		</action>
+		
+		<action path="/blogs/admin/favorites"
+			type="com.vanguarda.blog.action.FavoriteAction" scope="request"
+			parameter="act" validate="false">			
+			<forward name="favorite_list" path="/blogs/admin/favoritos/list_favoritos.jsp" />
+		</action>
+		
+		
+		
+		<!-- fim  actions do blogueiro-->
+		
+		<!--  **************** actions do site **************-->
+		
+		<action path="/user"
+			type="com.vanguarda.blog.action.UserCommentatorAction" scope="request"
+			parameter="act" name="userCommentatorForm" validate="false">
+			<forward name="login_sucess" path="/blogs/content/add_comment_in.jsp" />
+			<forward name="login_error" path="/blogs/content/login.jsp" />	
+			<forward name="user_add" path="/blogs/content/add_comment_in.jsp" />
+			<forward name="add_user_error" path="/blogs/content/add_user_in.jsp" />
+			<forward name="add_user_out" path="/blogs/content/add_user_out.jsp" />
+			<forward name="add_user_home_in" path="/blogs/content/add_user_in2.jsp" />
+		</action>
+		
+		<action path="/blog"
+			type="com.vanguarda.blog.action.BlogAction" scope="request"
+			parameter="act" name="blogForm" validate="false">
+			<forward name="blog_error" path="/blogs/content/error.jsp" />				
+			<forward name="blog_load" path="/blogs/content/blog.jsp" />
+			<forward name="no_posts" path="/blogs/content/no_posts.html" />	
+		</action>
+		
+		<action path="/post"
+			type="com.vanguarda.blog.action.PostAction" scope="request"
+			parameter="act" name="postForm" validate="false">
+			<forward name="post_load" path="/blogs/content/post.jsp" />		
+			<forward name="post_search" path="/blogs/content/busca/busca.jsp" />
+		</action>
+		
+		<action path="/comment"
+			type="com.vanguarda.blog.action.CommentAction" scope="request"
+			parameter="act" name="commentForm" validate="false">			
+			<forward name="comment_add" path="" />				
+		</action>
+		
+		<action path="/ranking"
+			type="com.vanguarda.blog.action.RankingAction" scope="request"
+			parameter="act" validate="false">			
+			<forward name="ranking_list" path="/blogs/content/ranking.jsp" />				
+		</action>
+		
+		<action path="/history"
+			type="com.vanguarda.blog.action.HistoryAction" scope="request"
+			parameter="act" validate="false">			
+			<forward name="history_list" path="/blogs/content/history.jsp" />				
+		</action>
+		
+		
+		<action path="/censure"
+			type="com.vanguarda.blog.action.SendCensuredAction" scope="request"
+			parameter="act" name="censureForm" validate="false">			
+			<forward name="success" path="/blogs/content/add_denuncia_out.jsp" />				
+		</action>
+		
+		<action path="/forum"
+			type="com.vanguarda.blog.action.TopicAction" scope="request"
+			parameter="act" name="topicForm" validate="false">			
+			<forward name="list_topics" path="/forum/list_topics.jsp" />
+		</action>
+		
+		<action path="/message"
+			type="com.vanguarda.blog.action.MessageAction" scope="request"
+			parameter="act" name="messageForm" validate="false">			
+			<forward name="form_message" path="/forum/add_message_in.jsp" />
+			<forward name="list_messages" path="/forum/list_messages.jsp" />
+			<forward name="erro" path="/forum/erro.html" />
+		</action>
+		
+		<action path="/community"
+			type="com.vanguarda.blog.action.CommunityUserAction" scope="request"
+			parameter="act" name="communityUserForm" validate="false">			
+			<forward name="show_user_communities" path="/blogs/content/communities/show_user_communities.jsp" />
+		</action>
+		
+		<action path="/restrict/communitySite"
+			type="com.vanguarda.blog.action.CommunityAction" scope="request"
+			parameter="act" name="communityForm" validate="false">			
+			<forward name="community_detail" path="/blogs/content/communities/restrict/community_detail.jsp" />
+		</action>
+		
+		<action path="/communityMessage"
+			type="com.vanguarda.blog.action.CommunityMessageAction" scope="request"
+			parameter="act" name="communityMessageForm" validate="false">			
+			<forward name="form_community_message" path="/blogs/content/communities/restrict/add_community_message_in.jsp" />
+			<forward name="list_community_messages" path="/blogs/content/communities/restrict/list_community_messages.jsp" />			
+		</action>
+		
+		
+		
+		
+		
+		
+		<!-- fim  actions do site-->
+
+	</action-mappings>
+
+	<controller nocache="true" />
+
+	<message-resources parameter="message" />
+
+</struts-config>
+

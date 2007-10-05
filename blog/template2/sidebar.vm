@@ -1,0 +1,62 @@
+<script>
+function submitForm(){ 
+    window.open('','resultado','width=800,height=600,toolbar=0,scrollbars=1'); 
+    var a = window.setTimeout('document.form_busca.submit();',250); 
+} 
+
+</script>
+
+<div id="descblog"><br class="espacinho">
+	$blogDescription
+</div>
+		
+<div id="busca">
+	<div class="espproc1"></div>
+	<div class="proc">PROCURAR</div>
+	<div class="espproc2"></div>
+	<form name="form_busca" action="/blog/post.do?act=search" method="POST" target="resultado">
+		<input name="palavra_chave" type="text" class="txt"/>
+		<input name="blogId" type="hidden" value="$blogId"/>
+		<a href="#"><img src="/$blogPath/img/btn_buscar.jpg" onClick="javascript:submitForm()"></a>
+	</form>	
+</div>
+
+<div id="perfil" align="right">
+	<img src="/$blogPath/img/header_perfil.jpg">	
+	<p>$blogOwner<br>
+	Publicado em $blogInsertDate<br></p>
+	<div><a href="perfil.html">PERFIL COMPLETO</a></div>
+</div>
+
+<div id="indico">
+	<img src="/$blogPath/img/header_indico.jpg">	
+	<div id="iframe_indico">   
+      	
+      	#foreach($item2 in $ranking)
+        
+      <a href="/$item2.blog.path" target="_top">
+      
+      <div>$item2.ranking - $item2.blog.name ($item2.countComments)</div></a>
+              
+        #end
+	</div>	
+</div>
+
+
+<div id="arquivos">
+	<img src="/$blogPath/img/header_arquivos.jpg">	
+		<div id="iframe_arquivos">
+      	#foreach($item in $history)
+         
+			  <a href="/blog/blog.do?act=loadSite&id=$item.blogID&mes=$item.month&ano=$item.year" target="_top"><div>$item.labelDate ($item.postCount)</div></a>              
+               
+       #end
+   		</div>
+</div>
+
+<div id="rss">
+	<a href="/blog/rss.rss?id=$blogId" target="blank"><div id="cantoRSS"></div></a>
+	<div id="cantoSep"></div>
+	<div class="boldi">RSS |</div>
+	<div id="oq"><a href="#">Oque é ?</a></div>
+</div>

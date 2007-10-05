@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+  
+  <definition name=".common">
+    <put name="title" value="BlogLog" />
+  </definition>
+  
+  <definition name=".common2">
+    <put name="title" value="BlogLog-Template" />  
+  </definition>
+  
+   <definition name=".common_comunidades">
+    <put name="title" value="BlogLog-Comunidades" />
+  </definition>
+  
+  <definition extends=".common" name=".frontpage" path="/layout/masterLayout.vm">
+    <put name="menu" value=".frontpage.menu" />
+    <put name="body" value=".frontpage.body" />
+  </definition>
+  
+  <definition name=".frontpage.menu" path="/template1/menu_frontpage.vm">
+    <putList name="links_patrocinador">
+      <item link="http://www.vnews.com.br" value="VNews" />
+      <item link="http://www.globo.com"    value="Globo.com" />
+      <item link="http://www.db4.com.br"   value="Grupo DB4" />
+    </putList>
+  </definition>
+  
+  <definition controllerClass="com.vanguarda.blog.template.control.MasterTileController" name=".frontpage.body" path="/layout/bodyLayout.vm">
+    <put name="header"  value="/template1/header_frontpage.vm" />
+    <put name="body"    value="/template1/body_frontpage.vm" />
+    <put name="sideBar" value="/template1/sidebar.vm" />
+    <put name="footer"  value="/template1/footer.vm" />    
+  </definition>
+  
+  <!-- TEMPLATE 2 -->  
+
+  <definition extends=".common2" name=".frontpage2" path="/layout/masterLayout2.vm">
+    <put name="menu" value=".frontpage2.menu2" />
+    <put name="body" value=".frontpage2.body2" />
+  </definition>
+  
+  <definition name=".frontpage2.menu2" path="/template2/menu_frontpage.vm">
+    <putList name="links_patrocinador">
+      <item link="http://www.vnews.com.br" value="Oi" />
+      <item link="http://www.globo.com"    value="Olá" />
+    </putList>
+  </definition>
+  
+  <definition controllerClass="com.vanguarda.blog.template.control.MasterTileController" 
+   name=".frontpage2.body2" path="/layout/bodyLayout.vm">
+    <put name="header"  value="/template2/header_frontpage.vm" />
+    <put name="body"    value="/template2/body_frontpage.vm" />
+    <put name="sideBar" value="/template2/sidebar.vm" />
+    <put name="footer"  value="/template2/footer.vm" />    
+  </definition>
+
+<!-- ********** -->
+
+<!-- TEMPLATE COMUNIDADES -->  
+
+  <definition extends=".common_comunidades" name=".frontpage_comunidades" path="/layout/masterCommunityLayout.vm">
+    <put name="menu" value=".frontpage.menu" />
+    <put name="body" value=".frontpage_comunidades.body" />
+  </definition>
+   
+  <definition controllerClass="com.vanguarda.blog.template.control.CommunityTileController" 
+   name=".frontpage_comunidades.body" path="/layout/communityLayout.vm">
+    <put name="header"  value="/template_community/header_frontpage.vm" />
+    <put name="body"    value="/template_community/body_frontpage.vm" />
+    <put name="sideBar" value="/template_community/sidebar.vm" />
+    <put name="footer"  value="/template_community/footer.vm" />    
+  </definition>
+
+<!-- ********** -->
+  
+</tiles-definitions>

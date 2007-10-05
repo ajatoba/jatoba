@@ -1,0 +1,27 @@
+<div id="opcoes" align="right">
+	[[IMAGEM DA COMUNIDADE]]<br>
+	>><a href="javascript:openWindow('/blog/blogs/admin/communityTopic.do?act=addForm&communityId=$community.id&origin=blog',400,400)">Criar Tópico</a><br>
+	>><a href="javascript:openWindow('/blog/blogs/admin/communityUser.do?act=add&communityId=$community.id&communityUserId=$blogOwnerId&origin=blog',400,400)">Participar da Comunidade</a><br>
+	>><a href="javascript:openWindow('/blog/blogs/admin/communityUser.do?act=delete&communityId=$community.id&communityUserId=$blogOwnerId&origin=blog',400,400)">Sair da Comunidade</a><br>
+</div>
+
+
+<div id="perfil" align="right">
+	<img src="/blog/template_community/img/header_perfil.jpg" width="209" height="17">	
+	$blogOwner<br>
+	Publicado em $blogInsertDate<br>
+	$blogDescription	
+</div>
+
+<div id="comunidades" align="right">
+	<img src="/blog/template_community/img/header_comunidades.jpg" width="209" height="16">
+	Comunidades de $blogOwner
+	<iframe name=comunidades src="/blog/blogs/$blogPath/communities.html" frameBorder=0 width=400 height="400" scrolling=no></iframe>	
+	
+</div>
+
+<div id="ranking">
+	<img src="/blog/template_community/img/ranking.png" width="209" height="17">	
+	<iframe name=palco src="/blog/blogs/content/ranking_estatico.html" frameBorder=0 width=400 height=150 scrolling=no></iframe>	
+	 
+</div>

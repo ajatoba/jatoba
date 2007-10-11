@@ -30,13 +30,22 @@
 </div>
 <div id="barra_repeat">
 	<div id="barra">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+		<th align="left" scope="row">
 		
-    	<a href="/blog/blogs/admin/post.do?act=list" style="text-decoration:none;"><span>&nbsp;SEUS POSTS&nbsp;</span></a>&nbsp;&nbsp;&nbsp;<span class="clicado">&nbsp;CRIAR NOVO POST&nbsp;</span>
-    	    	
-      
-        	
-       <span style="font-size:12px; color:#FFFFFF; line-height:10px; margin-left:318px; font-weight:normal;">Usuário:&nbsp;</span><span style="font-size:13px; font-weight:bold; color:#FFFFFF;">Login</span>&nbsp;&nbsp;&nbsp;
-            <span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span></div>
+<a href="/blog/blogs/admin/post.do?act=list" style="text-decoration:none;"><span>&nbsp;SEUS POSTS&nbsp;</span></a>&nbsp;&nbsp;&nbsp;<span class="clicado">&nbsp;CRIAR NOVO POST&nbsp;</span>
+		
+		</th>
+		<td align="right">
+		
+<span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>
+			
+		</td>
+	  </tr>
+	</table>
+
+    </div>
 </div>
 <div id="meio_repeat">
 	<div id="meio">
@@ -67,7 +76,8 @@
 			imageUploadURL="/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Image"
 			linkUploadURL="/FCKeditor/editor/filemanager/upload/simpleuploader?Type=File"
 			flashUploadURL="/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Flash">							
-		</FCK:editor></td>
+		</FCK:editor>
+</td>
           </tr>
           <tr>
             <td width="321" height="36" valign="bottom"><span class="style2">Status: </span>
@@ -111,6 +121,5 @@
 		</div>
 	</div>
 </div>
-
 </body>
 </html:html>

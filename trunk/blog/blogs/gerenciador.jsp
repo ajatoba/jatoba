@@ -32,7 +32,7 @@
             <td height="23" valign="bottom" style="background:url(/bloglog/admin/img/senha.jpg) no-repeat bottom left;"></td>
           </tr>
           <tr>
-            <td height="33" valign="bottom"><input name="password" type="password" id="password" style=" height:28px; border:1px solid #B7D3E9; width:163px; background-color:#F8F8F8; font-size:18px; padding-left:3px; color:#147ABA;"><img src="/bloglog/admin/img/entrar.jpg" width="63" height="29" style="vertical-align:bottom; margin-bottom:1px; margin-left:6px; cursor:hand;" onClick="blogUserForm.submit();"></td>
+            <td height="33" valign="bottom"><input name="password" type="password" id="password" style=" height:28px; border:1px solid #B7D3E9; width:163px; background-color:#F8F8F8; font-size:18px; padding-left:3px; color:#147ABA;" onKeyDown="if(event.keyCode==13) blogUserForm.submit();"><img src="/bloglog/admin/img/entrar.jpg" width="63" height="29" style="vertical-align:bottom; margin-bottom:1px; margin-left:6px; cursor:hand;" onClick="blogUserForm.submit();"></td>
           </tr>
           <tr>
             <td height="17" valign="bottom"><logic:present name="mensagem_erro">

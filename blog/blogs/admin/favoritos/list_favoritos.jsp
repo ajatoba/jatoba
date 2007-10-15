@@ -41,13 +41,18 @@ function EscreveBox(){
 </div>
 </div>
 <div id="barra_repeat">
-<div id="barra"><span
-	style="font-size:12px; color:#FFFFFF; line-height:10px; margin-left:550px; font-weight:normal;">Usuário:&nbsp;</span><span
-	style="font-size:13px; font-weight:bold; color:#FFFFFF;">Login</span>&nbsp;&nbsp;&nbsp;
-<span style=" vertical-align:middle; line-height:41px;"><a
-	href="/blog/blogs/blogUser.do?act=logout"><img
-	src="/bloglog/admin/imgs/logout.jpg"
-	style="margin-top:6px; border:none;" /></a></span></div>
+<div id="barra">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+		<th align="left" scope="row">
+				</th>
+		<td align="right">
+	
+<span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout"><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;" /></a></span>
+			</td>
+	  </tr>
+	</table>	
+</div>
 </div>
 <div id="meio_repeat2">
 <div id="meio"><br />

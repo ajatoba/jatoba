@@ -3,9 +3,9 @@
     <rootDir>/</rootDir>
     <exportSource>false</exportSource>
     <reloadable>true</reloadable>
-    <redirectLogger>false</redirectLogger>
+    <redirectLogger>true</redirectLogger>
     <updateXml>true</updateXml>
-    <warLocation>C:\Documents and Settings\jatoba\Meus documentos\pessoal\projetos\blog.war</warLocation>
+    <warLocation>D:\projetos\blog.war</warLocation>
     <extraInfo></extraInfo>
     <webPath>/blog</webPath>
 </tomcatProjectProperties>

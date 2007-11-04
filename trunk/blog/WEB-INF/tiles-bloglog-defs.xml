@@ -59,21 +59,4 @@
 
 <!-- ********** -->
 
-<!-- TEMPLATE COMUNIDADES -->  
-
-  <definition extends=".common_comunidades" name=".frontpage_comunidades" path="/layout/masterCommunityLayout.vm">
-    <put name="menu" value=".frontpage.menu" />
-    <put name="body" value=".frontpage_comunidades.body" />
-  </definition>
-   
-  <definition controllerClass="com.vanguarda.blog.template.control.CommunityTileController" 
-   name=".frontpage_comunidades.body" path="/layout/communityLayout.vm">
-    <put name="header"  value="/template_community/header_frontpage.vm" />
-    <put name="body"    value="/template_community/body_frontpage.vm" />
-    <put name="sideBar" value="/template_community/sidebar.vm" />
-    <put name="footer"  value="/template_community/footer.vm" />    
-  </definition>
-
-<!-- ********** -->
-  
 </tiles-definitions>

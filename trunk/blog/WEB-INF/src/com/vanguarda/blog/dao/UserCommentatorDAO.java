@@ -19,7 +19,9 @@ public interface UserCommentatorDAO {
 	
 	public UserCommentator load(int id) throws SQLException,Exception;
 	
-	public void delete(UserCommentator user) throws SQLException,Exception;	
+	public void delete(UserCommentator user) throws SQLException,Exception;
+	
+	public void block(int userId, int action) throws Exception;
 
 	
 	

@@ -28,7 +28,10 @@ public interface BlogUserDAO {
 	
 	public Collection listUsersByGroupForBlog(int status,int groupId) throws SQLException,Exception;
 	
+	public Collection searchUsersByGroup(int groupId, String firstName, String lastName, String email) throws SQLException,Exception;
+	
 	public BlogUser remindPassword(String email) throws SQLException,Exception;
 	
+	public int countUser(int groupId) throws Exception;
 }
  

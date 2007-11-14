@@ -6,25 +6,17 @@
 <html>
  
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-
+<%@ include file="/blogs/admin/includes/menu.jsp"%>
 <p>  <center>
   <logic:present name="mensagem_erro">
-  	<script>
-	alert('Erro encontrado');
-	
-	history.go(-1);
-	</script>
+  	<font color="red"><bean:write name="mensagem_erro"/></font>
   </logic:present>
   
   <logic:notPresent name="mensagem_erro">
-  	<script>
-	alert('Operação realizada com sucesso.');
-	document.location ='post.do?act=list';
-	
-	</script>
+  	<font color="red"><center>Operação efetuada com sucesso</center></font> 
   </logic:notPresent>
  </center></p>
 
-
+ <%@ include file="/blogs/admin/includes/footer.html"%>
 </body>
 </html>

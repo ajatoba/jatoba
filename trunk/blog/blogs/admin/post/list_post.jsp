@@ -40,25 +40,15 @@
 </div>
 <div id="barra_repeat">
 	<div id="barra">
-	
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-		<th align="left" scope="row">
-			
     	<span class="clicado">&nbsp;SEUS POSTS&nbsp;</span>&nbsp;&nbsp;&nbsp;<a href="/blog/blogs/admin/post/add_post_in.jsp" style="text-decoration:none;"><span>&nbsp;CRIAR NOVO POST&nbsp;</span></a>&nbsp;&nbsp;&nbsp;<a href="/blog/blogs/admin/post.do?act=publish&id=${blogId}" style="text-decoration:none;"><span>ATUALIZAR BLOG</span></a>
-
-		</th>
-		<td align="right">
-
-        	
-            <span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>      
-	
-			</td>
-	  </tr>
-	</table>
-	
-			
-	</div>
+     
+        	<span style="font-size:12px; color:#FFFFFF; line-height:10px; margin-left:190px; font-weight:normal;">Usuário:&nbsp;</span><span style="font-size:13px; font-weight:bold; color:#FFFFFF;">Login</span>&nbsp;&nbsp;&nbsp;
+            <span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>     
+            <a href="/blog/admin/blog.do?act=list" style="text-decoration:none;"><span>LISTAR OUTROS BLOG</span></a>
+            
+             </div>
+            
+            
             
 </div>
 <div id="meio_repeat">

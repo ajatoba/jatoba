@@ -59,8 +59,6 @@ function contaText(input)
 		<html:hidden property="from" value="site"/>
 		<html:hidden property="status" value="<%=request.getParameter("status")%>"/>
 		<html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
-		<html:hidden property="commentatorHomepage" value="${user.blog.path}"/>
-		<html:hidden property="commentatorGroup" value="${user.group.id}"/>
 <div style=" margin-left:5px; margin-right:5px; width:570px; background-color:#FFFFFF; height:395px;">
 		<div style="height:23px; background-color:#147ABA;"><img src="/bloglog/content/add_coment/img_add/tit_add.jpg" style="margin-left:12px;"/></div>
 		

@@ -38,7 +38,9 @@
     </c:otherwise>
     </c:choose>
     </td>
-    <td width="20%"><a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">[[ALTERAR]]</a> <a href="/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>">[[DELETAR]]</a></td>
+    <td width="20%"><a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">[[ALTERAR]]</a> <a href="/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>">[[DELETAR]]</a>
+    <a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">[[POSTS]]</a>
+    </td>
   </tr>
   </pg:item>
   </logic:iterate>

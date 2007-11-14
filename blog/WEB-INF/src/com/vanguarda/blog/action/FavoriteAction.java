@@ -14,6 +14,7 @@ import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
 import com.vanguarda.blog.bean.BlogUser;
+import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.dao.BlogDAO;
 import com.vanguarda.blog.dao.DaoFactory;
 import com.vanguarda.blog.dao.FavoriteDAO;
@@ -47,8 +48,14 @@ public class FavoriteAction extends DispatchAction {
 					.listBlogsToFavorite(Constants.STATUS_ALL);
 
 			HttpSession session = req.getSession();
-			BlogUser user = (BlogUser) session.getAttribute("blogUser");
-
+			User user = (User) session.getAttribute("blogUser");
+			
+			if(user == null)
+			{
+				User userSession = (User) session.getAttribute("userAdmin");
+				user =userSession.getBlog().getBloggerUser();
+			}
+			
 			Collection favorites = (Collection) dao.getFavorites(user.getId());
 
 			req.setAttribute("favorites", favorites);
@@ -78,6 +85,13 @@ public class FavoriteAction extends DispatchAction {
 		MessageResources messageResources = null;
 		HttpSession session = req.getSession();
 		BlogUser user = (BlogUser) session.getAttribute("blogUser");
+		
+		if(user == null)
+		{
+			User userSession = (User) session.getAttribute("userAdmin");
+			user =userSession.getBlog().getBloggerUser();
+		}
+
 
 		try {
 			messageResources = getResources(req);
@@ -106,7 +120,14 @@ public class FavoriteAction extends DispatchAction {
 
 			ArrayList parameters = new ArrayList();
 			HttpSession session = req.getSession();
-			BlogUser user = (BlogUser) session.getAttribute("blogUser");
+			User user = (User) session.getAttribute("blogUser");
+			
+			if(user == null)
+			{
+				User userSession = (User) session.getAttribute("userAdmin");
+				user =userSession.getBlog().getBloggerUser();
+			}
+			
 			parameters.add(new Integer(user.getId()));
 
 			Collection ranking = (Collection) CacheManager.getInstance()

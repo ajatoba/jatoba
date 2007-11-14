@@ -42,6 +42,8 @@ public interface Constants {
 	
 	public static final int STATUS_ALL = -1;
 	
+	public static final int STATUS_BLOCKEAD = 2;
+	
 	
 	/** Atributos de request **/
 	

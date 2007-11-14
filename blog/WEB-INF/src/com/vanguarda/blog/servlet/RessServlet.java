@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vanguarda.blog.BlogManager;
+import com.vanguarda.blog.action.rss.ActionHandler;
+import com.vanguarda.blog.action.rss.RssAllBlogsHandler;
+import com.vanguarda.blog.action.rss.parameters.ActionHandlerParameters;
 import com.vanguarda.blog.bean.Blog;
 import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Post;
@@ -46,9 +49,26 @@ public class RessServlet extends HttpServlet {
 		String ano = req.getParameter("ano");
 		
 		String act = req.getParameter("act");
+		
+		if(act!= null && "allBlogs".equals(act))
+		{
+			ActionHandler handler = new RssAllBlogsHandler();
+			ActionHandlerParameters parameters = handler.createParameters(req);
+			
+			
+			try {
+				handler.handle(parameters,out);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return;
+			
+		}
 
 		BlogDAO dao = (BlogDAO) DaoFactory
-				.getInstance(Constants.MAPPING_BLOG_DAO);
+				.getInstance(Constants.MAPPING_BLOG_DAO);		
+		
 
 		if (id != null) {
 			try {

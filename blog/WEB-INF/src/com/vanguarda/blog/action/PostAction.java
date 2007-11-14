@@ -10,6 +10,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +26,8 @@ import org.apache.velocity.app.VelocityEngine;
 
 import com.vanguarda.blog.BlogManager;
 import com.vanguarda.blog.bean.Blog;
-import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Post;
+import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.dao.BlogDAO;
 import com.vanguarda.blog.dao.DaoFactory;
 import com.vanguarda.blog.dao.PostDAO;
@@ -43,7 +44,11 @@ public class PostAction extends DispatchAction {
 	public ActionForward add(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		HttpSession session = req.getSession();
-		BlogUser user = (BlogUser) session.getAttribute("blogUser");
+		User user = (User) session.getAttribute("blogUser");
+
+		if (user == null) {
+			user = (User) session.getAttribute("userAdmin");
+		}
 		org.apache.struts.util.MessageResources messageResources = null;
 
 		try {
@@ -56,6 +61,8 @@ public class PostAction extends DispatchAction {
 			post.setStatus(postForm.getStatus());
 			post.setTitle(postForm.getTitle());
 			dao.add(post);
+
+			req.setAttribute("blogId",String.valueOf(user.getBlog().getId()));
 
 			return mapping.findForward("post_add");
 		} catch (Exception e) {
@@ -85,7 +92,12 @@ public class PostAction extends DispatchAction {
 	public ActionForward update(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		HttpSession session = req.getSession();
-		BlogUser user = (BlogUser) session.getAttribute("blogUser");
+		User user = (User) session.getAttribute("blogUser");
+
+		if (user == null) {
+			user = (User) session.getAttribute("userAdmin");
+		}
+
 		org.apache.struts.util.MessageResources messageResources = null;
 		try {
 			messageResources = getResources(req);
@@ -98,6 +110,8 @@ public class PostAction extends DispatchAction {
 			post.setStatus(postForm.getStatus());
 			post.setTitle(postForm.getTitle());
 			dao.update(post);
+			
+			req.setAttribute("blogId",String.valueOf(user.getBlog().getId()));
 
 			return mapping.findForward("post_add");
 		} catch (Exception e) {
@@ -118,7 +132,11 @@ public class PostAction extends DispatchAction {
 
 			HttpSession session = req.getSession();
 
-			BlogUser user = (BlogUser) session.getAttribute("blogUser");
+			User user = (User) session.getAttribute("blogUser");
+
+			if (user == null) {
+				user = (User) session.getAttribute("userAdmin");
+			}
 
 			dao.delete(post);
 
@@ -137,12 +155,42 @@ public class PostAction extends DispatchAction {
 		java.util.Collection list = null;
 		org.apache.struts.util.MessageResources messageResources = null;
 		HttpSession session = req.getSession();
-		BlogUser user = (BlogUser) session.getAttribute("blogUser");
+		User user = null;
+		String blogId = req.getParameter("blogId");
+
 		try {
 			messageResources = getResources(req);
-			list = dao.listPostsByBlog(-1, user.getBlog());
+			if (session.getAttribute("blogUser") != null) {
+				user = (User) session.getAttribute("blogUser");
+				list = dao.listPostsByBlog(-1, user.getBlog());
+				req.setAttribute("blogId", String.valueOf(user.getBlog()
+						.getId()));
+			} else if (blogId != null) {
+				user = (User) session.getAttribute("userAdmin");
+
+				BlogDAO blogDAO = (BlogDAO) DaoFactory
+						.getInstance(Constants.MAPPING_BLOG_DAO);
+				Blog blog = blogDAO.load(Integer.parseInt(blogId));
+				user.setBlog(blog);
+
+				session.setAttribute("userAdmin", user);
+
+				list = blog.getPosts();
+				req.setAttribute("blogId", blogId);
+			} else {
+				user = (User) session.getAttribute("userAdmin");
+				if (user != null && user.getBlog() != null) {
+					list = dao.listPostsByBlog(-1, user.getBlog());
+					req.setAttribute("blogId", String.valueOf(user.getBlog()
+							.getId()));
+				} else {
+					throw new Exception("Blog não identificado");
+				}
+
+			}
+
 			req.setAttribute("posts", list);
-			req.setAttribute("blogId", String.valueOf(user.getBlog().getId()));
+
 			messageResources = getResources(req);
 		} catch (Exception e) {
 
@@ -169,7 +217,7 @@ public class PostAction extends DispatchAction {
 				//Post post = dao.load(Integer.parseInt(id), 1);
 				java.util.Collection comments = post.getComments();
 				Blog blog = post.getBlog();
-				BlogUser user = blog.getBloggerUser();
+				User user = blog.getBloggerUser();
 				req.setAttribute("blog", blog);
 				req.setAttribute("post", post);
 				req.setAttribute("status", new Integer(post.isControll() ? 1
@@ -276,9 +324,8 @@ public class PostAction extends DispatchAction {
 
 			//criação do contexto
 			VelocityContext context = new VelocityContext();
-			
-			String urlRss = "rss.rss?id="+blog.getId();    
-			
+
+			String urlRss = "rss.rss?id=" + blog.getId();
 
 			//criação de dados e trasnferências dos mesmos para o contexto
 			context.put("blogOwner", blog.getBloggerUser().getFirstName());
@@ -298,6 +345,21 @@ public class PostAction extends DispatchAction {
 			context.put("history", req.getAttribute("history"));
 			context.put("favorites", req.getAttribute("favorites"));
 			context.put("urlRss", urlRss);
+
+			// verificando se no mês existe mais de
+			Collection posts = blog.getPosts();
+			int count = 0;
+			Date today = new Date();
+			for (Iterator iter = posts.iterator(); iter.hasNext();) {
+				Post element = (Post) iter.next();
+
+				if (element.getInsertDate().getMonth() == today.getMonth())
+					count++;
+			}
+
+			if (count == 5) {
+				context.put("hasMorePosts", "true");
+			}
 
 			StringWriter writer = new StringWriter();
 			t.merge(context, writer);
@@ -354,7 +416,7 @@ public class PostAction extends DispatchAction {
 				if (blog != null) {
 
 					Collection posts = blog.getPosts();
-					BlogUser user = blog.getBloggerUser();
+					User user = blog.getBloggerUser();
 
 					BlogManager.getInstance().setRanking(req);
 					BlogManager.getInstance().setHistory(req, id);

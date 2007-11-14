@@ -59,7 +59,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 
 	private static final String DELETE_QUERY = "DELETE FROM TB_BLOG WHERE NM_BLOG_ID = ? ";
 
-	private static final String LIST_BLOGS_QUERY = " SELECT NM_BLOG_ID,B.VC_NAME,B.VC_DESCRIPTION,B.DT_INSERTDATE,B.NM_STATUS"
+	private static final String LIST_BLOGS_QUERY = " SELECT NM_BLOG_ID,B.VC_NAME,B.VC_DESCRIPTION,B.DT_INSERTDATE,B.NM_STATUS,B.VC_PATH"
 			
 			+ " FROM TB_BLOG B WHERE  B.NM_STATUS = ? "+
 			" ORDER BY B.DT_INSERTDATE DESC ";
@@ -358,6 +358,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 				blog.setInsertDate(new java.util.Date(rs.getDate("B.DT_INSERTDATE").getTime()));
 				blog.setName(rs.getString("B.VC_NAME"));
 				blog.setStatus(rs.getInt("B.NM_STATUS"));
+				blog.setPath(rs.getString("B.VC_PATH"));
 
 				list.add(blog);
 
@@ -531,6 +532,10 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 			}else if(method.equals("loadLastPosts"))
 			{
 				return loadLastPosts(((Integer)parameters.get(0)).intValue(),((Integer)parameters.get(1)).intValue());
+			}
+			else if(method.equals("listBlogs"))
+			{
+				return listBlogs(Constants.STATUS_ACTIVE);
 			}
 				
 			return super.execute(method, parameters);

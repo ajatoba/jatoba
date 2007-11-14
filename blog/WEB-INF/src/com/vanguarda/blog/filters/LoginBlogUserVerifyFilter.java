@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.vanguarda.blog.bean.AdminUser;
 import com.vanguarda.blog.bean.BlogUser;
+import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.util.Constants;
 import com.vanguarda.blog.util.LoggerUtil;
   
@@ -43,11 +45,17 @@ public class LoginBlogUserVerifyFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpSession session = request.getSession(true);
         
-        BlogUser blogUser = (BlogUser) session.getAttribute(Constants.BLOGGER_USER_BEAN);
+                
+        User blogUser = (User) session.getAttribute(Constants.BLOGGER_USER_BEAN);
         
-  
+        if(blogUser == null)
+        {
+        	blogUser =  (User) session.getAttribute(Constants.ADMIN_USER_BEAN);
+        }
+        
+          
 
-       if(blogUser !=  null)
+       if(blogUser !=  null && (blogUser instanceof BlogUser || blogUser instanceof AdminUser))
         {
        	    LoggerUtil.debug(" FILTRANDO USUARIO "+ blogUser + " NO ADMIN DE BLOGS");
             chain.doFilter(req, resp);

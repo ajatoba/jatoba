@@ -26,8 +26,10 @@ import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
 import com.vanguarda.blog.BlogManager;
+import com.vanguarda.blog.bean.AdminUser;
 import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Group;
+import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.dao.BlogUserDAO;
 import com.vanguarda.blog.dao.DaoFactory;
 import com.vanguarda.blog.exception.EmailExistsException;
@@ -61,32 +63,43 @@ public class BlogUserAction extends DispatchAction {
 
 		BlogUserForm userForm = (BlogUserForm) form;
 
-		BlogUser user = null;
+		User user = null;
 
 		try {
 
-			user = (BlogUser) dao.login(userForm.getLogin(), userForm.getPassword());
+			user = dao.login(userForm.getLogin(), userForm.getPassword());
 
-			HttpSession session = req.getSession();
-			session.setAttribute(Constants.BLOGGER_USER_BEAN, user);
-			session.setAttribute("path",user.getBlog().getPath());
-			
+			if (user instanceof BlogUser) {
+				HttpSession session = req.getSession();
+				session.setAttribute(Constants.BLOGGER_USER_BEAN, user);
+				session.setAttribute("path", user.getBlog().getPath());
+			} else if (user instanceof AdminUser) {
+				HttpSession session = req.getSession();
+				session.setAttribute(Constants.ADMIN_USER_BEAN, user);
+				return new ActionForward("/admin/blog.do?act=list");
+
+			} else {
+				throw new ClassCastException();
+			}
 
 		} catch (InvalidPasswordException ip) {
 
 			ip.printStackTrace();
-			req.setAttribute("mensagem_erro", messageResources.getMessage("senha_incorreta"));
+			req.setAttribute("mensagem_erro", messageResources
+					.getMessage("senha_incorreta"));
 			return mapping.findForward(Constants.BLOGUSER_LOGIN_ERROR_FORWARD);
 
 		} catch (LoginNotExistsException lne) {
 			lne.printStackTrace();
-			req.setAttribute("mensagem_erro", messageResources.getMessage("login_inexistente"));
+			req.setAttribute("mensagem_erro", messageResources
+					.getMessage("login_inexistente"));
 			return mapping.findForward(Constants.BLOGUSER_LOGIN_ERROR_FORWARD);
 
 		} catch (ClassCastException e) {
 
 			e.printStackTrace();
-			req.setAttribute("mensagem_erro", messageResources.getMessage("permissao"));
+			req.setAttribute("mensagem_erro", messageResources
+					.getMessage("permissao"));
 			return mapping.findForward(Constants.BLOGUSER_LOGIN_ERROR_FORWARD);
 
 		} catch (Exception e) {
@@ -100,16 +113,15 @@ public class BlogUserAction extends DispatchAction {
 		return new ActionForward("/blogs/admin/post.do?act=list");
 
 	}
-	
-	
+
 	public ActionForward logout(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
-			HttpSession session = req.getSession();
-			session.removeAttribute(Constants.BLOGGER_USER_BEAN);
-			
-			return mapping.findForward(Constants.BLOGUSER_LOGIN_ERROR_FORWARD);
-			
+		HttpSession session = req.getSession();
+		session.removeAttribute(Constants.BLOGGER_USER_BEAN);
+
+		return mapping.findForward(Constants.BLOGUSER_LOGIN_ERROR_FORWARD);
+
 	}
 
 	public ActionForward add(ActionMapping mapping, ActionForm form,
@@ -274,13 +286,12 @@ public class BlogUserAction extends DispatchAction {
 		return mapping.findForward(Constants.USER_LIST_FORWARD);
 
 	}
-	
+
 	public ActionForward remindPassword(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
 		String email = req.getParameter("email");
 
-				
 		if (email != null) {
 			MessageResources messageResources = null;
 			try {
@@ -290,52 +301,87 @@ public class BlogUserAction extends DispatchAction {
 				/* TESTANDO DIGITAÇÃO DA GIF DE SEGURANÇA */
 				String word = req.getParameter("imageword");
 				String encryptWord = req.getParameter("wordEnc");
-				
-				 if(!RandomTool.compare(word,encryptWord)){
-		    			
-		    			req.setAttribute("error",messageResources.getMessage("wrong_gif_text") );
-		    			return new ActionForward("/blogs/content/remind_password_in.jsp");
 
-		    	}			            
-				
-				/**************************************/
-				 
+				if (!RandomTool.compare(word, encryptWord)) {
+
+					req.setAttribute("error", messageResources
+							.getMessage("wrong_gif_text"));
+					return new ActionForward(
+							"/blogs/content/remind_password_in.jsp");
+
+				}
+
+				/** *********************************** */
+
 				BlogUser user = dao.remindPassword(email);
-				
-				if(user==null) {
-					req.setAttribute("error",messageResources.getMessage("unregistered_user"));					
-				}else{
-					
+
+				if (user == null) {
+					req.setAttribute("error", messageResources
+							.getMessage("unregistered_user"));
+				} else {
+
 					SendMail mail = new SendMail();
-					
-					String smtpServer = (String) BlogManager.getInstance().getProperties().get("smtp");
-					
+
+					String smtpServer = (String) BlogManager.getInstance()
+							.getProperties().get("smtp");
+
 					mail.setFrom(messageResources.getMessage("webmaster"));
 					mail.setSmtpServer(smtpServer);
-								
+
 					mail.setContentType("txt");
-					mail.setSubject(messageResources.getMessage("password_reminder_subject"));
+					mail.setSubject(messageResources
+							.getMessage("password_reminder_subject"));
 					mail.setTo(user.getEmail());
-					mail.setMessage(messageResources.getMessage("password_reminder_message") + " " + user.getPassword());
-					
-									
+					mail.setMessage(messageResources
+							.getMessage("password_reminder_message")
+							+ " " + user.getPassword());
+
 					mail.send();
-					
-					req.setAttribute("sucesso",messageResources.getMessage("password_sent"));
+
+					req.setAttribute("sucesso", messageResources
+							.getMessage("password_sent"));
 				}
-				
+
 				return mapping.findForward("password_reminder_out");
 
 			} catch (Exception e) {
-				req.setAttribute("error",e.getMessage());
+				req.setAttribute("error", e.getMessage());
 				return mapping.findForward("password_reminder_out");
 			}
 		} else {
-			req.setAttribute("error","Por favor, digite seu email");
+			req.setAttribute("error", "Por favor, digite seu email");
 			return mapping.findForward("password_reminder_out");
 		}
-		
+
 	}
 
+	public ActionForward search(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse resp) throws Exception {
+
+		BlogUserDAO dao = (BlogUserDAO) DaoFactory
+				.getInstance(Constants.MAPPING_BLOGGERUSER_DAO);
+		Collection list = null;
+		MessageResources messageResources = null;
+		try {
+
+			BlogUserForm userForm = (BlogUserForm) form;
+
+			messageResources = getResources(req);
+
+			list = dao.searchUsersByGroup(Constants.USER_BLOGGER, userForm
+					.getFirstName(), userForm.getLastName(), userForm
+					.getEmail());
+		
+			
+			req.setAttribute("users", list);
+			messageResources = getResources(req);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return mapping.findForward(Constants.USER_LIST_FORWARD);
+
+	}
 
 }

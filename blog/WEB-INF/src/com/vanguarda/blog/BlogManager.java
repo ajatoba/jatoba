@@ -104,7 +104,7 @@ public class BlogManager {
 		
 
 		Date today = new Date();
-		int month = today.getMonth();
+		int month = today.getMonth()+1;
 		int year  = today.getYear() + 1900;
 		
 		String key = "";

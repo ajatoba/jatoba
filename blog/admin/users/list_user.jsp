@@ -13,6 +13,30 @@
 <pg:pager url="blogUser.do" maxIndexPages="5" maxPageItems="150">
 
 <table border ="0" ><tr><td><a href="users/add_user_in.jsp">[[NOVO]]</a></td></tr></table>
+<html:form action="/admin/blogUser.do?act=search" method="post">
+		<table border="0">
+			<tr>
+				<td colspan="2"><b>Busca</b></td>
+				
+			</tr>
+			<tr>
+				<td>Nome:</td>
+				<td><html:text property="firstName"/> </td>
+			</tr>
+			<tr>
+				<td>Sobrenome:</td>
+				<td><html:text property="lastName"/> </td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><html:text property="email"/></td>
+			</tr>
+			<tr>
+				<td> <html:submit value="Buscar"/> </td>
+				<td></td>
+			</tr>
+		</table>
+	</html:form>
 <table width="770" border="0">
   <tr bgcolor="#FFFFCC"> 
     <td width="30%"><b>Nome</b></td>

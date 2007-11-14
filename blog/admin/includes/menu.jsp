@@ -13,10 +13,11 @@
 
 <table width="770" border="0" cellpadding="0" cellspacing="0" align="left" bgcolor="#CCCCCC" bordercolor="#000000">
   <tr> 
-    <td width="25%"><b><a href="/blog/admin/blog.do?act=list">Blogs</a></b></td>
-    <td width="25%"><b><a href="/blog/admin/blogUser.do?act=list">Usuarios</a></b></td>
-    <td width="25%"><b><a href="/blog/admin/topic.do?act=list">Tópicos</a></b></td>
-	<td width="25%"><b><a href="/blog/adminUser.do?act=logout">Logout</a></b></td>
+    <td width="20%"><b><a href="/blog/admin/blog.do?act=list">Blogs</a></b></td>
+    <td width="20%"><b><a href="/blog/admin/blogUser.do?act=list">Blogueiros</a></b></td>
+    <td width="20%"><b><a href="/blog/admin/userCommentator.do?act=listCommentador">Usuarios</a></b></td>
+    <td width="20%"><b><a href="/blog/admin/topic.do?act=list">Tópicos</a></b></td>
+	<td width="20%"><b><a href="/blog/adminUser.do?act=logout">Logout</a></b></td>
   </tr>
 </table>
 

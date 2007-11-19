@@ -29,9 +29,16 @@
 			type="com.vanguarda.blog.form.TopicForm" />
 		<form-bean name="messageForm"
 			type="com.vanguarda.blog.form.MessageForm" />		
-		
-		<form-bean name="recomendationForm"
-			type="com.vanguarda.blog.form.RecomendationForm" />
+		<form-bean name="communityForm"
+			type="com.vanguarda.blog.form.CommunityForm" />
+		<form-bean name="communityUserForm"
+			type="com.vanguarda.blog.form.CommunityUserForm" />		
+		<form-bean name="communityTopicForm"
+			type="com.vanguarda.blog.form.CommunityTopicForm" />	
+		<form-bean name="communityMessageForm"
+			type="com.vanguarda.blog.form.CommunityMessageForm" />	
+		<form-bean name="communityUserLoginForm"
+			type="com.vanguarda.blog.form.CommunityUserLoginForm" />
 		
 	</form-beans>
 
@@ -43,7 +50,8 @@
 	<global-forwards>
 		<forward name="error" path="/error.jsp" />
 		<forward name="bloglog" path="/index_vm.do" redirect="true" />
-		<forward name="bloglog2" path="/index2_vm.do" redirect="true" />		
+		<forward name="bloglog2" path="/index2_vm.do" redirect="true" />
+		<forward name="community_template" path="/community_template.do" redirect="true" />
 	</global-forwards>
 
 	<action-mappings>
@@ -100,6 +108,29 @@
 			<forward name="list_messages" path="/admin/forum/list_messages.jsp" />
 		</action>
 		
+		<action path="/admin/userCommentator"
+			type="com.vanguarda.blog.action.UserCommentatorAction" scope="request"
+			parameter="act" validate="false" name="userCommentatorForm">			
+			<forward name="user_list" path="/admin/users/list_commentator_user.jsp" />				
+		</action>
+		
+			<action path="/admin/post"
+			type="com.vanguarda.blog.action.PostAction" scope="request"
+			parameter="act" name="postForm" validate="false">			
+			<forward name="post_add" path="/admin/post/form_post_out.jsp" />	
+			<forward name="post_list" path="/admin/post/list_post.jsp" />			
+			<forward name="post_load" path="/admin/post/update_post_in.jsp" />		
+			
+		</action>
+		
+		<action path="/admin/comment"
+			type="com.vanguarda.blog.action.CommentAction" scope="request"
+			parameter="act" name="commentForm" validate="false">			
+			<forward name="comment_add" path="/admin/comments/form_comment_out.jsp" />	
+			<forward name="comment_list" path="/admin/comments/list_comment.jsp" />			
+			<forward name="comment_load" path="/admin/comments/update_comment_in.jsp" />		
+		</action>
+		
 		<!-- fim  actions do administrador-->		
 		
 		<!--  **************** actions do blogueiro **************-->
@@ -135,7 +166,45 @@
 			<forward name="load" path="/blogs/admin/edit_word_in.jsp" />
 			<forward name="sucess" path="/blogs/admin/home.jsp" />				
 		</action>
+		
+		<action path="/blogs/admin/community"
+			type="com.vanguarda.blog.action.CommunityAction" scope="request"
+			parameter="act" name="communityForm" validate="false">			
+			<forward name="community_form" path="/blogs/admin/comunidades/add_community_in.jsp" />			
+			<forward name="community_load" path="/blogs/admin/comunidades/update_community_in.jsp" />			
+			<forward name="list_communities" path="/blogs/admin/comunidades/list_communities.jsp" />			
+		</action>
+
+		<action path="/blogs/admin/communityUser"
+			type="com.vanguarda.blog.action.CommunityUserAction" scope="request"
+			parameter="act" name="communityUserForm" validate="false">			
+			<forward name="list_user_communities" path="/blogs/admin/comunidades/list_user_communities.jsp" />			
+			<forward name="community_user_out" path="/blogs/content/communities/restrict/community_user_out.jsp" />			
+		</action>
+		
+		<action path="/blogs/admin/communityTopic"
+			type="com.vanguarda.blog.action.CommunityTopicAction" scope="request"
+			parameter="act" name="communityTopicForm" validate="false">			
+			<forward name="community_topic_form" path="/blogs/admin/comunidades/add_community_topic_in.jsp" />			
+			<forward name="community_topic_site_form" path="/blogs/content/communities/restrict/add_community_topic_in.jsp" />			
+			<forward name="list_community_topics" path="/blogs/admin/comunidades/list_community_topics.jsp" />			
+		</action>
+		
 				
+		
+		<action path="/blog/communityUserLogin"
+			type="com.vanguarda.blog.action.CommunityUserLoginAction" scope="request"
+			parameter="act" name="communityUserLoginForm" validate="false">			
+			<forward name="login_error" path="/communities/blogger_login.jsp" />
+		</action>
+		
+		<action path="/blogs/communityUserLogin"
+			type="com.vanguarda.blog.action.CommunityUserLoginAction" scope="request"
+			parameter="act" name="communityUserLoginForm" validate="false">
+			
+			<forward name="login_error" path="/blogs/blogger_login.jsp" />					
+		</action>
+		
 		<action path="/blogs/admin/favorites"
 			type="com.vanguarda.blog.action.FavoriteAction" scope="request"
 			parameter="act" validate="false">			
@@ -199,12 +268,6 @@
 			<forward name="success" path="/blogs/content/add_denuncia_out.jsp" />				
 		</action>
 		
-		<action path="/recomendation"
-			type="com.vanguarda.blog.action.RecomendationAction" scope="request"
-			parameter="act" name="recomendationForm" validate="false">			
-			<forward name="addRecomendation" path="/blogs/content/add_recomendation_in.jsp" />				
-		</action>
-		
 		<action path="/forum"
 			type="com.vanguarda.blog.action.TopicAction" scope="request"
 			parameter="act" name="topicForm" validate="false">			
@@ -219,7 +282,31 @@
 			<forward name="erro" path="/forum/erro.html" />
 		</action>
 		
-	<!-- fim  actions do site-->
+		<action path="/community"
+			type="com.vanguarda.blog.action.CommunityUserAction" scope="request"
+			parameter="act" name="communityUserForm" validate="false">			
+			<forward name="show_user_communities" path="/blogs/content/communities/show_user_communities.jsp" />
+		</action>
+		
+		<action path="/restrict/communitySite"
+			type="com.vanguarda.blog.action.CommunityAction" scope="request"
+			parameter="act" name="communityForm" validate="false">			
+			<forward name="community_detail" path="/blogs/content/communities/restrict/community_detail.jsp" />
+		</action>
+		
+		<action path="/communityMessage"
+			type="com.vanguarda.blog.action.CommunityMessageAction" scope="request"
+			parameter="act" name="communityMessageForm" validate="false">			
+			<forward name="form_community_message" path="/blogs/content/communities/restrict/add_community_message_in.jsp" />
+			<forward name="list_community_messages" path="/blogs/content/communities/restrict/list_community_messages.jsp" />			
+		</action>
+		
+		
+		
+		
+		
+		
+		<!-- fim  actions do site-->
 
 	</action-mappings>
 

@@ -56,11 +56,13 @@
 		<p class="titulo">$post.title </p>
 		<p>$post.content </p>
 		<p style="margin-bottom:0px;"><a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')"><img src="/icon_comment.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')" style=" vertical-align:top;" class="imp">Comentários</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" ><img src="/icon_printer.gif" /></a>&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" style=" vertical-align:top;" class="imp" >Imprimir</a></p>
-<p style=" margin-top:4px; margin-bottom:0px;"><a style=" text-decoration:none;">Link deste Post: </a> <input type="text" value="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" style="width:350px; border:1px solid #999999; font-size:10px; padding-left:3px;"></p>
-<p style=" margin-top:4px; margin-bottom:0px;"><a style=" text-decoration:none;" href="#" onClick="window.open('/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=yes,height=600,width=600')">Indique este Post</a></p>
-<center>--------------------------------------------------------------------------------------</center>
+<p style=" margin-top:4px; margin-bottom:0px;"><a style=" text-decoration:none;">Link deste Post: </a> <input type="text" value="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" style="width:350px; border:1px solid #999999; font-size:10px; padding-left:3px;"></p><center>--------------------------------------------------------------------------------------</center>
 		
 	</div>
+	#end
+	
+	#if ($hasMorePosts == "true")
+	<p style="margin-bottom:0px;"><a href="/blog/blog.do?act=loadSite&id=$blogId">Veja mais</a></a>
 	#end
 #end
 </div>

@@ -25,13 +25,6 @@
 		<filter-class>com.vanguarda.blog.filters.LoginVerifyFilter</filter-class>
 	</filter>
 	
-	<filter>
-		<filter-name>LoginCommunityUserVerifyFilter</filter-name>
-		<filter-class>com.vanguarda.blog.filters.LoginCommunityUserVerifyFilter</filter-class>
-	</filter>	
-	
-	
-	
 	<filter-mapping>
 		<filter-name>LoginAdminVerifyFilter</filter-name>
 		<url-pattern>/admin/*</url-pattern>
@@ -46,13 +39,6 @@
 		<filter-name>LoginVerifyFilter</filter-name>
 		<url-pattern>/blogs/content/add_comment_in.jsp</url-pattern>
 	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>LoginCommunityUserVerifyFilter</filter-name>
-		<url-pattern>/restrict/*</url-pattern>
-	</filter-mapping>
-	
-	
 	
 	<servlet>
 		<servlet-name>jsp</servlet-name>

@@ -57,7 +57,7 @@
 		<p>$post.content </p>
 
 
-<p style="margin-bottom:0px;"><a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')"><img src="/icon_comment.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')" style=" vertical-align:top;" class="imp">Comentários</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" ><img src="/icon_printer.gif" /></a>&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" style=" vertical-align:top;" class="imp" >Imprimir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" ><img src="/icon_permalink.gif" /></a>&nbsp;&nbsp;<a href="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" style=" vertical-align:top;" class="imp" >Link deste post</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=no,height=245,width=475')"><img src="/icon_indique.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=no,height=245,width=475')" style=" vertical-align:top;" class="imp" >Indique este Post</a></p>
+<p style="margin-bottom:0px;"><a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')"><img src="/icon_comment.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')" style=" vertical-align:top;" class="imp">Comentários</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" ><img src="/icon_printer.gif" /></a>&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" style=" vertical-align:top;" class="imp" >Imprimir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" ><img src="/icon_permalink.gif" /></a>&nbsp;&nbsp;<a href="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" style=" vertical-align:top;" class="imp" >Link deste post</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=no,height=245,width=475')"><img src="/icon_indique.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('http://bloglog.globo.com/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=no,height=245,width=475')" style=" vertical-align:top;" class="imp" >Indique este Post</a></p>
 
 
 
@@ -65,6 +65,9 @@
 <center>--------------------------------------------------------------------------------------</center>
 		
 	</div>
+	#end
+	#if ($hasMorePosts == "true")
+	<p style="margin-bottom:0px;"><a href="/blog/blog.do?act=loadSite&id=$blogId">Veja mais</a></a>
 	#end
 #end
 </div>

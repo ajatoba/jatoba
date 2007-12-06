@@ -79,7 +79,7 @@
 &nbsp;&nbsp;&nbsp;
                            <span class="style2">Post com modera&ccedil;&atilde;o </span>
                         
-                               <html:checkbox property="controll" style="display:none;" />
+                               <html:checkbox property="controll"  />
                       
                         
                            </td>

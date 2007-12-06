@@ -57,7 +57,7 @@ public class SendCensuredAction extends DispatchAction {
 			mail.setSubject(Constants.CENSURED);
 			//mail.setTo(post.getBlog().getBlogUser().getEmail());
 			mail.setTo(mailTo);
-			mail.setMessage(form2.getMessage());
+			mail.setMessage(form2.getMessage() + "\n A denúncia é referente ao blog:" + post.getBlog().getBlogUser().getFirstName());
 			
 			mail.send();
 		req.setAttribute("comment_sucesso","Mensagem enviada com sucesso.");

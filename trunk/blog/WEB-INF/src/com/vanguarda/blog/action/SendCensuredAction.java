@@ -48,13 +48,15 @@ public class SendCensuredAction extends DispatchAction {
 			SendMail mail = new SendMail();
 			
 			String smtpServer = (String) BlogManager.getInstance().getProperties().get("smtp");
+			String mailTo = (String) BlogManager.getInstance().getProperties().get("destinatario_denuncia");
 			
 			mail.setFrom(form2.getEmail());
 			mail.setSmtpServer(smtpServer);
 						
 			mail.setContentType("txt");
 			mail.setSubject(Constants.CENSURED);
-			mail.setTo(post.getBlog().getBlogUser().getEmail());
+			//mail.setTo(post.getBlog().getBlogUser().getEmail());
+			mail.setTo(mailTo);
 			mail.setMessage(form2.getMessage());
 			
 			mail.send();

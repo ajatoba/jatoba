@@ -80,9 +80,9 @@
 	    </html:select>
 
 &nbsp;&nbsp;&nbsp;
-                           <span class="style2" style="display:none;">Post com modera&ccedil;&atilde;o </span>
+                           <span class="style2">Post com modera&ccedil;&atilde;o </span>
                         
-                               <html:checkbox property="controll" value="${post.controll}" style="display:none;" />
+                               <html:checkbox property="controll" value="${post.controll}"/>
                             
                         
                            </td>

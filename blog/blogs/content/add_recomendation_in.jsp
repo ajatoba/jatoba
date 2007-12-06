@@ -25,7 +25,7 @@
 		<html:form method="post" action="/recomendation.do?act=sendRecomendation">
 		<html:hidden property="postId" value="<%=request.getParameter("postId")%>"/>
 		
-		<div class="topadd"><img src="/bloglog/content/add_coment/img_add/tit_denuncie.jpg" /></div>
+		<div class="topadd"><img src="/bloglog/content/add_coment/img_add/tit_indique.jpg" /></div>
 		
 		<div class="inputs">
 			<div class="iptnome">

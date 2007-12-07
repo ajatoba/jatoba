@@ -37,7 +37,7 @@
         	<span style="font-size:12px; color:#FFFFFF; line-height:10px; margin-left:318px; font-weight:normal;">Usuário:&nbsp;</span><span style="font-size:13px; font-weight:bold; color:#FFFFFF;">Login</span>&nbsp;&nbsp;&nbsp;
             <span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>      </div>
 </div>
-<div id="meio_repeat">
+<div id="meio_repeat3">
 	<div id="meio">	
 
 <pg:pager url="comment.do" maxIndexPages="5" maxPageItems="150">	
@@ -71,7 +71,7 @@
     <c:otherwise>	    
 	    <img src="/bloglog/admin/img/inativo.jpg" border="0" />    </c:otherwise>
     </c:choose></td>
-			<td width="136" valign="middle">&nbsp;<a href="/blog/blogs/admin/comment.do?act=delete&id=<bean:write name="c" property="id"/>&postId=<bean:write name="p" property="id"/>"><img src="/bloglog/admin/imgs/post_btnExcluir.jpg" width="49" height="20" border="0" style="margin-left:4px;"/></a><select name="select" onChange="document.location=this.value;" style="width:120px; font-size:10px; display:none;">
+			<td width="136" valign="middle"><a href="/blog/blogs/admin/comment.do?act=load&id=<bean:write name="c" property="id"/>"><img src="/bloglog/admin/imgs/post_btnAlterar.jpg" width="50" height="20" border="0" style="margin-left:4px;"/></a>&nbsp;<a href="/blog/blogs/admin/comment.do?act=delete&id=<bean:write name="c" property="id"/>&postId=<bean:write name="p" property="id"/>"><img src="/bloglog/admin/imgs/post_btnExcluir.jpg" width="49" height="20" border="0" style="margin-left:4px;"/></a><select name="select" onChange="document.location=this.value;" style="width:120px; font-size:10px; display:none;">
   <option value="">Escolha uma opção</option>
   <option value='/blog/blogs/admin/comment.do?act=load&id=<bean:write name="c" property="id"/>'>Alterar</option>
   <option value='/blog/blogs/admin/comment.do?act=delete&id=<bean:write name="c" property="id"/>&postId=<bean:write name="p" property="id"/>'>Excluir</option>

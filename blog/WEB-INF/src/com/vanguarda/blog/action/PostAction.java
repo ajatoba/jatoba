@@ -357,7 +357,7 @@ public class PostAction extends DispatchAction {
 					count++;
 			}
 
-			if (count == 5) {
+			if (count >= 5) {
 				context.put("hasMorePosts", "true");
 			}
 

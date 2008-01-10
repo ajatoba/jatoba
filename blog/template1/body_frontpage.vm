@@ -67,7 +67,7 @@
 	</div>
 	#end
 	#if ($hasMorePosts == "true")
-	<p style="margin-bottom:0px;"><a href="/blog/blog.do?act=loadSite&id=$blogId">Veja mais</a></a>
+	<p style="margin-bottom:0px;"><a href="/blog/blog.do?act=loadSite&id=$blogId">Veja mais</a></p>
 	#end
 #end
 </div>

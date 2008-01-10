@@ -5,7 +5,7 @@
     <reloadable>true</reloadable>
     <redirectLogger>true</redirectLogger>
     <updateXml>true</updateXml>
-    <warLocation>D:\jatoba\projetos\Java\blog.war</warLocation>
+    <warLocation>C:\bloglog_war\blog.war</warLocation>
     <extraInfo></extraInfo>
     <webPath>/blog</webPath>
 </tomcatProjectProperties>

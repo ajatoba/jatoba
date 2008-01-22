@@ -30,7 +30,7 @@ function Perfil(){
 	</form>	
 </div>
 
-<div id="perfil" align="right">
+<div id="perfil" align="left">
 	<img src="/$blogPath/img/header_perfil.jpg" width="225">	
 	<p><script>EscrevePerfil();</script></p>
 	<div><a href="javascript:Perfil();">PERFIL COMPLETO</a></div>

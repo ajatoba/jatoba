@@ -8,8 +8,7 @@ function submitForm(){
 } 
 
 function Perfil(){
-	var Dirx = document.getElementById("direita");	
-	Dirx.innerHTML="<iframe src='perfil.html' width='500' height='800' frameborder=0>";
+	window.open('/$blogPath/perfil.html','resultado','width=519,height=600,toolbar=0,scrollbars=yes');
 }
 
 </script>

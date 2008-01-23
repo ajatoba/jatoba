@@ -79,8 +79,11 @@ function contaText(input)
 			</div>
 		</div>
 		<div style="width:450px; margin-left:auto; margin-right:auto; font-size:10px; color:#848484; height:27px; background:url(../img_add/ptos2.jpg) bottom repeat-x;">limite de 1024 caracteres | restantes : <span id="nRestantes"><script>document.write(maximo);</script></span></div>
-		<img src="/blog/servlet/rndImage?rndimg=<%=rndCrypt%>" border="1" style='float:left; margin-top:8px; margin-left:58px; margin-right:12px; display:none'/>
-		<html:text value="<%=rndCrypt%>" property="imageword" maxlength="6" style='float:left; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:13px; line-height:16px; font-family:Trebuchet MS; margin-top:20px; margin-left:12px; width:44px; text-align:center; display:none;' />
+		<img src="/blog/servlet/rndImage?rndimg=<%=rndCrypt%>" border="1" style='float:left; margin-top:8px; margin-left:58px; margin-right:12px;'/>
+		<div style="margin-right:auto; margin-top:15px; float:left; font-size:10px; color:#757575;">
+		Digite oque se vê<br /> escrito na imagem:
+		</div>
+		<html:text property="imageword" maxlength="6" style='float:left; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:13px; line-height:16px; font-family:Trebuchet MS; margin-top:20px; margin-left:12px; width:44px; text-align:center;' />
 		<html:submit value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:1px solid #FF6600; cursor:hand;"/>
 		 <font color="red">
     <%if(request.getParameter("message2")!= null && request.getParameter("message2").length() > 0)

@@ -47,7 +47,7 @@
 				<dt>
 				
 				<c:if test="${c.user.group.id == 2}">				
-					<img src="/${post.blog.path}/img/user_icon.gif">
+					<a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/${c.user.blog.path}/img/user_icon.gif" border="0"/></a>
 				</c:if>
 				<bean:write name="c" property="commentatorName" /> | <bean:write name="c" property="insertDate" format="dd/MM"/> <a href="#"><!--bean:write name="c" property="commentatorEmail" /--></a> |                      
 		            <a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?postId=<bean:write name="post" property="id"/>&commentId=<bean:write name="c" property="id" />','','scrollbars=no,height=258,width=500')">Denuncie</a></dt>

@@ -54,7 +54,7 @@
 <div id="meio_repeat">
 	<div id="meio">	
 	
-<pg:pager url="post.do" maxIndexPages="5" maxPageItems="10">
+<pg:pager url="/blog/blogs/admin/post.do" maxIndexPages="5" maxPageItems="10">
 
 <table width="780" border="0" cellpadding="0" cellspacing="0" style=" margin-left:auto; margin-right:auto; margin-top:4px;" >
   <tr>

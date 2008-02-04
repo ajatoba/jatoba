@@ -30,7 +30,10 @@
 		<form-bean name="messageForm"
 			type="com.vanguarda.blog.form.MessageForm" />
 		<form-bean name="recomendationForm"
-			type="com.vanguarda.blog.form.RecomendationForm" />			
+			type="com.vanguarda.blog.form.RecomendationForm" />	
+			
+		<form-bean name="updatePasswordForm"
+			type="com.vanguarda.blog.form.updatePasswordForm" />		
 					
 	</form-beans>
 
@@ -70,7 +73,8 @@
 			<forward name="user_form_update" path="/admin/users/update_user_in.jsp" />			
 			<forward name="user_list" path="/admin/users/list_user.jsp" />	
 			<forward name="user_load" path="/admin/users/update_user_in.jsp" />	
-			<forward name="user_update" path="/admin/users/form_user_out.jsp" />		
+			<forward name="user_update" path="/admin/users/form_user_out.jsp" />
+			<forward name="update_password_form" path="/admin/users/update_password_in.jsp" />	
 		</action>
 		
 		<action path="/admin/blog"

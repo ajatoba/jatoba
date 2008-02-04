@@ -475,8 +475,11 @@ public class CacheManager {
 			String key = "";
 			Collection comments = null;
 			Collection newComments = new ArrayList();
-			newComments.add(c);
-
+			
+			//Só coloca o comentário na lista se seu status for > 0 (Post NÃO MODERADO)
+			if(c.getStatus() != 0){
+				newComments.add(c);
+			}
 			while (iterator.hasNext()) {
 				key = (String) iterator.next();
 

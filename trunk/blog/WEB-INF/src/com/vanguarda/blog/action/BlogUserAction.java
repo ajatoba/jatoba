@@ -240,6 +240,74 @@ public class BlogUserAction extends DispatchAction {
 
 	}
 
+	public ActionForward updatePassword(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse resp) throws Exception {
+
+		System.out.println("PSSWORD ACTION");
+		MessageResources messageResources = getResources(req);
+
+		BlogUserForm userForm = (BlogUserForm) form;
+
+		User user = null;
+
+		try {
+
+			System.out.println("Fazendo Login");
+			user = dao.login(userForm.getLogin(), userForm.getPassword());
+
+			if (user instanceof BlogUser) {
+				HttpSession session = req.getSession();
+				session.setAttribute(Constants.BLOGGER_USER_BEAN, user);
+				session.setAttribute("path", user.getBlog().getPath());
+			} else if (user instanceof AdminUser) {
+				HttpSession session = req.getSession();
+				session.setAttribute(Constants.ADMIN_USER_BEAN, user);
+				return new ActionForward("/admin/blog.do?act=list");
+
+			} else {
+				throw new ClassCastException();
+			}
+
+		} catch (InvalidPasswordException ip) {
+
+			req.setAttribute("mensagem_erro", messageResources
+					.getMessage("senha_incorreta"));
+			return mapping.findForward("update_password_form");
+			
+		} catch (LoginNotExistsException lne) {
+			req.setAttribute("mensagem_erro", messageResources
+					.getMessage("login_inexistente"));
+			return mapping.findForward("update_password_form");
+
+		} catch (ClassCastException e) {
+
+			e.printStackTrace();
+			req.setAttribute("mensagem_erro", messageResources
+					.getMessage("permissao"));
+			return mapping.findForward("update_password_form");
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			req.setAttribute("mensagem_erro", e.getMessage());
+			return mapping.findForward("update_password_form");
+		}
+
+		System.out.println("Atualizando");
+		try {
+			dao.updatePassword(user, userForm.getNewPassword());
+		} catch (Exception e) {
+			req.setAttribute("mensagem_erro", e.getMessage());
+			return mapping.findForward("update_password_form");
+		}
+		
+		
+		req.setAttribute("mensagem_sucesso", messageResources
+				.getMessage("senha_atualizada"));
+		return mapping.findForward("update_password_form");
+		
+	}
+	
 	public ActionForward delete(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 

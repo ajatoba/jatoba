@@ -36,6 +36,8 @@ public class BlogUserForm  extends ActionForm{
 	
 	private String login;
 	
+	private String newPassword;
+	
 		/**
 	 * @return Returns the email.
 	 */
@@ -144,4 +146,13 @@ public class BlogUserForm  extends ActionForm{
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	
 }

@@ -46,6 +46,9 @@ public class BlogUserDAOImpl extends UserDAOImpl implements BlogUserDAO {
 
 	private static final String REMIND_PASSWORD_QUERY = "SELECT "
 			+ SELECT_USER_VALUES + " FROM TB_BLOG_USER WHERE VC_EMAIL = ? ";
+	
+	private static final String UPDATE_PASSWORD_QUERY = "UPDATE TB_BLOG_USER SET VC_PASSWORD = ? WHERE NM_USER_ID = ?";
+
 
 	public User login(String login, String password) throws SQLException,
 			LoginNotExistsException, InvalidPasswordException, Exception {
@@ -476,4 +479,27 @@ public class BlogUserDAOImpl extends UserDAOImpl implements BlogUserDAO {
 		return result;
 	}
 
+	public void updatePassword(User user, String newPassword) throws SQLException,
+				LoginExistsException, EmailExistsException, Exception {
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+		
+			getConnection();
+		
+			ps = conn.prepareStatement(UPDATE_PASSWORD_QUERY);
+		
+			ps.setString(1, newPassword);
+			ps.setInt(2, user.getId());
+
+			ps.executeUpdate();
+		} catch (SQLException sqle) {
+			throw sqle;
+		} finally {
+			closeAll(rs, ps);
+		}
+		}
+	
 }

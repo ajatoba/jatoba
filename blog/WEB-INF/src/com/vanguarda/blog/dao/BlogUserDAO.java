@@ -33,5 +33,8 @@ public interface BlogUserDAO {
 	public BlogUser remindPassword(String email) throws SQLException,Exception;
 	
 	public int countUser(int groupId) throws Exception;
+	
+	public void updatePassword(User user, String newPassword) throws SQLException, LoginNotExistsException, InvalidPasswordException,Exception;
+	
 }
  

@@ -74,13 +74,15 @@ public class CommentAction extends DispatchAction
             c.setPost(post);
             String content = null;
             
+            /**** Teste de Segurança removido conforme solicitação da DB4 em 29/01/2008 *****/
+            /*
             if(!RandomTool.compare(word,encryptWord)){
     			
     			req.setAttribute("message","Entre com o valor corretamente" );
     			return new ActionForward("/blogs/content/add_comment_in.jsp?postId=" + post.getId() + "&countComments=" + post.getComments()+"");
 
     		}
-            
+            */
             try
             {
                 content = BlogManager.getInstance().getDeniedWords(path);

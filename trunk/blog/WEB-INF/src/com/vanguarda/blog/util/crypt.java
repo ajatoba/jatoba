@@ -12,7 +12,9 @@ public class crypt
    private final int  KEY2     = 0x5df44abe;
    private final int  KEY3     = 0x389ab47d;
    private final String szBase64 =
-         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-";
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-";
+   
+
 
    private int b64(char c)
       {

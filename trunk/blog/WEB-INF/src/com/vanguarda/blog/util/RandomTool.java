@@ -2,7 +2,6 @@
 package com.vanguarda.blog.util; 
 
 import java.util.Random;
-import java.lang.StringBuffer;
 
 public class RandomTool{
     public static synchronized int sortInt(int min, int max){

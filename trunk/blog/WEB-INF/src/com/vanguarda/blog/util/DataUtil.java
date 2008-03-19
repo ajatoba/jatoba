@@ -15,13 +15,11 @@
 
 package com.vanguarda.blog.util; 
 
-import java.util.*;
-import java.util.Date;
-import java.sql.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
 
 
 /**

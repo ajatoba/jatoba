@@ -1,10 +1,16 @@
 package com.vanguarda.blog.dao.impl;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import com.vanguarda.blog.bean.*;
-import com.vanguarda.blog.dao.*;
+import com.vanguarda.blog.bean.ForumUser;
+import com.vanguarda.blog.bean.Message;
+import com.vanguarda.blog.bean.Topic;
+import com.vanguarda.blog.dao.AbstractDAO;
+import com.vanguarda.blog.dao.MessageDAO;
 import com.vanguarda.blog.util.Constants;
 
 public class MessageDAOImpl extends AbstractDAO implements MessageDAO{
@@ -16,7 +22,7 @@ public class MessageDAOImpl extends AbstractDAO implements MessageDAO{
 	private static final String DELETE_QUERY = "UPDATE TB_FORUM_MESSAGE SET NM_STATUS = ? WHERE NM_MESSAGE_ID_PK = ?";
 	
 	private static final String LIST_QUERY = "SELECT M.NM_MESSAGE_ID_PK,M.NM_TOPIC_ID_FK,M.VC_TITLE,M.VC_CONTENT,M.NM_STATUS, M.VC_USER_NAME, M.DT_INSERT_DATE "
-		+ "FROM TB_FORUM_MESSAGE M WHERE M.NM_TOPIC_ID_FK = ? AND M.NM_STATUS = ?";
+		+ "FROM TB_FORUM_MESSAGE M WHERE M.NM_TOPIC_ID_FK = ? AND M.NM_STATUS = ? ORDER BY M.DT_INSERT_DATE DESC,M.NM_MESSAGE_ID_PK DESC ";
 	
 	public int add(Message message) throws SQLException,Exception {
 		PreparedStatement ps = null;

@@ -1,12 +1,6 @@
 package com.vanguarda.blog.form;
 
-import java.util.Collection;
-import java.util.Date;
-
 import org.apache.struts.action.ActionForm;
-
-import com.vanguarda.blog.bean.Category;
-import com.vanguarda.blog.bean.Forum;
 
 public class TopicForm extends ActionForm{
 	

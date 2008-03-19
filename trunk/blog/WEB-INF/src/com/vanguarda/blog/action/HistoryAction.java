@@ -27,7 +27,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
-
 import com.vanguarda.blog.bean.History;
 import com.vanguarda.blog.dao.BlogDAO;
 import com.vanguarda.blog.dao.DaoFactory;

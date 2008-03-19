@@ -6,6 +6,7 @@
 package com.vanguarda.blog.form;
 
 import java.util.Date;
+
 import org.apache.struts.action.ActionForm;
 
 public class CommentForm extends ActionForm
@@ -194,6 +195,7 @@ public class CommentForm extends ActionForm
     private boolean censured;
     private String path;
     private int userId;    
+    private int blogId;
     private String imageword;
     
     private int commentatorGroup;
@@ -206,5 +208,18 @@ public class CommentForm extends ActionForm
 		this.commentatorGroup = commentatorGroup;
 	}
 
+
+
+	public int getBlogId() {
+		return blogId;
+	}
+
+
+
+	public void setBlogId(int blogId) {
+		this.blogId = blogId;
+	}
+
+	
     
 }

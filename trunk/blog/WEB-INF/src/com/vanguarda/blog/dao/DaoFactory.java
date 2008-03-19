@@ -6,11 +6,17 @@
  */
 package com.vanguarda.blog.dao;
 
-import java.util.Hashtable;
 import java.util.Map;
 
-
-import com.vanguarda.blog.dao.impl.*;
+import com.vanguarda.blog.dao.impl.AdminUserDAOImpl;
+import com.vanguarda.blog.dao.impl.BlogDAOImpl;
+import com.vanguarda.blog.dao.impl.BlogUserDAOImpl;
+import com.vanguarda.blog.dao.impl.CommentsDAOImpl;
+import com.vanguarda.blog.dao.impl.FavoriteDAOImpl;
+import com.vanguarda.blog.dao.impl.PostDAOImpl;
+import com.vanguarda.blog.dao.impl.RankingDAOImpl;
+import com.vanguarda.blog.dao.impl.TemplateDAOImpl;
+import com.vanguarda.blog.dao.impl.UserCommentatorDAOImpl;
 import com.vanguarda.blog.util.Constants;
 
 /**

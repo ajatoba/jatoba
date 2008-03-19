@@ -1,12 +1,21 @@
 package com.vanguarda.blog.filters;
 
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.util.LoggerUtil;
-
-import java.io.IOException;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
 
 public class LoginVerifyFilter
     implements Filter

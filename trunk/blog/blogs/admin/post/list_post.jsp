@@ -20,6 +20,29 @@
 .style15 {font-size: 9px}
 -->
 </style>
+
+<script>
+	function confirmaDelecao(url)
+	{
+		var selectObject = document.getElementById('select');
+		//alert(selectObject.options[selectObject.selectedIndex].text);
+		if(selectObject.options[selectObject.selectedIndex].text == 'Excluir')
+		{
+			if(confirm('Deseja realmente excluir esse post?'))
+			{
+				document.location=url;
+			}
+			else
+			{
+				return;
+			}
+		}
+		else
+		{
+			document.location=url;
+		}
+	}
+</script>
 </head>
 <body>
 <logic:present name="mensagem_erro">
@@ -92,7 +115,7 @@
       	</c:choose>
 		
 			  </span></td>
-			<td width="139" valign="middle">&nbsp;&nbsp;<select name="select" onChange="document.location=this.value;" style="width:120px; font-size:10px;">
+			<td width="139" valign="middle">&nbsp;&nbsp;<select name="select" id="select" onChange="confirmaDelecao(this.value);" style="width:120px; font-size:10px;">
   <option value="">Escolha uma opção</option>
   <option value='/blog/blogs/admin/post.do?act=load&id=<bean:write name="p" property="id"/>'>Alterar</option>
   <option value='/blog/blogs/admin/post.do?act=delete&id=<bean:write name="p" property="id"/>'>Excluir</option>

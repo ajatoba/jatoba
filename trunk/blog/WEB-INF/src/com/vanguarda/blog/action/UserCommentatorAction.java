@@ -14,9 +14,9 @@ package com.vanguarda.blog.action;
  */
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +28,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
-//import com.sun.corba.se.internal.core.Request;
 import com.vanguarda.blog.bean.Group;
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.bean.UserCommentator;

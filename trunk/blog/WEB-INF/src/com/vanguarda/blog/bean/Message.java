@@ -1,6 +1,6 @@
 package com.vanguarda.blog.bean;
 
-import java.util.*;
+import java.util.Date;
 
 public class Message {
  

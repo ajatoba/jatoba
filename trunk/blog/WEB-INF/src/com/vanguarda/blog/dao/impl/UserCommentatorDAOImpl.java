@@ -5,11 +5,17 @@
 
 package com.vanguarda.blog.dao.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.bean.UserCommentator;
 import com.vanguarda.blog.dao.UserCommentatorDAO;
-import com.vanguarda.blog.exception.*;
-import java.sql.*;
+import com.vanguarda.blog.exception.EmailExistsException;
+import com.vanguarda.blog.exception.InvalidPasswordException;
+import com.vanguarda.blog.exception.LoginExistsException;
+import com.vanguarda.blog.exception.LoginNotExistsException;
 
 public class UserCommentatorDAOImpl extends UserDAOImpl implements
 		UserCommentatorDAO {

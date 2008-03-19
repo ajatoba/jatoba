@@ -51,6 +51,8 @@ function contaText(input)
 		<html:hidden property="from" value="site"/>
 		<html:hidden property="status" value="<%=request.getParameter("status")%>"/>
 		<html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
+		<html:hidden property="blogId"  value="<%=request.getParameter("blogId")%>"/>
+		
 <div style=" margin-left:5px; margin-right:5px; width:570px; background-color:#FFFFFF; height:395px;">
 
 	<logic:present name="mensagem_erro">

@@ -221,7 +221,7 @@ public class CacheManager {
 			while (iterator.hasNext()) {
 				String key = (String) iterator.next();
 
-				if (key.startsWith("listTopics-" + status)) {
+				if (key.startsWith("listTopics-")) {
 					keysToRemove.add(key);
 				}
 			}

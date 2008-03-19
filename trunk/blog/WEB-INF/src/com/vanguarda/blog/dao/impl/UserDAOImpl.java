@@ -4,11 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import com.vanguarda.blog.bean.AdminUser;
 import com.vanguarda.blog.bean.Blog;
-import com.vanguarda.blog.bean.Group;
 import com.vanguarda.blog.bean.BlogUser;
+import com.vanguarda.blog.bean.Group;
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.bean.UserCommentator;
 import com.vanguarda.blog.dao.AbstractDAO;

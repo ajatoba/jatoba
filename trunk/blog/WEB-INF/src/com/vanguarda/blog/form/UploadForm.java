@@ -1,6 +1,6 @@
 package com.vanguarda.blog.form;
 
-import org.apache.struts.action.*;
+import org.apache.struts.action.ActionForm;
 import org.apache.struts.upload.FormFile;
 
 

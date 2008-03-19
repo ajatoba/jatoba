@@ -7,6 +7,7 @@ String countComments =(String) request.getAttribute("countComments");
 String path =(String) request.getAttribute("path");
 String from = "site";
 String status = (String)request.getAttribute("status");
+String blogId = (String)request.getAttribute("blogId");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -31,6 +32,7 @@ String status = (String)request.getAttribute("status");
 		<input type="hidden" name="path" value="<%=path%>"/>
 		<input type="hidden" name="from" value="site"/>
 		<input type="hidden" name="status" value="<%=status%>"/>
+		<input type="hidden" name="blogId" value="<%=blogId%>"/>
 
   <table width="100" border="0" align="center">
     <tr> 

@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import com.vanguarda.blog.bean.AdminUser;
 import com.vanguarda.blog.bean.User;
-
 import com.vanguarda.blog.dao.AdminUserDAO;
 import com.vanguarda.blog.exception.InvalidPasswordException;
 import com.vanguarda.blog.exception.LoginNotExistsException;

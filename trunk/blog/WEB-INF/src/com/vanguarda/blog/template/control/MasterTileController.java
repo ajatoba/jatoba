@@ -19,17 +19,19 @@ package com.vanguarda.blog.template.control;
  * under the License.
  */
 
-import org.apache.struts.tiles.ControllerSupport;
-import org.apache.struts.tiles.ComponentContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Collection;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import java.io.IOException;
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.tiles.ComponentContext;
+import org.apache.struts.tiles.ControllerSupport;
 
 import com.vanguarda.blog.BlogManager;
-import com.vanguarda.blog.bean.*;
+import com.vanguarda.blog.bean.Blog;
 
 /**
  * <p>A simple tile-controller that puts a string into the request scope.

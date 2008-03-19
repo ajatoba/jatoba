@@ -1,7 +1,8 @@
 package com.vanguarda.blog.template.control;
 
-import java.io.FileInputStream;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class HTMLReader {
 

@@ -31,7 +31,6 @@ import com.vanguarda.blog.form.CommentForm;
 import com.vanguarda.blog.helper.PreparedCommentHelper;
 import com.vanguarda.blog.util.CacheManager;
 import com.vanguarda.blog.util.Constants;
-import com.vanguarda.blog.util.RandomTool;
 
 public class CommentAction extends DispatchAction
 {
@@ -111,6 +110,7 @@ public class CommentAction extends DispatchAction
             
             CacheManager.getInstance().pushComments(c);
             CacheManager.getInstance().remoteCommentsClearCache(post.getId());
+            CacheManager.getInstance().remotePostsClearCache(cForm.getBlogId());
             
             
             if("admin".equals(cForm.getFrom()))

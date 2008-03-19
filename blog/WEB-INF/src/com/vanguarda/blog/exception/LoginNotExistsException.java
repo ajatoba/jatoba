@@ -13,5 +13,14 @@ package com.vanguarda.blog.exception;
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class LoginNotExistsException extends Exception {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public LoginNotExistsException() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

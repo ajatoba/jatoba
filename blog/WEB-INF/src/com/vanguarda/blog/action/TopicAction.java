@@ -184,6 +184,8 @@ public class TopicAction extends DispatchAction {
 			
 			dao.delete(topic);
 			
+			CacheManager.getInstance().remoteTopicClearCache(topicForm.getStatus());
+			
 			req.setAttribute("topic_sucesso", messageResources.getMessage("delete_topic_sucesso"));
 			
 			return new ActionForward("/admin/topic.do?act=list");					

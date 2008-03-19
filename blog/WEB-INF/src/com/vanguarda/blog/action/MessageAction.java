@@ -12,9 +12,12 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
-import com.vanguarda.blog.bean.*;
-import com.vanguarda.blog.form.*;
-import com.vanguarda.blog.dao.*;
+import com.vanguarda.blog.bean.ForumUser;
+import com.vanguarda.blog.bean.Message;
+import com.vanguarda.blog.bean.Topic;
+import com.vanguarda.blog.dao.ForumDaoFactory;
+import com.vanguarda.blog.dao.MessageDAO;
+import com.vanguarda.blog.form.MessageForm;
 import com.vanguarda.blog.util.CacheManager;
 import com.vanguarda.blog.util.ForumConstants;
 

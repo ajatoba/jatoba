@@ -7,6 +7,22 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
    <body>
+   <script>
+	function confirmaDelecao(url)
+	{
+		
+		if(confirm('Deseja realmente excluir esse blog?'))
+		{
+			document.location=url;
+		}
+		else
+		{
+			return;
+		}
+		
+	}
+</script>
+   
 <%@ include file="/admin/includes/menu.jsp"%>
 <br>
 
@@ -38,7 +54,7 @@
     </c:otherwise>
     </c:choose>
     </td>
-    <td width="20%"><a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">[[ALTERAR]]</a> <a href="/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>">[[DELETAR]]</a>
+    <td width="20%"><a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">[[ALTERAR]]</a> <a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')">[[DELETAR]]</a>
     <a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">[[POSTS]]</a>
     </td>
   </tr>

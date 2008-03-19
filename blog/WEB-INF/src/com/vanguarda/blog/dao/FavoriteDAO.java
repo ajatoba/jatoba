@@ -3,7 +3,7 @@ package com.vanguarda.blog.dao;
 import java.sql.SQLException;
 import java.util.Collection;
 
-import com.vanguarda.blog.bean.*;
+import com.vanguarda.blog.bean.BlogUser;
 
 public interface FavoriteDAO {
 

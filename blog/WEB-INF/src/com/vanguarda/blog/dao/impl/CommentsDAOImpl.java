@@ -26,8 +26,8 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 
 	private static final String INSERT_QUERY = "INSERT INTO TB_BLOG_COMMENT ( NM_POST_ID_FK ,  VC_TITLE ,  "
 			+ "VC_CONTENT,  NM_STATUS,  VC_COMMENTATOR_NAME ,  VC_COMMENTATOR_EMAIL ,  VC_COMMENTATOR_HOMEPAGE ,  "
-			+ "VC_COMMENTATOR_REMOTE_ADDR,DT_INSERT_DATE, NM_COMMENTATOR_GROUP_ID_FK ) "
-			+ "VALUES(?,?,?,?,?,?,?,?,NOW(),?) ";
+			+ "VC_COMMENTATOR_REMOTE_ADDR,DT_INSERT_DATE, NM_COMMENTATOR_GROUP_ID_FK,NM_USER_ID_FK ) "
+			+ "VALUES(?,?,?,?,?,?,?,?,NOW(),?,?) ";
 
 	private static final String UPDATE_QUERY = "UPDATE TB_BLOG_COMMENT SET VC_TITLE = ? ,  "
 			+ "VC_CONTENT  = ?,  NM_STATUS = ?,  VC_COMMENTATOR_NAME =? ,  VC_COMMENTATOR_EMAIL = ? ,  VC_COMMENTATOR_HOMEPAGE =? ,  "
@@ -71,6 +71,7 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 			ps.setString(7, comment.getCommentatorHomepage());
 			ps.setString(8, comment.getCommentatorRemoteAddr());
 			ps.setInt(9, comment.getUser().getGroup().getId());
+			ps.setInt(10, comment.getUser().getId());
 
 			ps.executeUpdate();
 

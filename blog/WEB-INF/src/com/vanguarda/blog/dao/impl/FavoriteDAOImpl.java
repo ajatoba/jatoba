@@ -1,13 +1,16 @@
 package com.vanguarda.blog.dao.impl;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import com.vanguarda.blog.bean.Blog;
 import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Ranking;
-import com.vanguarda.blog.dao.*;
+import com.vanguarda.blog.dao.AbstractDAO;
+import com.vanguarda.blog.dao.FavoriteDAO;
 
 public class FavoriteDAOImpl extends AbstractDAO implements FavoriteDAO {
 

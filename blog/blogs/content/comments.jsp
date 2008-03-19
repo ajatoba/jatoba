@@ -47,7 +47,7 @@
 				<dt>
 				
 				<c:if test="${c.user.group.id == 2}">				
-					<a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/${c.user.blog.path}/img/user_icon.gif" border="0"/></a>
+					<a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/img/user_icon.gif" border="0"/></a>
 				</c:if>
 				<bean:write name="c" property="commentatorName" /> | <bean:write name="c" property="insertDate" format="dd/MM"/> <a href="#"><!--bean:write name="c" property="commentatorEmail" /--></a> |                      
 		            <a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?postId=<bean:write name="post" property="id"/>&commentId=<bean:write name="c" property="id" />','','scrollbars=no,height=258,width=500')">Denuncie</a></dt>
@@ -84,7 +84,7 @@
   		<font color="red"><bean:write name="comment_sucesso"/></font>
     </logic:present>  	
   
-       <iframe name=arquivos src="/blog/blogs/content/add_comment_in.jsp?postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe>
+       <iframe name=arquivos src="/blog/blogs/content/add_comment_in.jsp?blogId=<bean:write name="blog" property="id"/>&postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe>
   	
 </div>	  	
 

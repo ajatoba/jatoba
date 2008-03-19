@@ -4,7 +4,8 @@ package com.vanguarda.blog.dao;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.vanguarda.blog.dao.impl.*;
+import com.vanguarda.blog.dao.impl.MessageDAOImpl;
+import com.vanguarda.blog.dao.impl.TopicDAOImpl;
 import com.vanguarda.blog.util.ForumConstants;
 
 public class ForumDaoFactory  {

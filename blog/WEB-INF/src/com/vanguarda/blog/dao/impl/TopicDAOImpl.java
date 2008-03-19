@@ -1,10 +1,15 @@
 package com.vanguarda.blog.dao.impl;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import com.vanguarda.blog.bean.*;
-import com.vanguarda.blog.dao.*;
+import com.vanguarda.blog.bean.AbstractForum;
+import com.vanguarda.blog.bean.Topic;
+import com.vanguarda.blog.dao.AbstractDAO;
+import com.vanguarda.blog.dao.TopicDAO;
 import com.vanguarda.blog.util.ForumConstants;
 
 
@@ -24,7 +29,7 @@ public class TopicDAOImpl extends AbstractDAO implements TopicDAO {
 	
 	private static final String LIST_QUERY = "SELECT T.NM_TOPIC_ID_PK,T.NM_FORUM_ID_FK, T.VC_TITLE, T.VC_DESCRIPTION, T.DT_INSERT_DATE, T.NM_STATUS "
 		+ "FROM TB_FORUM_TOPIC T "
-		+ "WHERE T.NM_STATUS = ? ";
+		+ "WHERE T.NM_STATUS = ? ORDER BY T.DT_INSERT_DATE DESC,T.NM_TOPIC_ID_PK DESC";
 	
 	private static final String UPDATE_STATUS_QUERY = "UPDATE TB_FORUM_TOPIC T SET T.NM_STATUS = ? "
 		+ "WHERE T.NM_TOPIC_ID_PK = ?";

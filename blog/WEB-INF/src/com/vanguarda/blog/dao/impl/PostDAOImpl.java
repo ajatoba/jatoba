@@ -37,8 +37,12 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	private static final String SELECT_USER_QUERY = " U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS,"
 			+ "U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK ";
 	
-	private static final String SELECT_BLOG_QUERY = " B.NM_BLOG_ID,  B.VC_NAME,  B.VC_PATH,B.VC_DESCRIPTION  " +
+	private static final String SELECT_USER_QUERY2 = " U2.NM_USER_ID  ";
+	
+	private static final String SELECT_BLOG_QUERY = " B.NM_BLOG_ID,B.VC_NAME ,  B.VC_PATH,B.VC_DESCRIPTION  " +
 	",  B.DT_INSERTDATE ,  B.NM_STATUS";
+	
+	private static final String SELECT_BLOG_QUERY2 = " B2.NM_BLOG_ID ,   B2.VC_PATH  ";
 	
 	
 	private static final String INSERT_QUERY = "INSERT INTO TB_BLOG_POST ( NM_BLOG_ID_FK, VC_TITLE, " +
@@ -53,12 +57,18 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	
 	private static final String LOAD_POST_BY_ID_QUERY = "SELECT "+ SELECT_POST_QUERY +","+SELECT_USER_QUERY+ ","+SELECT_COMMENT_QUERY+","+SELECT_BLOG_QUERY+
 	","+ TEMPLATE_SELECT +
+	","+ SELECT_USER_QUERY2 +
+	","+ SELECT_BLOG_QUERY2 +
 	
 	" FROM TB_BLOG_POST P " +
-	" JOIN TB_BLOG B ON NM_BLOG_ID = P.NM_BLOG_ID_FK "+
+	" JOIN TB_BLOG B ON B.NM_BLOG_ID = P.NM_BLOG_ID_FK "+
 	" LEFT JOIN TB_BLOG_TEMPLATE T ON NM_TEMPLATE_ID_FK = T.NM_TEMPLATE_ID" +
-	" JOIN TB_BLOG_USER U ON NM_USER_ID = B.NM_USER_ID_FK "+	
-	"LEFT JOIN TB_BLOG_COMMENT AS C ON C.NM_POST_ID_FK = NM_POST_ID " +	
+	" JOIN TB_BLOG_USER U ON U.NM_USER_ID = B.NM_USER_ID_FK "+	
+	" LEFT JOIN TB_BLOG_COMMENT AS C ON C.NM_POST_ID_FK = NM_POST_ID " +	
+	
+	"LEFT JOIN TB_BLOG_USER U2 ON U2.NM_USER_ID = C.NM_USER_ID_FK "+	
+	"LEFT JOIN TB_BLOG B2 ON B2.NM_USER_ID_FK = C.NM_USER_ID_FK "+
+	
 	" AND C.NM_STATUS = ? "+
 	 "WHERE NM_POST_ID = ? ORDER BY C.DT_INSERT_DATE DESC" ;
 	
@@ -159,6 +169,8 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				blog.setPath(rs.getString("B.VC_PATH"));
 				blog.setStatus(rs.getInt("B.NM_STATUS"));
 				
+				post.setBlog(blog);
+				
 				Template t = new Template();
 				t.setId(rs.getInt("T.NM_TEMPLATE_ID"));
 				t.setBlogPath(rs.getString("T.VC_BLOG_PATH"));
@@ -177,6 +189,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				user.setPassword(rs.getString("U.VC_PASSWORD"));
 				user.setEmail(rs.getString("U.VC_EMAIL"));
 				user.setStatus(rs.getInt("U.NM_STATUS"));
+				user.setBlog(blog);
 				
 				blog.setBlogUser(user);
 				
@@ -186,8 +199,18 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				{
 					Comment comment = new Comment();
 					Group group = new Group(rs.getInt("C.NM_COMMENTATOR_GROUP_ID_FK"));
+					
+					
+					
+					Blog blog2 = new Blog();
+					blog2.setId(rs.getInt("B2.NM_BLOG_ID"));					
+					blog2.setPath(rs.getString("B2.VC_PATH"));
+					
+					
 					BlogUser commentator = new BlogUser();
 					
+					commentator.setId(rs.getInt("U2.NM_USER_ID"));					
+					commentator.setBlog(blog2);
 					commentator.setGroup(group);
 					commentator.setFirstName(rs.getString("C.VC_COMMENTATOR_NAME"));
 					commentator.setEmail(rs.getString("C.VC_COMMENTATOR_EMAIL"));
@@ -206,6 +229,12 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 							.getString("C.VC_COMMENTATOR_REMOTE_ADDR"));
 					comment.setInsertDate(rs.getDate("C.DT_INSERT_DATE")!= null?new java.util.Date(rs.getDate("C.DT_INSERT_DATE").getTime()):null);
 					comment.setUser(commentator);
+					comment.setPost(post);
+					
+					
+					
+					
+					
 					comments.add(comment);
 				}
 				

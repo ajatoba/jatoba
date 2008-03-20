@@ -26,7 +26,7 @@
 <%@ include file="/admin/includes/menu.jsp"%>
 <br>
 
-<pg:pager url="blog.do" maxIndexPages="5" maxPageItems="150">
+<pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="150">
 
 <table border ="0" ><tr><td><a href="/blog/admin/blog.do?act=addForm">[[NOVO]]</a></td></tr></table>
 <table width="770" border="0">

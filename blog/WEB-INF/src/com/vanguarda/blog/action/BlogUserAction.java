@@ -189,7 +189,19 @@ public class BlogUserAction extends DispatchAction {
 				return mapping.findForward("");
 			}
 		} else {
-			return mapping.findForward("");
+			HttpSession session = req.getSession();
+			try {
+				BlogUser user = (BlogUser) session.getAttribute(Constants.BLOGGER_USER_BEAN);
+				
+				req.setAttribute(Constants.BLOGGER_USER_BEAN, user);
+
+				return mapping.findForward(Constants.USER_LOAD_FORWARD);
+
+			} catch (Exception e) {
+				return mapping.findForward("");
+			}
+			
+
 		}
 
 	}

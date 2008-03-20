@@ -139,6 +139,16 @@
 					
 		</action>
 		
+		<action path="/blogs/admin/blogUser"
+			type="com.vanguarda.blog.action.BlogUserAction" scope="request"
+			parameter="act" name="blogUserForm" validate="false">			
+			
+			<forward name="user_load" path="/blogs/admin/users/update_user_in.jsp" />	
+			<forward name="user_add" path="/blogs/admin/users/update_user_out.jsp" />	
+			
+			
+		</action>
+		
 		<action path="/blogs/admin/post"
 			type="com.vanguarda.blog.action.PostAction" scope="request"
 			parameter="act" name="postForm" validate="false">			

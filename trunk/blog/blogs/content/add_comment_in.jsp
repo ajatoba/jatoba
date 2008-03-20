@@ -43,7 +43,15 @@ function contaText(input)
 </script>
 
 <body style="background-color:#E3F0F9; font-family:Trebuchet MS; margin:0px;">
-	
+	<logic:present name="comment_sucesso">    
+         <script>
+         
+		//window.parent.location.href='/blog/post.do?act=loadSite&id=<%=request.getParameter("postId")%>';
+		window.parent.location.reload();
+
+    	</script>
+  		<font color="red"><bean:write name="comment_sucesso"/></font>
+    </logic:present> 
 <html:form method="post" action="/comment.do?act=add">
 		<html:hidden property="postId" value="<%=request.getParameter("postId")%>"/>
 		<html:hidden property="countComments" value="<%=request.getParameter("countComments")%>"/>

@@ -22,11 +22,20 @@
 </style>
 
 <script>
-	function confirmaDelecao(url)
+
+	var url;
+	function chamadaConfirmaDelecao(url_)
 	{
-		var selectObject = document.getElementById('select');
-		//alert(selectObject.options[selectObject.selectedIndex].text);
-		if(selectObject.options[selectObject.selectedIndex].text == 'Excluir')
+		url = url_;
+		setTimeout('confirmaDelecao()', 500);
+	}
+	
+	
+	function confirmaDelecao()
+	
+	{
+
+		if(url.indexOf('/blog/blogs/admin/post.do?act=delete') > -1)
 		{
 			if(confirm('Deseja realmente excluir esse post?'))
 			{
@@ -64,7 +73,7 @@
 <div id="barra_repeat">
 	<div id="barra">
     	<span class="clicado">&nbsp;SEUS POSTS&nbsp;</span>&nbsp;&nbsp;&nbsp;<a href="/blog/blogs/admin/post/add_post_in.jsp" style="text-decoration:none;"><span>&nbsp;CRIAR NOVO POST&nbsp;</span></a>&nbsp;&nbsp;&nbsp;<a href="/blog/blogs/admin/post.do?act=publish&id=${blogId}" style="text-decoration:none;"><span>ATUALIZAR BLOG</span></a>
-     
+     &nbsp;&nbsp;&nbsp;
         	<span style="font-size:12px; color:#FFFFFF; line-height:10px; margin-left:190px; font-weight:normal;">Usuário:&nbsp;</span><span style="font-size:13px; font-weight:bold; color:#FFFFFF;">Login</span>&nbsp;&nbsp;&nbsp;
             <span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>     
             <a href="/blog/admin/blog.do?act=list" style="text-decoration:none;"><span>LISTAR OUTROS BLOG</span></a>
@@ -76,7 +85,7 @@
 </div>
 <div id="meio_repeat">
 	<div id="meio">	
-	
+	<a href="/blog/blogs/admin/blogUser.do?act=load" style="text-decoration:none;"><span>ATUALIZAR DADOS</span></a>
 <pg:pager url="/blog/blogs/admin/post.do" maxIndexPages="5" maxPageItems="10">
 
 <table width="780" border="0" cellpadding="0" cellspacing="0" style=" margin-left:auto; margin-right:auto; margin-top:4px;" >
@@ -115,7 +124,7 @@
       	</c:choose>
 		
 			  </span></td>
-			<td width="139" valign="middle">&nbsp;&nbsp;<select name="select" id="select" onChange="confirmaDelecao(this.value);" style="width:120px; font-size:10px;">
+			<td width="139" valign="middle">&nbsp;&nbsp;<select name="select" id="select" onChange="chamadaConfirmaDelecao(this.value);" style="width:120px; font-size:10px;">
   <option value="">Escolha uma opção</option>
   <option value='/blog/blogs/admin/post.do?act=load&id=<bean:write name="p" property="id"/>'>Alterar</option>
   <option value='/blog/blogs/admin/post.do?act=delete&id=<bean:write name="p" property="id"/>'>Excluir</option>

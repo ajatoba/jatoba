@@ -29,4 +29,36 @@ public class PreparedCommentHelper
 
         return comment;
     }
+    
+    public static String isDenied(String comment, String works[])
+    {
+    	String result = null;
+    	for(int i = 0; i < works.length; i++)
+        {
+    		if(comment.length() == works[i].length())
+    		{
+    			String w = works[i];
+                if((comment.indexOf(w))> -1){
+                	result =  w;
+                	break;
+                }
+    		}
+    		else if(comment.length() > works[i].length())
+    		{
+    			String[] w = {" "+works[i],works[i]+" "};
+    			for(int j = 0;j< 2; j++)
+    			{
+    				
+                    if((comment.indexOf(w[j]))> -1){
+                    	result =  w[j];
+                    	break;
+                    }
+    			}
+    			
+    		}
+            
+        }
+    	return result;
+
+    }
 }

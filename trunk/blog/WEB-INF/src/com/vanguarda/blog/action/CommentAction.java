@@ -82,22 +82,38 @@ public class CommentAction extends DispatchAction
 
     		}
             */
+            String palavroes[] = null;
             try
             {
                 content = BlogManager.getInstance().getDeniedWords(path);
+                palavroes = content.split(";");
             }
             catch(Exception e)
             {
                 System.out.println(e.getMessage());
             }
-            if(content != null && content.length() > 0)
+           
+            /** if(content != null && content.length() > 0)
             {
                 String palavroes[] = content.split(";");
                 c.setContent(PreparedCommentHelper.getPreparedCommwnt(cForm.getContent(), palavroes));
             } else
             {
                 c.setContent(cForm.getContent());
+            } **/
+            
+            String palavraProibida = PreparedCommentHelper.isDenied(cForm.getContent(),palavroes);
+            if(palavraProibida!= null)
+            {
+            	 req.setAttribute("mensagem_erro","A palavra '"+palavraProibida+"' é uma palavra bloqueada pelo blogueiro, escreva novamente seu texto.");
+            	 if("admin".equals(cForm.getFrom()))
+                     return mapping.findForward("comment_add");
+                 else
+                     return new ActionForward("/blogs/content/add_comment_in.jsp");
             }
+            
+            
+            c.setContent(cForm.getContent());
             c.setCommentatorName(cForm.getCommentatorName());
             c.setCommentatorEmail(cForm.getCommentatorEmail());
             c.setCommentatorHomepage(cForm.getCommentatorHomepage());

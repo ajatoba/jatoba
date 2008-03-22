@@ -6,6 +6,14 @@
   <definition name=".common">
     <put name="title" value="BlogLog" />
   </definition>
+  
+   <definition name=".common2">
+    <put name="title" value="BlogLog" />
+  </definition>
+  
+  <definition name=".common3">
+    <put name="title" value="BlogLog" />  
+  </definition>
    
   <definition extends=".common" name=".frontpage" path="/layout/masterLayout.vm">
     <put name="menu" value=".frontpage.menu" />
@@ -21,5 +29,45 @@
     <put name="sideBar" value="/template1/sidebar.vm" />
     <put name="footer"  value="/template1/footer.vm" />    
   </definition>
+  
+  
+  <!-- TEMPLATE 2 -->  
+
+  <definition extends=".common2" name=".frontpage2" path="/layout/masterLayout2.vm">
+    <put name="menu" value=".frontpage2.menu2" />
+    <put name="body" value=".frontpage2.body2" />
+  </definition>
+  
+  <definition name=".frontpage2.menu2" path="/template2/menu_frontpage.vm">  
+  </definition>
+  
+  <definition controllerClass="com.vanguarda.blog.template.control.MasterTileController" 
+   name=".frontpage2.body2" path="/layout/bodyLayout.vm">
+    <put name="header"  value="/template2/header_frontpage.vm" />
+    <put name="body"    value="/template2/body_frontpage.vm" />
+    <put name="sideBar" value="/template2/sidebar.vm" />
+    <put name="footer"  value="/template2/footer.vm" />    
+  </definition>
+  
+<!-- TEMPLATE 2 -->  
+<!-- TEMPLATE 3 -->  
+
+  <definition extends=".common3" name=".frontpage3" path="/layout/masterLayout3.vm">
+    <put name="menu" value=".frontpage3.menu3" />
+    <put name="body" value=".frontpage3.body3" />
+  </definition>
+  
+  <definition name=".frontpage3.menu3" path="/template3/menu_frontpage.vm">  
+  </definition>
+  
+  <definition controllerClass="com.vanguarda.blog.template.control.MasterTileController" 
+   name=".frontpage3.body3" path="/layout/bodyLayout.vm">
+    <put name="header"  value="/template3/header_frontpage.vm" />
+    <put name="body"    value="/template3/body_frontpage.vm" />
+    <put name="sideBar" value="/template3/sidebar.vm" />
+    <put name="footer"  value="/template3/footer.vm" />    
+  </definition>
+  
+<!-- TEMPLATE 3 -->  
 
 </tiles-definitions>

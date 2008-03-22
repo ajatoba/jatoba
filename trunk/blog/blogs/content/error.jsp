@@ -19,7 +19,7 @@
   	<logic:present name="mensagem_erro">
   	 	<font color="red"><bean:write name="mensagem_erro"/></font>
     </logic:present> 
-  
+  <br><a href='javascript:history.back();'>voltar</a>
   	
   	</td>
   <tr>

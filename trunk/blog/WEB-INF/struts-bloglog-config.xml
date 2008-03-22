@@ -5,6 +5,7 @@
   <action-mappings>
     <action forward=".frontpage" path="/index_vm" />  
     <action forward=".frontpage2" path="/index2_vm" />  
+    <action forward=".frontpage3" path="/index3_vm" />  
     <action forward=".frontpage_comunidades" path="/community_template" />
   </action-mappings>
   

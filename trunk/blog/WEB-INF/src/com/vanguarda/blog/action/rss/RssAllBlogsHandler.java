@@ -7,12 +7,18 @@
 package com.vanguarda.blog.action.rss;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.vanguarda.blog.bean.Post;
 import com.vanguarda.blog.BlogManager;
 import com.vanguarda.blog.action.rss.parameters.ActionHandlerParameters;
 import com.vanguarda.blog.bean.Blog;
@@ -28,6 +34,8 @@ import com.vanguarda.blog.util.Constants;
  * Preferences - Java - Code Style - Code Templates
  */
 public class RssAllBlogsHandler extends ActionHandler {
+	
+	private static final Integer countPost = new Integer(3);
 
 	/*
 	 * (non-Javadoc)
@@ -38,19 +46,17 @@ public class RssAllBlogsHandler extends ActionHandler {
 	public void handle(ActionHandlerParameters parameters, PrintWriter out)
 			throws Exception {
 
-		BlogDAO dao = (BlogDAO) DaoFactory
-				.getInstance(Constants.MAPPING_BLOG_DAO);
+		
 
 		List blogs = (List) CacheManager.getInstance().hitCache(
 				DaoFactory.getInstance(Constants.MAPPING_BLOG_DAO),
 				"listBlogs", new ArrayList());
 
-		out
-				.println("<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>");
-		out.println("<?xml-stylesheet type=\"text/css\" href=\"http://"
+		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		/*out.println("<?xml-stylesheet type=\"text/css\" href=\"http://"
 				+ BlogManager.getInstance().getProperties().getProperty(
 						"localhost") + ":" + parameters.getPorta()
-				+ "//blog/blogs/content/rss.css\"?>");
+				+ "//blog/blogs/content/rss.css\"?>");*/
 
 		out.println("<rss version=\"2.0\">");
 
@@ -63,11 +69,10 @@ public class RssAllBlogsHandler extends ActionHandler {
 						"localhost") + ":" + parameters.getPorta()
 				+ "//index.html" + "]]>");
 		out.println("</link>");
-
-		out.println("<description><![CDATA[Lista dos blogs]]></description>");
-
-		out.println("<pubDate><![CDATA[" + new Date().toString()
-				+ "]]></pubDate>");
+		out.println("<language>pt-br</language>");
+		out.println("<description><![CDATA[ Lista dos blogs ]]></description>");
+		 
+		//out.println("<pubDate><![CDATA[" + new Date().toString()+"]]></pubDate>");
 
 		for (int i = 0; i < blogs.size(); i++) {
 			Blog blog = (Blog) blogs.get(i);
@@ -84,14 +89,58 @@ public class RssAllBlogsHandler extends ActionHandler {
 							"localhost") + ":" + parameters.getPorta() + "/"
 					+ blog.getPath() + "]]>");
 			out.println("</link>");
+			
+			out.print("<author>");
+				out.print("<![CDATA["+blog.getBlogUser().getFirstName()+"]]>");
+			out.print("</author>");
+			
+			out.println("<description>");
+			out.println("<![CDATA[" + blog.getDescription() + "<br>]]>");
+			
+			/** Ultimos posts **/
+			
+			
+			ArrayList p = new ArrayList();
+			p.add(new Integer(blog.getId()));
+			p.add(countPost);
+			Blog b = (Blog) CacheManager.getInstance().hitCache(
+			DaoFactory.getInstance(Constants.MAPPING_BLOG_DAO),
+			"loadLastPosts", p);
+			
+			Collection posts = b.getPosts();
+			Iterator it = posts.iterator();
+			while(it.hasNext())
+			{
+				Post post = (Post) it.next();
+				
+				StringBuffer buffer = new StringBuffer();
+				
+				
+				buffer.append("<![CDATA[");
+				buffer.append("<b>");
+				buffer.append(post.getTitle());
+				buffer.append("</b>");
+				buffer.append("]]>");
+				
+				out.println(buffer.toString());
+				
+				out.println("<![CDATA[" + post.getContent() + "]]>");
 
+				
+				
+			}
+			
+			
+			/** Ultimos posts **/
+			
+			out.println("</description>");
 			out.println("<pubDate>");
-			out.println("<![CDATA[" + blog.getInsertDate().toString() + "]]>");
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(blog.getInsertDate());
+			
+			out.println("<![CDATA[" +calendar.getTime() + "]]>");
 			out.println("</pubDate>");
 
-			out.println("<description>");
-			out.println("<![CDATA[" + blog.getDescription() + "]]>");
-			out.println("</description>");
 
 			out.println("</item>");
 		}

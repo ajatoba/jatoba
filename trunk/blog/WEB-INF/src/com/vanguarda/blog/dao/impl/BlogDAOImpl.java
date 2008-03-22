@@ -59,9 +59,9 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 
 	private static final String DELETE_QUERY = "DELETE FROM TB_BLOG WHERE NM_BLOG_ID = ? ";
 
-	private static final String LIST_BLOGS_QUERY = " SELECT NM_BLOG_ID,B.VC_NAME,B.VC_DESCRIPTION,B.DT_INSERTDATE,B.NM_STATUS,B.VC_PATH"
-			
-			+ " FROM TB_BLOG B WHERE  B.NM_STATUS = ? "+
+	private static final String LIST_BLOGS_QUERY = " SELECT NM_BLOG_ID,B.VC_NAME,B.VC_DESCRIPTION,B.DT_INSERTDATE,B.NM_STATUS,B.VC_PATH ,"
+		+SELECT_USER_VALUES
+			+ " FROM TB_BLOG B JOIN TB_BLOG_USER U ON  U.NM_USER_ID  = NM_USER_ID_FK  WHERE  B.NM_STATUS = ? "+
 			" ORDER BY B.DT_INSERTDATE DESC ";
 	
 	private static final String LIST_BLOGS_QUERY_ORDER_BY_NAME = " SELECT NM_BLOG_ID,B.VC_NAME,B.VC_DESCRIPTION,B.DT_INSERTDATE,B.NM_STATUS"
@@ -332,6 +332,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 
 		Blog blog = null;
 		
+		
 		LoggerUtil.debug("LISTANDO BLOGS");
 
 		try {
@@ -359,6 +360,17 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 				blog.setName(rs.getString("B.VC_NAME"));
 				blog.setStatus(rs.getInt("B.NM_STATUS"));
 				blog.setPath(rs.getString("B.VC_PATH"));
+				
+				
+				BlogUser user = new BlogUser();
+				user.setId(rs.getInt("U.NM_USER_ID"));
+				user.setFirstName(rs.getString("U.VC_FIRSTNAME"));
+				user.setLastName(rs.getString("U.VC_LASTNAME"));
+				user.setLogin(rs.getString("U.VC_LOGIN"));
+				user.setPassword(rs.getString("U.VC_PASSWORD"));
+				user.setEmail(rs.getString("U.VC_EMAIL"));
+				user.setStatus(rs.getInt("U.NM_STATUS"));
+				blog.setBlogUser(user);
 
 				list.add(blog);
 

@@ -1,6 +1,8 @@
 <%@ taglib uri="/tags/struts-bean" prefix="bean" %>
 <%@ taglib uri="/tags/struts-logic" prefix="logic" %>
 <%@ taglib uri="/tags/struts-html" prefix="html" %>
+<%@ taglib uri="/tags/struts-nested" prefix="nested" %>`
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="/tags/pager-taglib" prefix="pg" %>
 <%@ page contentType="text/html;charset=iso-8859-1"%>
@@ -85,7 +87,12 @@
     </logic:present>  	
   
        <iframe name=arquivos src="/blog/blogs/content/add_comment_in.jsp?blogId=<bean:write name="blog" property="id"/>&postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe>
-  	
+  	<br>
+    	<logic:present name="mensagem_erro">
+  	 	<font color="red"><bean:write name="mensagem_erro"/></font>
+    </logic:present> 
+  <br><a href='javascript:history.back();'>voltar</a>
+  
 </div>	  	
 
 </body>

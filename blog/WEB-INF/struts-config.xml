@@ -46,12 +46,14 @@
 		<forward name="error" path="/error.jsp" />
 		<forward name="bloglog" path="/index_vm.do" redirect="true" />
 		<forward name="bloglog2" path="/index2_vm.do" redirect="true" />
+		<forward name="bloglog3" path="/index3_vm.do" redirect="true" />
 	</global-forwards>
 
 	<action-mappings>
 	
 	 <action forward="/index.vm" path="/index" />
 	 <action forward="/index2.vm" path="/index2" />
+	  <action forward="/index3.vm" path="/index3" />
      <action forward="/examples.vm" path="/examples" />
 
 	<!--*********** actions do administrador **************-->
@@ -231,6 +233,8 @@
 			<forward name="add_user_error" path="/blogs/content/add_user_in.jsp" />
 			<forward name="add_user_out" path="/blogs/content/add_user_out.jsp" />
 			<forward name="add_user_home_in" path="/blogs/content/add_user_in2.jsp" />
+			<forward name="user_update" path="/blogs/content/update_user_in.jsp" />
+			
 		</action>
 		
 		<action path="/blog"

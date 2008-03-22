@@ -38,6 +38,11 @@ import com.vanguarda.blog.util.LoggerUtil;
  */
 public class RessServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
@@ -181,6 +186,9 @@ public class RessServlet extends HttpServlet {
 							+ "/blog/post.do?act=loadSite&id=" + post.getId()+"&permalink=true"
 							+ "]]>");
 					out.println("</link>");
+					out.print("<author>");
+					out.print("<![CDATA["+blog.getBlogUser().getFirstName()+"]]>");
+					out.print("</author>");
 
 					out.println("<pubDate>");
 					out.println("<![CDATA[" + post.getInsertDate().toString() + "]]>");

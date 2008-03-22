@@ -13,6 +13,7 @@ package com.vanguarda.blog.action;
  * Preferences - Java - Code Style - Code Templates
  */
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -28,6 +29,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
+import com.vanguarda.blog.bean.AdminUser;
+import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Group;
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.bean.UserCommentator;
@@ -72,6 +75,8 @@ public class UserCommentatorAction extends DispatchAction {
 			user = (User) dao
 					.login(userForm.getLogin(), userForm.getPassword());
 
+			user = dao.load(user.getId());
+			
 			HttpSession session = req.getSession();
 			session.setAttribute(Constants.USER_BEAN, user);
 
@@ -143,7 +148,7 @@ public class UserCommentatorAction extends DispatchAction {
 
 			user.setFirstName(userForm.getFirstName());
 			user.setEmail(userForm.getEmail());
-			user.setGroup(new Group(Constants.USER_BLOGGER));
+			user.setGroup(new Group(Constants.USER_COMENTATOR));
 			user.setLastName(userForm.getLastName());
 			user.setLogin(userForm.getLogin());
 			user.setPassword(userForm.getPassword());
@@ -216,6 +221,100 @@ public class UserCommentatorAction extends DispatchAction {
 		}
 
 	}
+	
+	public ActionForward loadSite(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse resp) throws Exception {
+
+		HttpSession session = req.getSession();
+		
+		Object obj =  session.getAttribute(Constants.USER_BEAN);
+		if(obj == null)
+		{
+			obj =  session.getAttribute(Constants.BLOGGER_USER_BEAN);
+			
+			if(obj == null)
+			{
+				obj =  session.getAttribute(Constants.ADMIN_USER_BEAN);
+			}
+		}
+		
+		if (obj!= null) {
+			
+			if(((User)obj).getGroup().getId() == Constants.USER_BLOGGER)
+			{
+				UserCommentator userCommentator = (UserCommentator) obj;
+				
+				UserCommentatorForm commentatorForm = (UserCommentatorForm) form;
+				commentatorForm.setEmail(userCommentator.getEmail());
+				commentatorForm.setId(userCommentator.getId());
+				commentatorForm.setFirstName(userCommentator.getFirstName());
+				commentatorForm.setLastName(userCommentator.getLastName());
+				commentatorForm.setLogin(userCommentator.getLogin());
+				commentatorForm.setPassword(userCommentator.getPassword());
+			}
+			else if(((User)obj).getGroup().getId() == Constants.USER_ADMIN)
+			{
+				UserCommentator userCommentator = (UserCommentator) obj;
+				UserCommentatorForm commentatorForm = (UserCommentatorForm) form;
+				commentatorForm.setEmail(userCommentator.getEmail());
+				commentatorForm.setId(userCommentator.getId());
+				commentatorForm.setFirstName(userCommentator.getFirstName());
+				commentatorForm.setLastName(userCommentator.getLastName());
+				commentatorForm.setLogin(userCommentator.getLogin());
+				commentatorForm.setPassword(userCommentator.getPassword());
+				
+			}
+			else if(((User)obj).getGroup().getId() == Constants.USER_COMENTATOR)
+			{
+				UserCommentator userCommentator = (UserCommentator) obj;
+				UserCommentatorForm commentatorForm = (UserCommentatorForm) form;
+				commentatorForm.setId(userCommentator.getId());
+				commentatorForm.setEmail(userCommentator.getEmail());				
+				commentatorForm.setFirstName(userCommentator.getFirstName());
+				commentatorForm.setLastName(userCommentator.getLastName());
+				commentatorForm.setLogin(userCommentator.getLogin());
+				commentatorForm.setPassword(userCommentator.getPassword());
+				commentatorForm.setCity(userCommentator.getCity());
+				commentatorForm.setGender(userCommentator.getGender());
+				commentatorForm.setState(userCommentator.getState());
+				
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(userCommentator.getBirthDate());
+				
+				commentatorForm.setAno(calendar.get(Calendar.YEAR));
+				commentatorForm.setMes(calendar.get(Calendar.MONTH));
+				commentatorForm.setDia(calendar.get(Calendar.DATE));
+				
+				
+				
+			}		
+	
+			try {
+				
+				
+				/*user.setFirstName(userForm.getFirstName());
+				user.setEmail(userForm.getEmail());
+				user.setGroup(new Group(Constants.USER_BLOGGER));
+				user.setLastName(userForm.getLastName());
+				user.setLogin(userForm.getLogin());
+				user.setPassword(userForm.getPassword());
+				user.setStatus(1);
+				user.setBirthDate(new Date(userForm.getAno() - 1900, userForm
+						.getMes() - 1, userForm.getDia()));
+				user.setGender(userForm.getGender());
+				user.setState(userForm.getState());
+				user.setCity(userForm.getCity());*/
+
+				return mapping.findForward(Constants.USER_UPDATE_FORWARD);
+
+			} catch (Exception e) {
+				return mapping.findForward("");
+			}
+		} else {
+			return mapping.findForward("");
+		}
+
+	}
 
 	public ActionForward update(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -226,19 +325,33 @@ public class UserCommentatorAction extends DispatchAction {
 			messageResources = getResources(req);
 			UserCommentator user = new UserCommentator();
 			UserCommentatorForm userForm = (UserCommentatorForm) form;
+			
+			
+			String origin = req.getParameter("from");
 
 			user.setId(userForm.getId());
 			user.setFirstName(userForm.getFirstName());
 			user.setEmail(userForm.getEmail());
-			user.setGroup(new Group(Constants.USER_COMENTATOR));
+			user.setGroup(new Group(Constants.USER_BLOGGER));
 			user.setLastName(userForm.getLastName());
 			user.setLogin(userForm.getLogin());
 			user.setPassword(userForm.getPassword());
 			user.setStatus(1);
+			user.setBirthDate(new Date(userForm.getAno() - 1900, userForm
+					.getMes() - 1, userForm.getDia()));
+			user.setGender(userForm.getGender());
+			user.setState(userForm.getState());
+			user.setCity(userForm.getCity());
 
 			dao.update(user);
 
-			return mapping.findForward(Constants.USER_ADD_FORWARD);
+			HttpSession session = req.getSession();
+			session.setAttribute(Constants.USER_BEAN, user);
+
+			if ("home".equals(origin))
+				return mapping.findForward("add_user_out");
+			else
+				return mapping.findForward(Constants.USER_ADD_FORWARD);
 
 		} catch (LoginExistsException lee) {
 

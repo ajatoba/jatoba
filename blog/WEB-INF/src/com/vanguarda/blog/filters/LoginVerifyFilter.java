@@ -50,6 +50,7 @@ public class LoginVerifyFilter
         if(user != null)
         {
         	LoggerUtil.debug(" FILTRANDO USUARIO "+ user.getFirstName() + " NA TELA DE COMENTARIO");
+        	session.setAttribute("user",user);
             chain.doFilter(req, resp);
         } else
         {

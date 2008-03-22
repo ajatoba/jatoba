@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.vanguarda.blog.bean.User;
+import com.vanguarda.blog.bean.Group;
 import com.vanguarda.blog.bean.UserCommentator;
 import com.vanguarda.blog.dao.UserCommentatorDAO;
 import com.vanguarda.blog.exception.EmailExistsException;
@@ -107,9 +108,12 @@ public class UserCommentatorDAOImpl extends UserDAOImpl implements
 		UserCommentator usercommentator;
 		try {
 			getConnection();
-
+			
 			ps = conn
-					.prepareStatement("SELECT  NM_USER_ID,VC_FIRSTNAME,VC_LASTNAME,VC_EMAIL,DT_INSERTDATE,NM_STATUS,VC_LOGIN,VC_PASSWORD, NM_GROUP_ID_FK  FROM TB_BLOG_USER WHERE NM_USER_ID = ? ");
+					.prepareStatement("SELECT  NM_USER_ID,VC_FIRSTNAME,VC_LASTNAME," +
+							"VC_EMAIL,NM_STATUS,VC_LOGIN,VC_PASSWORD,NM_GROUP_ID_FK," +
+							"DT_INSERTDATE,VC_GENDER, VC_STATE, VC_CITY,DT_BIRTHDATE " +
+							" FROM TB_BLOG_USER WHERE NM_USER_ID = ? ");
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
@@ -121,6 +125,13 @@ public class UserCommentatorDAOImpl extends UserDAOImpl implements
 				user.setPassword(rs.getString("VC_PASSWORD"));
 				user.setEmail(rs.getString("VC_EMAIL"));
 				user.setStatus(rs.getInt("NM_STATUS"));
+				user.setGender(rs.getString("VC_GENDER"));
+				user.setBirthDate(rs.getDate("DT_BIRTHDATE"));
+				user.setCity(rs.getString("VC_CITY"));
+				user.setState(rs.getString("VC_STATE"));
+				Group group = new Group(rs.getInt("NM_GROUP_ID_FK"));				
+				user.setGroup(group);
+				
 			}
 			usercommentator = user;
 		} finally {

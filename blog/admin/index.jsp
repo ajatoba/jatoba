@@ -28,7 +28,7 @@
       <td>Login:</td>
       <td>&nbsp;</td>
       <td> 
-        <input type="text" name="login">
+        <input type="text" name="login" >
       </td>
     </tr>
     <tr> 

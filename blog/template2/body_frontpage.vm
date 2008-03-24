@@ -1,0 +1,75 @@
+<script type="text/javascript" src="/bloglog/jsImp/print.js" charset="ISO-8859-1"></script>
+<link href="/$blogPath/busca.css" rel="stylesheet" type="text/css" />
+<div id="posts" align="left">
+
+#if($busca == true)
+	  <div id="top_internas">
+		<div class="tit_internas">RESULTADOS DE BUSCA</div>
+	  </div>
+	
+	
+	
+	
+	<div class="topo">
+	<br class="esp" />
+		<dt>Atenção: buscando apenas em bloglog.com.br<br />
+		Você buscou por: <span>$keyWord</span><br />
+		>Resultados Obtidos: $qtdResults
+	</div>
+	
+	#if ($qtdResults != "0")
+	<div id="down_resbusca">
+		#foreach($post in $blogPosts)
+		#set($mes = $post.insertDate.month + 1 )
+		#set($ano = $post.insertDate.year + 1900 )
+		
+	
+		<div>
+			<br class="esp2" />
+			<dt>$post.insertDate.date/$mes/$ano</dt>
+			<dt class="tit">$post.title<a href="/blog/post.do?act=loadSite&id=$post.id&permalink=true">ler post</a></dt>
+		</div>
+
+		#end
+	</div>
+	#else
+		<div class="res_busca">
+			<div class="tit_res_busca">
+				SUA BUSCA NÃO RETORNOU RESULTADOS
+			</div>
+		</div>	
+	#end	
+	
+#else
+	#foreach($post in $blogPosts)
+	<div id="$post.id">
+	<a name="$post.id"/>
+	    #set($mes = $post.insertDate.month + 1 )
+	    #set($ano = $post.insertDate.year + 1900 )
+	    #set($controll = $post.controll)
+	    
+	    #if($controll==false)
+	    	#set($status=0)
+	    #else
+	    	#set($status=1)
+	    #end
+		
+	    <p class="data">Escrito em:$post.insertDate.date/$mes/$ano </p>
+		<p class="titulo">$post.title </p>
+		<p>$post.content </p>
+
+
+<p style="margin-bottom:0px;"><a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')"><img src="/icon_comment.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/post.do?act=loadSite&id=$post.id','','scrollbars=yes,height=600,width=600')" style=" vertical-align:top;" class="imp">Comentários($post.countComments)</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" ><img src="/icon_printer.gif" /></a>&nbsp;&nbsp;<a href="javascript:imprSelec($post.id)" style=" vertical-align:top;" class="imp" >Imprimir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" ><img src="/icon_permalink.gif" /></a>&nbsp;&nbsp;<a href="http://bloglog.globo.com/blog/post.do?act=loadSite&id=$post.id&permalink=true" style=" vertical-align:top;" class="imp" >Link deste post</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick="window.open('/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=no,height=245,width=475')"><img src="/icon_indique.gif" /></a>&nbsp;&nbsp;<a href="#" onClick="window.open('http://bloglog.globo.com/blog/blogs/content/add_recomendation_in.jsp?postId=$post.id','','scrollbars=no,height=245,width=475')" style=" vertical-align:top;" class="imp" >Indique este Post</a></p>
+
+
+
+
+<center>--------------------------------------------------------------------------------------</center>
+		
+	</div>
+	#end
+	#if ($hasMorePosts == "true")
+	<div><p style="margin-bottom:0px; margin-top:5px; height:30px;" class="tit"><a href="/blog/blog.do?act=loadSite&id=$blogId">Veja mais</a></p></div>
+	#end
+#end
+</div>

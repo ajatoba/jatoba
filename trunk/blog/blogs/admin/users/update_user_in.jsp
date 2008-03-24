@@ -93,23 +93,23 @@
    <html:hidden property="id" value="${blogUser.id}"/>
    
  
-    Nome: 
+    <span class="style14">Nome: </span>
     <html:text property="firstName" readonly="true" value="${blogUser.firstName}" />
     <br/>
-    Sobrenome: 
+    <span class="style14">Sobrenome:</span> 
      <html:text property="lastName" readonly="true" value="${blogUser.lastName}"/>
     <br/>
-    E -mail: 
+    <span class="style14">E -mail: </span>
     <html:text property="email" readonly="true" value="${blogUser.email}" />
     <br/>
     
     
     <html:hidden property="status" value="${blogUser.status}" />
     <br/>
-    Login: 
+    <span class="style14">Login:</span> 
     <html:text property="login" readonly="true" value="${blogUser.login}"/>
     <br/>
-    Senha: 
+    <span class="style14">Senha:</span> 
     <html:password property="password" value="${blogUser.password}"/>
   </p>
   <p>

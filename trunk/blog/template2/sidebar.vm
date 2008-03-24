@@ -1,0 +1,65 @@
+<link href="/$blogPath/barra.css" rel="stylesheet" type="text/css" />
+
+<script>
+function submitForm(){ 
+    //window.open('','resultado','width=800,height=600,toolbar=0,scrollbars=1'); 
+    //var a = window.setTimeout('document.form_busca.submit();',250); 
+    document.form_busca.submit();
+} 
+
+function Perfil(){
+	window.open('/$blogPath/perfil.html','resultado','width=519,height=600,toolbar=0,scrollbars=yes');
+}
+
+</script>
+
+
+<div id="descblog"><br class="espacinho">
+	$blogDescription
+</div>
+		
+<div id="busca">
+	<div class="espproc1"></div>
+	<div class="proc">PROCURAR</div>
+	<div class="espproc2"></div>
+	<form name="form_busca" action="/blog/post.do?act=search" method="POST" >
+		<input name="palavra_chave" type="text" class="txt"/>
+		<input name="id" type="hidden" value="$blogId"/>
+		<a href="#"><img src="/$blogPath/img/btn_buscar.jpg" onClick="javascript:submitForm()"></a>
+	</form>	
+</div>
+
+<div id="perfil" align="left">
+	<img src="/$blogPath/img/header_perfil.jpg" width="225">	
+	<p><script>EscrevePerfil();</script></p>
+	<div><a href="javascript:Perfil();">PERFIL COMPLETO</a></div>
+</div>
+
+<div id="indico">
+	<img src="/$blogPath/img/header_indico.jpg" width="225">	
+	<div id="iframe_indico">      	
+      #foreach($item in $favorites)
+        <a href="/$item.blog.path" target="_top">      
+      <div>$item.blog.name</div></a>              
+       #end
+	</div>	
+</div>
+
+<div id="arquivos">
+	<img src="/$blogPath/img/header_arquivos.jpg" width="225">	
+		<div id="iframe_arquivos">
+      	#foreach($item in $history)
+         
+			  <a href="/blog/blog.do?act=loadSite&id=$item.blogID&mes=$item.month&ano=$item.year" target="_top"><div>$item.labelDate </div></a>              
+               
+       #end
+   		</div>
+</div>
+
+
+<div id="rss">
+	<a href="/blog/$urlRss" target="blank" style="cursor:hand;"><div id="cantoRSS"><a href="/blog/$urlRss" target="blank" style="cursor:hand;"><img src="/bloglog/rss.jpg" width="12" height="12" style="margin-top:6px; margin-left:8px;"/></a></div></a>
+	<div id="cantoSep"></div>
+	<a href="/blog/$urlRss" target="blank" style="cursor:hand; text-decoration:none;"><div class="boldi">RSS |</div></a>
+	<div id="oq"><a title='RSS, abreviatura de "Real Simple Syndication", é uma maneira simples e prática de assinar e receber atualizações dos Blogs de sua preferência em um único lugar.' >O que é ?</a></div>
+</div>

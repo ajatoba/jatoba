@@ -109,7 +109,7 @@
     <span class="style14">Login:</span> 
     <html:text property="login" readonly="true" value="${blogUser.login}"/>
     <br/>
-    <span class="style14">Senha:</span> 
+    <span class="style14">Senha:</span>
     <html:password property="password" value="${blogUser.password}"/>
   </p>
   <p>

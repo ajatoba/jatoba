@@ -40,13 +40,29 @@ function contaText(input)
 	divMostraNumero = null;
 	nDigitados = null;
 }
+
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+
+function soNumeros(v){
+    return v.replace(/\D/g,"")
+}
+
+
 </script>
 
 <body style="background-color:#E3F0F9; font-family:Trebuchet MS; margin:0px;">
 
-<c:if test="${user.group.id == 3 }">
+<!-- test="user.group.id == 3 ">
 <a href="/blog/user.do?act=loadSite">Caso deseje atualizar seus dados</a>
-</c:if>
+</-->
 	<logic:present name="comment_sucesso">    
          <script>
          
@@ -99,11 +115,22 @@ function contaText(input)
 		</div>
 		
 		
+		<div style="width:450px; margin-left:auto; margin-right:auto; font-size:10px; color:#848484; height:27px; background:url(../img_add/ptos2.jpg) bottom repeat-x;">limite de 1024 caracteres | restantes : <span id="nRestantes"><script>document.write(maximo);</script></span></div>
+		<img src="/blog/captcha.jpg" border="1" style='float:left; margin-top:8px; margin-left:58px; margin-right:12px;'/>
+		<div style="margin-right:auto; margin-top:15px; float:left; font-size:10px; color:#757575;">
+		Digite oque se vê<br /> escrito na imagem:
+		</div>				
+		<html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/>
+		
 		
 		<html:submit value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:1px solid #FF6600; cursor:hand;"/>
 		 <font color="red">
+		 
+		 <logic:present name="message">
+		 	<br><br><br><center>Entre com o valor da imagem corretamente.</center>
+		 </logic:present>
     
-   
+  
     </font>
 	</div>
 

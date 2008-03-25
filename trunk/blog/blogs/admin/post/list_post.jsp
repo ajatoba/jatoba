@@ -34,21 +34,23 @@
 	function confirmaDelecao()
 	
 	{
-
-		if(url.indexOf('/blog/blogs/admin/post.do?act=delete') > -1)
+		if(url!= '')
 		{
-			if(confirm('Deseja realmente excluir esse post?'))
+			if(url.indexOf('/blog/blogs/admin/post.do?act=delete') > -1)
 			{
-				document.location=url;
+				if(confirm('Deseja realmente excluir esse post?'))
+				{
+					document.location=url;
+				}
+				else
+				{
+					return;
+				}
 			}
 			else
 			{
-				return;
+				document.location=url;
 			}
-		}
-		else
-		{
-			document.location=url;
 		}
 	}
 </script>

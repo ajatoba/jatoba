@@ -24,7 +24,23 @@ String rndCrypt = RandomTool.createCrypted();
 </HEAD>
 
 <BODY>
+<script>
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
 
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+
+function soNumeros(v){
+    return v.replace(/\D/g,"")
+}
+
+
+</script>
 <center>
 	<logic:present name="mensagem_erro">
 		<font color="red"><bean:write name="mensagem_erro"/></font>

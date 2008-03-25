@@ -313,7 +313,10 @@ public class PostAction extends DispatchAction {
 			Properties props = new Properties();
 
 			props.setProperty(VelocityEngine.FILE_RESOURCE_LOADER_PATH, req
-					.getRealPath("/template1"));
+					.getRealPath(blog.getTemplate().getDescription()));
+			
+			/*props.setProperty(VelocityEngine.FILE_RESOURCE_LOADER_PATH, req
+					.getRealPath("/template1"));*/
 
 			ve.init(props);
 

@@ -25,6 +25,9 @@
 		<filter-class>com.vanguarda.blog.filters.LoginVerifyFilter</filter-class>
 	</filter>
 	
+	
+	
+	
 	<filter-mapping>
 		<filter-name>LoginAdminVerifyFilter</filter-name>
 		<url-pattern>/admin/*</url-pattern>
@@ -127,6 +130,12 @@
 		<servlet-name>cache</servlet-name><!-- nome do servlet dentro do web.xml -->
 		<servlet-class>com.vanguarda.blog.servlet.CacheServlet</servlet-class><!-- nome da classe do servlet -->
 	</servlet>
+	<servlet>
+		<servlet-name>CaptchaServlet</servlet-name><!-- nome do servlet dentro do web.xml -->
+		<servlet-class>com.vanguarda.blog.servlet.CaptchaServlet</servlet-class><!-- nome da classe do servlet -->
+	</servlet>
+	
+	
 
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
@@ -151,6 +160,12 @@
 		<servlet-name>cache</servlet-name><!-- servlet a ser mapeado -->
 		<url-pattern>/servlet/cache</url-pattern><!-- url que está mapeada para o servlet responder -->
 	</servlet-mapping>
+
+	<servlet-mapping>
+			<servlet-name>CaptchaServlet</servlet-name><!-- servlet a ser mapeado -->
+			<url-pattern>/captcha.jpg</url-pattern><!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>
+
 
 	<!-- The Usual Welcome File List -->
 	<welcome-file-list>

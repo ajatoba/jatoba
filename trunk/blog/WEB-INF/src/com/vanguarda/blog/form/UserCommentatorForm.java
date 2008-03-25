@@ -49,6 +49,8 @@ public class UserCommentatorForm extends ActionForm {
 	private int ano;
 
 	private String imageword;
+	
+	private String captcha;
 
 	public String getImageword() {
 		return imageword;
@@ -240,4 +242,14 @@ public class UserCommentatorForm extends ActionForm {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+	public String getCaptcha() {
+		return captcha;
+	}
+
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
+	
+	
 }

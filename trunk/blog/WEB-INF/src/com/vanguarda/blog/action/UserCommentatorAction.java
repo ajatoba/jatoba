@@ -29,8 +29,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
-import com.vanguarda.blog.bean.AdminUser;
-import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Group;
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.bean.UserCommentator;
@@ -43,8 +41,8 @@ import com.vanguarda.blog.exception.LoginExistsException;
 import com.vanguarda.blog.exception.LoginNotExistsException;
 import com.vanguarda.blog.exception.UserBlockedException;
 import com.vanguarda.blog.form.UserCommentatorForm;
+import com.vanguarda.blog.servlet.Captcha;
 import com.vanguarda.blog.util.Constants;
-import com.vanguarda.blog.util.RandomTool;
 
 public class UserCommentatorAction extends DispatchAction {
 
@@ -131,11 +129,18 @@ public class UserCommentatorAction extends DispatchAction {
 			UserCommentator user = new UserCommentator();
 			UserCommentatorForm userForm = (UserCommentatorForm) form;
 
-			String word = userForm.getImageword();
-			String encryptWord = req.getParameter("wordEnc");
+			//String word = userForm.getImageword();
+			//String encryptWord = req.getParameter("wordEnc");
+			
+			String jsid = req.getSession().getId();
+			String captcha =userForm.getCaptcha();
+			Boolean captchaOk = Captcha.getInstance().getService().validateResponseForID(jsid, captcha);
 
-			if (!RandomTool.compare(word, encryptWord)) {
+			        
 
+
+			//if (!RandomTool.compare(word, encryptWord)) {
+			if (!captchaOk.booleanValue()) {
 				req.setAttribute("mensagem_imagem_incorreta",
 						"Entre com o valor da imagem corretamente");
 

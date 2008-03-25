@@ -24,7 +24,23 @@ String rndCrypt = RandomTool.createCrypted();
 </HEAD>
 
 <BODY>
+<script>
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
 
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+
+function soNumeros(v){
+    return v.replace(/\D/g,"")
+}
+
+
+</script>
 <center>
 	<logic:present name="mensagem_erro">
 		<font color="red"><bean:write name="mensagem_erro"/></font>
@@ -138,9 +154,9 @@ String rndCrypt = RandomTool.createCrypted();
 		<div class="canto14"></div>
 		<div class="confere">	
 			<div class="canto10"></div>
-			<div class="img_conf"><img src="/blog/servlet/rndImage?rndimg=<%=rndCrypt%>" border="0"/></div>
+			<div class="img_conf"><!--img src="/blog/servlet/rndImage?rndimg=<%//rndCrypt%>" border="0"/--><img src="/blog/captcha.jpg" border="0"/></div>
 			<div class="digite">Digite o número como ele aparece ao lado:</div>
-			<div class="campo"><html:text property="imageword" maxlength="6" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;"/></div>
+			<div class="campo"><html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></div>
 			<div class="obs">
 			<dt class="checkx">Obs: Este número é importante para garantir a segurança de seu cadastro.<br> Se não conseguir visualizar, <a href="#" style="color:#E86E21;">clique aqui</a></dt>		
 		

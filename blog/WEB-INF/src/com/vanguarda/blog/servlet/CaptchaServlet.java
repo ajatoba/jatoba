@@ -14,7 +14,12 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class CaptchaServlet extends javax.servlet.http.HttpServlet{
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse 
 
                          response) throws ServletException, IOException {
 
@@ -30,15 +35,11 @@ public class CaptchaServlet extends javax.servlet.http.HttpServlet{
 
                 /*Gera a imagem*/
 
-                BufferedImage challenge = Captcha.getInstance().
-
-                                  getService().getImageChallengeForID(jsid);
+                BufferedImage challenge = Captcha.getInstance().getService().getImageChallengeForID(jsid);
 
                 /*Codifica a imagem no formato JPEG*/
 
-                JPEGImageEncoder jpegEncoder = JPEGCodec.
-
-                                              createJPEGEncoder(jpegStream);
+                JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(jpegStream);
 
                 jpegEncoder.encode(challenge);
 
@@ -78,11 +79,7 @@ public class CaptchaServlet extends javax.servlet.http.HttpServlet{
 
     }     
 
-    
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse 
-
-                          response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
           doGet(request, response);
 

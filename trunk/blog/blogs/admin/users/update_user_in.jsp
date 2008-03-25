@@ -88,7 +88,6 @@
 </div>
 <div id="meio_repeat">
 	<div id="meio">	
-	<a href="/blog/blogs/admin/blogUser.do?act=load" style="text-decoration:none;"><span>ATUALIZAR DADOS</span></a>
 	<html:form method="post" action="/blogs/admin/blogUser.do?act=update">
    <html:hidden property="id" value="${blogUser.id}"/>
    

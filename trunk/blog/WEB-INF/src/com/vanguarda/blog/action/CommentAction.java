@@ -29,6 +29,7 @@ import com.vanguarda.blog.dao.CommentsDAO;
 import com.vanguarda.blog.dao.DaoFactory;
 import com.vanguarda.blog.form.CommentForm;
 import com.vanguarda.blog.helper.PreparedCommentHelper;
+import com.vanguarda.blog.servlet.Captcha;
 import com.vanguarda.blog.util.CacheManager;
 import com.vanguarda.blog.util.Constants;
 
@@ -74,6 +75,17 @@ public class CommentAction extends DispatchAction
             String content = null;
             
             /**** Teste de Segurança removido conforme solicitação da DB4 em 29/01/2008 *****/
+            String jsid = req.getSession().getId();
+			String captcha =cForm.getCaptcha();
+			Boolean captchaOk = Captcha.getInstance().getService().validateResponseForID(jsid, captcha);
+			
+			if(!captchaOk.booleanValue()){
+    			
+    			req.setAttribute("message","Entre com o valor corretamente" );
+    			return new ActionForward("/blogs/content/add_comment_in.jsp?postId=" + post.getId() + "&countComments=" + post.getComments()+"");
+
+    		}
+			
             /*
             if(!RandomTool.compare(word,encryptWord)){
     			

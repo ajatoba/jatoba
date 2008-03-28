@@ -94,11 +94,18 @@ public class CommentAction extends DispatchAction
 
     		}
             */
+			
+			String palavraProibida = null;
             String palavroes[] = null;
             try
             {
                 content = BlogManager.getInstance().getDeniedWords(path);
                 palavroes = content.split(";");
+                
+                if(content != null && content.length() > 0)
+                {
+                	palavraProibida = PreparedCommentHelper.isDenied(cForm.getContent(),palavroes);
+                } 
             }
             catch(Exception e)
             {
@@ -114,8 +121,8 @@ public class CommentAction extends DispatchAction
                 c.setContent(cForm.getContent());
             } **/
             
-            String palavraProibida = PreparedCommentHelper.isDenied(cForm.getContent(),palavroes);
-            if(palavraProibida!= null)
+            
+            if(palavraProibida!= null && palavraProibida.length() > 0)
             {
             	 req.setAttribute("mensagem_erro","A palavra '"+palavraProibida+"' é uma palavra bloqueada pelo blogueiro, escreva novamente seu texto.");
             	 if("admin".equals(cForm.getFrom()))

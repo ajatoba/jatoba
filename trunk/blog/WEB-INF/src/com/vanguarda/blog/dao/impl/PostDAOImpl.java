@@ -65,12 +65,14 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	" LEFT JOIN TB_BLOG_TEMPLATE T ON NM_TEMPLATE_ID_FK = T.NM_TEMPLATE_ID" +
 	" JOIN TB_BLOG_USER U ON U.NM_USER_ID = B.NM_USER_ID_FK "+	
 	" LEFT JOIN TB_BLOG_COMMENT AS C ON C.NM_POST_ID_FK = NM_POST_ID " +	
+	" AND C.NM_STATUS = ? "+
 	
 	"LEFT JOIN TB_BLOG_USER U2 ON U2.NM_USER_ID = C.NM_USER_ID_FK "+	
-	"LEFT JOIN TB_BLOG B2 ON B2.NM_USER_ID_FK = C.NM_USER_ID_FK "+
+	"LEFT JOIN TB_BLOG B2 ON B2.NM_USER_ID_FK = C.NM_USER_ID_FK "+	
 	
-	" AND C.NM_STATUS = ? "+
-	 "WHERE NM_POST_ID = ? ORDER BY C.DT_INSERT_DATE DESC" ;
+	 "WHERE NM_POST_ID = ?" +
+	 
+	 " ORDER BY C.DT_INSERT_DATE DESC" ;
 	
 	private static final String LIST_POSTS_QUERY = "SELECT NM_POST_ID, NM_BLOG_ID_FK, VC_TITLE, " +
 	"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS,NM_COUNT_COMMNTS,"+SELECT_BLOG_QUERY+" FROM TB_BLOG_POST,TB_BLOG_USER, " +
@@ -149,6 +151,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 					
 			ps.setInt(1,status);
 			ps.setInt(2,id);	
+			
 			rs = ps.executeQuery();
 			
 			while(rs.next())

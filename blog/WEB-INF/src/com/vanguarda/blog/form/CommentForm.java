@@ -198,6 +198,7 @@ public class CommentForm extends ActionForm
     private int blogId;
     private String imageword;
     private String captcha;
+    private String answer;
     
     
     private int commentatorGroup;
@@ -234,6 +235,19 @@ public class CommentForm extends ActionForm
 		this.captcha = captcha;
 	}
 
+
+
+	public String getAnswer() {
+		return answer;
+	}
+
+
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	
 	
 	
     

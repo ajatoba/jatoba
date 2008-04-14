@@ -26,7 +26,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	
 	private static final String SELECT_COMMENT_QUERY = "C.NM_COMMENT_ID,C.NM_POST_ID_FK ,  C.VC_TITLE ,  "
 		+ "C.VC_CONTENT,  C.NM_STATUS,  C.VC_COMMENTATOR_NAME ,  C.VC_COMMENTATOR_EMAIL ,  C.VC_COMMENTATOR_HOMEPAGE ,  "
-		+ "C.VC_COMMENTATOR_REMOTE_ADDR,C.DT_INSERT_DATE, C.NM_COMMENTATOR_GROUP_ID_FK";
+		+ "C.VC_COMMENTATOR_REMOTE_ADDR,C.DT_INSERT_DATE,C.VC_ANSWER, C.NM_COMMENTATOR_GROUP_ID_FK";
 	
 	private static final String SELECT_POST_QUERY = "P.NM_POST_ID, P.NM_BLOG_ID_FK, P.VC_TITLE, " +
 	"P.VC_CONTENT, P.NM_IS_CONTROLL, P.DT_INSERT_DATE,P.NM_STATUS,P.NM_COUNT_COMMNTS";
@@ -165,6 +165,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				post.setStatus(rs.getInt("P.NM_STATUS"));
 				post.setCountComments(rs.getInt("NM_COUNT_COMMNTS"));
 				
+				
 				blog.setDescription(rs.getString("B.VC_DESCRIPTION"));
 				blog.setId(rs.getInt("B.NM_BLOG_ID"));
 				blog.setInsertDate(new java.util.Date(rs.getDate("B.DT_INSERTDATE").getTime()));
@@ -217,7 +218,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 					commentator.setGroup(group);
 					commentator.setFirstName(rs.getString("C.VC_COMMENTATOR_NAME"));
 					commentator.setEmail(rs.getString("C.VC_COMMENTATOR_EMAIL"));
-					
+										
 					
 					comment.setId(rs.getInt("C.NM_COMMENT_ID"));
 					comment.setTitle(rs.getString("C.VC_TITLE"));
@@ -233,6 +234,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 					comment.setInsertDate(rs.getDate("C.DT_INSERT_DATE")!= null?new java.util.Date(rs.getDate("C.DT_INSERT_DATE").getTime()):null);
 					comment.setUser(commentator);
 					comment.setPost(post);
+					comment.setAnswer(rs.getString("C.VC_ANSWER"));
 					
 					
 					

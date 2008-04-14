@@ -136,6 +136,8 @@ public class Comment
     {
         this.user = user;
     }
+    
+    
 
     private int id;
     private String title;
@@ -150,6 +152,8 @@ public class Comment
     private boolean censured;
     private User user;
     
+    private String answer;
+       
     
     /* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -180,5 +184,13 @@ public class Comment
 		buffer.append(censured+";");
 	
 		return buffer.toString();
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 }

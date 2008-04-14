@@ -34,6 +34,10 @@
 			
 		<form-bean name="updatePasswordForm"
 			type="com.vanguarda.blog.form.updatePasswordForm" />		
+		
+		<form-bean name="quadrantForm"
+			type="com.vanguarda.blog.form.QuadrantForm" />	
+		
 					
 	</form-beans>
 
@@ -126,6 +130,30 @@
 			<forward name="comment_add" path="/admin/comments/form_comment_out.jsp" />	
 			<forward name="comment_list" path="/admin/comments/list_comment.jsp" />			
 			<forward name="comment_load" path="/admin/comments/update_comment_in.jsp" />		
+		</action>
+		
+		<action path="/admin/quadrant"
+			type="com.vanguarda.blog.action.QuadranteAction" scope="request"
+			parameter="act" name="quadrantForm" validate="false">
+						
+			<forward name="quadrant_list" path="/admin/quadrant/list_quadrant.jsp" />	
+			<forward name="quadrant_add" path="/admin/quadrant/out_quadrant.jsp" />	
+			<forward name="quadrant_form" path="/admin/quadrant/form_quadrant.jsp" />	
+			<forward name="quadrant_update" path="/admin/quadrant/out_quadrant.jsp" />	
+			<forward name="quadrant_load" path="/admin/quadrant/form_quadrant.jsp" />	
+			<forward name="quadrant_delete" path="/admin/quadrant/out_quadrant.jsp" />
+			<forward name="quadrant_home" path="/home.jsp" />
+			
+					
+		</action>
+		
+		<action path="/quadrant"
+			type="com.vanguarda.blog.action.QuadranteAction" scope="request"
+			parameter="act" name="quadrantForm" validate="false">
+			
+			<forward name="quadrant_home" path="/layout/home.jsp" />
+			
+					
 		</action>
 		
 		<!-- fim  actions do administrador-->		

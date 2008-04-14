@@ -14,6 +14,7 @@ import com.vanguarda.blog.dao.impl.BlogUserDAOImpl;
 import com.vanguarda.blog.dao.impl.CommentsDAOImpl;
 import com.vanguarda.blog.dao.impl.FavoriteDAOImpl;
 import com.vanguarda.blog.dao.impl.PostDAOImpl;
+import com.vanguarda.blog.dao.impl.QuadranteDAOImpl;
 import com.vanguarda.blog.dao.impl.RankingDAOImpl;
 import com.vanguarda.blog.dao.impl.TemplateDAOImpl;
 import com.vanguarda.blog.dao.impl.UserCommentatorDAOImpl;
@@ -84,6 +85,10 @@ public class DaoFactory {
 			}else if(mapping.equals(Constants.MAPPING_FAVORITE_DAO))
 			{
 				return new FavoriteDAOImpl();
+			}
+			else if(mapping.equals(Constants.MAPPING_QUADRANT_DAO))
+			{
+				return new QuadranteDAOImpl();
 			}
 			else
 				return null;

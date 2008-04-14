@@ -215,6 +215,7 @@ public class CommentAction extends DispatchAction
             c.setCommentatorRemoteAddr(req.getRemoteAddr());
             c.setStatus(cForm.getStatus());
             c.setCensured(cForm.isCensured());
+            c.setAnswer(cForm.getAnswer());
             dao.update(c);
                         
             CacheManager.getInstance().clear();

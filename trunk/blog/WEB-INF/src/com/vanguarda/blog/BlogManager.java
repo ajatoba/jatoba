@@ -130,6 +130,7 @@ public class BlogManager {
 			}
 			else
 			{
+				month --;
 				continue;
 				//history.setPostCount(new Integer(0));
 			}

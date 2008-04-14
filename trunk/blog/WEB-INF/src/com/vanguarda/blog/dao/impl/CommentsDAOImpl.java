@@ -31,11 +31,11 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 
 	private static final String UPDATE_QUERY = "UPDATE TB_BLOG_COMMENT SET VC_TITLE = ? ,  "
 			+ "VC_CONTENT  = ?,  NM_STATUS = ?,  VC_COMMENTATOR_NAME =? ,  VC_COMMENTATOR_EMAIL = ? ,  VC_COMMENTATOR_HOMEPAGE =? ,  "
-			+ "VC_COMMENTATOR_REMOTE_ADDR =? WHERE NM_COMMENT_ID = ?";
+			+ "VC_COMMENTATOR_REMOTE_ADDR =? , VC_ANSWER = ? WHERE NM_COMMENT_ID = ?";
 
 	private static final String LOAD_QUERY = "SELECT NM_COMMENT_ID,NM_POST_ID_FK ,  C.VC_TITLE ,  "
 			+ "C.VC_CONTENT,  C.NM_STATUS,  VC_COMMENTATOR_NAME ,  VC_COMMENTATOR_EMAIL ,  VC_COMMENTATOR_HOMEPAGE ,  "
-			+ "VC_COMMENTATOR_REMOTE_ADDR,C.DT_INSERT_DATE,P.VC_TITLE, P.NM_COUNT_COMMNTS FROM TB_BLOG_COMMENT C, TB_BLOG_POST P"
+			+ "VC_COMMENTATOR_REMOTE_ADDR,C.DT_INSERT_DATE,P.VC_TITLE,C.VC_ANSWER, P.NM_COUNT_COMMNTS FROM TB_BLOG_COMMENT C, TB_BLOG_POST P"
 			+ " WHERE  NM_POST_ID_FK  = NM_POST_ID AND NM_COMMENT_ID = ?";
 
 	private static final String DELETE_QUERY = "DELETE FROM TB_BLOG_COMMENT WHERE NM_COMMENT_ID = ?";
@@ -115,7 +115,8 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 			ps.setString(5, comment.getCommentatorEmail());
 			ps.setString(6, comment.getCommentatorHomepage());
 			ps.setString(7, comment.getCommentatorRemoteAddr());
-			ps.setInt(8, comment.getId());
+			ps.setString(8, comment.getAnswer());
+			ps.setInt(9, comment.getId());
 
 			ps.executeUpdate();
 
@@ -197,6 +198,7 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 						.getString("VC_COMMENTATOR_REMOTE_ADDR"));
 				comment.setInsertDate(new java.util.Date(rs.getDate(
 						"DT_INSERT_DATE").getTime()));
+				comment.setAnswer(rs.getString("C.VC_ANSWER"));
 
 				Post post = new Post();
 				post.setId(rs.getInt("NM_POST_ID_FK"));

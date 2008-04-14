@@ -28,6 +28,8 @@ public interface Constants {
 	
 	public static final String MAPPING_FAVORITE_DAO = "FAVORITEDAO";
 	
+	public static final String MAPPING_QUADRANT_DAO = "QUADRANTEDAO";
+	
 	/**Proporiedade de Grupo de usuario **/
 	public static final int USER_ADMIN = 1;
 	
@@ -70,7 +72,17 @@ public interface Constants {
 	public static final String COMMENTS_BEAN = "comments";
 	
 	public static final String RANKING_BEAN = "ranking";
+	
+	public static final String SUCESS_PARAMETER = "sucesso";
+	
+	public static final String ERROR_PARAMETER = "erro";
 
+	
+	public static final String QUADRANTS_BEAN = "quadrants";
+	
+	public static final String PAGE_HOME = "page";
+	
+	public static final String QUADRANTS_MAP_BEAN = "quadrants_map";
 	
 	
 	
@@ -175,7 +187,34 @@ public interface Constants {
 	public static final String USER_COMMENTATOR_GROUP = "3";
 	
 	
+//	Quadrant
+	public static final String QUADRANT_LIST_FORWARD = "quadrant_list";
 	
+	public static final String QUADRANT_HOME_FORWARD = "quadrant_home";
+	
+	public static final String QUADRANT_ADD_FORWARD = "quadrant_add";
+	
+	public static final String QUADRANT_FORM_FORWARD = "quadrant_form";
+	
+	public static final String QUADRANT_UPDATE_FORWARD = "quadrant_update";
+	
+	public static final String QUADRANT_LOAD_FORWARD = "quadrant_load";
+	
+	public static final String QUADRANT_DELETE_FORWARD = "quadrant_delete";
+	
+	public static final String QUADRANT_INSERT_MESSAGE_SUCESS = "quadrante.insert.sucess";
+	
+	public static final String QUADRANT_PUBLISH_MESSAGE_SUCESS = "quadrante.publish.sucess";
+	
+	public static final String QUADRANT_PREVIEW_MESSAGE_SUCESS = "quadrante.preview.sucess";
+	
+	public static final String QUADRANT_UPDATE_MESSAGE_SUCESS = "quadrante.update.sucess";
+	
+	public static final String QUADRANT_INSERT_MESSAGE_ERROR = "quadrante.insert.error";
+	
+	public static final String QUADRANT_UPDATE_MESSAGE_ERROR = "quadrante.update.error";
+	
+	public static final String QUADRANT_MESSAGE_ERROR = "quadrante.error";
 	
 	
 		

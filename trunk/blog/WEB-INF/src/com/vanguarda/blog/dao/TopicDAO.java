@@ -19,4 +19,6 @@ public interface TopicDAO {
 	public Collection listTopics(int status,AbstractForum forum) throws SQLException, Exception;
 	
 	public void updateStatus(int topicId, int status) throws SQLException,Exception;
+	
+	public Topic loadTopTopic() throws SQLException,Exception;
 }

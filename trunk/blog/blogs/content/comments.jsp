@@ -53,7 +53,19 @@
 				</c:if>
 				<bean:write name="c" property="commentatorName" /> | <bean:write name="c" property="insertDate" format="dd/MM"/> <a href="#"><!--bean:write name="c" property="commentatorEmail" /--></a> |                      
 		            <a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?postId=<bean:write name="post" property="id"/>&commentId=<bean:write name="c" property="id" />','','scrollbars=no,height=258,width=500')">Denuncie</a></dt>
-				<div><bean:write name="c" property="content"/></div>
+				<div><bean:write name="c" property="content"/>
+				<logic:notEmpty name="c" property="answer">
+					<br/>
+					<table  width="100%">
+						<tr>
+							<td width="10%"></td>
+							<td width="90%"><i><b>Resposta do blogueiro:</b> <bean:write name="c" property="answer"/> </i></td>
+						</tr>
+					</table>
+				</logic:notEmpty>
+				</div>
+				
+				
 			</div>
 		    <div class="postsep"></div>
     	</pg:item>

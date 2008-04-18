@@ -60,7 +60,9 @@ function soNumeros(v){
 
 <body style="background-color:#E3F0F9; font-family:Trebuchet MS; margin:0px;">
 
-
+<c:if test="${user.group.id == 3 }">
+<a href="/blog/user.do?act=loadSite"></a>
+</c:if>
 	<logic:present name="comment_sucesso">    
          <script>
          

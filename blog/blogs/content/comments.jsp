@@ -59,7 +59,7 @@
 					<table  width="100%">
 						<tr>
 							<td width="10%"></td>
-							<td width="90%"><i><b>Resposta do blogueiro:</b> <bean:write name="c" property="answer"/> </i></td>
+							<td width="90%"><i><b>Resposta de ${blog.blogUser.firstName} ${blog.blogUser.lastName}:</b> <bean:write name="c" property="answer"/> </i></td>
 						</tr>
 					</table>
 				</logic:notEmpty>

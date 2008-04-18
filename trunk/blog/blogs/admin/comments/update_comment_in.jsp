@@ -65,7 +65,7 @@
 			<td height="23" colspan="2" valign="bottom" class="style2">Coment&aacute;rio</td>
 		  </tr>
 		  <tr>
-			<td height="178" colspan="2" valign="bottom"><html:textarea property="content" cols="50" rows="20"  value="${comment.content}" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/><br/><br/>
+			<td height="178" colspan="2" valign="bottom"><html:textarea property="content" cols="50" rows="10"  value="${comment.content}" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/><br/><br/>
 			
 			
 			</td>
@@ -75,7 +75,7 @@
 		  </tr>
 		  <tr>
 			<td height="178" colspan="2" valign="bottom">
-			<html:textarea property="answer" cols="50" rows="20"  value="${comment.answer}" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
+			<html:textarea property="answer" cols="50" rows="10"  value="${comment.answer}" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
 			</td>
 		  </tr>
 		  <tr>

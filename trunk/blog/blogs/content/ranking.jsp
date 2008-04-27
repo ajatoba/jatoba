@@ -12,7 +12,7 @@
 			<logic:iterate id="r" name="ranking" indexId="i">
 				 <a href="http://bloglog.globo.com/${r.blog.path}" target="_blank">
 		           <dt class="lists1" onmousemove="this.className='TTR1';" onmouseout="this.className='lists1';">            
-		              <img src="img/bt_azul${i+1}.gif" style="float:left; margin-right:5px;"/><span style="margin-left:5px;">${r.blog.blogUser.firstName} ${r.blog.blogUser.lastName}</span><br/>
+		              <img src="img/bt_azul${i+1}.gif" style="float:left; margin-right:5px;"/><span style="margin-left:5px;">${r.blog.blogUser.firstName}</span><br/>
 		              <span style="font-size:11px;  line-height:12px;color:#7C8187; font-weight:normal; margin-left:5px;">www.bloglog.com.br/${r.blog.path}</span>
 		           </dt>
 			     </a>			

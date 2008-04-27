@@ -102,7 +102,7 @@ public class MasterTileController extends ControllerSupport {
         }
         request.setAttribute("urlRss",urlRss);
         
-        BlogManager.getInstance().setRanking(request);
+        BlogManager.getInstance().setRanking(request,0);
 		BlogManager.getInstance().setHistory(request,String.valueOf(blog.getId()));		
 		BlogManager.getInstance().setFavorites(request,blog.getBlogUser().getId());
         

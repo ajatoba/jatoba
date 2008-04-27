@@ -349,7 +349,7 @@ public class BlogAction extends DispatchAction {
 				Collection posts = blog.getPosts();
 				BlogUser user = blog.getBloggerUser();
 				
-				BlogManager.getInstance().setRanking(req);
+				BlogManager.getInstance().setRanking(req,0);
 				BlogManager.getInstance().setHistory(req,id);
 				req.setAttribute(Constants.BLOG_BEAN,blog);
 				req.setAttribute("posts",posts);				

@@ -85,10 +85,11 @@ public class BlogManager {
 		
 	}
 	
-	public void setRanking(HttpServletRequest req) throws Exception
+	public void setRanking(HttpServletRequest req, int days) throws Exception
 	{		
-		
-		Collection ranking = (Collection) CacheManager.getInstance().hitCache(DaoFactory.getInstance("RANKINGDAO"),"getRanking",null);			
+		ArrayList parameters = new ArrayList();
+		parameters.add(new Integer(days));
+		Collection ranking = (Collection) CacheManager.getInstance().hitCache(DaoFactory.getInstance("RANKINGDAO"),"getRanking",parameters);			
 				
 		req.setAttribute("ranking", ranking);
 	}

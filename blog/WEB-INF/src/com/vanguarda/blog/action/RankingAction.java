@@ -26,8 +26,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.vanguarda.blog.dao.DaoFactory;
-import com.vanguarda.blog.util.CacheManager;
+import com.vanguarda.blog.dao.RakingDAO;
 import com.vanguarda.blog.util.Constants;
+import com.vanguarda.blog.dao.*;
 
 
 public class RankingAction extends DispatchAction {
@@ -36,13 +37,30 @@ public class RankingAction extends DispatchAction {
 	public ActionForward list(ActionMapping mapping,
 			ActionForm form, HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
-
 		
-		try {			
+				
+		try {	
+			
+			String days = req.getParameter("dias");
+			int daysInt = 0; // valor padrào é 30. Listar o ranking dos ultimos 30 dias.
+			
+			if(days != null)
+			{
+				try {
+					daysInt = Integer.parseInt(days);
+				} catch (NumberFormatException nfe) {
+					daysInt = 0;
+				}
+			}
+			
+			
 					
-			ArrayList parameters = new ArrayList();         	
-        	Collection ranking = (Collection) CacheManager.getInstance().hitCache(DaoFactory.getInstance("RANKINGDAO"),"getRanking",parameters);
-			//Collection ranking = dao.getRanking();
+			ArrayList parameters = new ArrayList();    
+			parameters.add(new Integer(0));
+			
+        	//Collection ranking = (Collection) CacheManager.getInstance().hitCache(DaoFactory.getInstance("RANKINGDAO"),"getRanking",parameters);
+			RakingDAO dao = (RakingDAO) DaoFactory.getInstance("RANKINGDAO");
+			Collection ranking = dao.getRanking(daysInt);
 			
 			req.setAttribute("ranking", ranking);
 			

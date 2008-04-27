@@ -26,17 +26,56 @@ import com.vanguarda.blog.dao.RakingDAO;
  */
 public class RankingDAOImpl extends AbstractDAO implements RakingDAO {
 	
-	private static final String SELECT_RANKING_QUERY = "SELECT  U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE," +
+	/*private static final String SELECT_RANKING_QUERY = "SELECT  U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE," +
 			"U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , B.NM_BLOG_ID, B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE ," +
 			"  B.NM_STATUS,  count(C.NM_COMMENT_ID) as QTD  FROM TB_BLOG_POST P  JOIN TB_BLOG B ON NM_BLOG_ID = " +
 			"P.NM_BLOG_ID_FK  JOIN TB_BLOG_USER U ON NM_USER_ID = B.NM_USER_ID_FK LEFT JOIN TB_BLOG_COMMENT AS C" +
 			" ON C.NM_POST_ID_FK = NM_POST_ID  AND C.NM_STATUS = 1 AND B.NM_STATUS = 1 GROUP BY  U.NM_USER_ID,U.VC_FIRSTNAME," +
 			"U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , " +
-			" B.VC_NAME,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE ,  B.NM_STATUS ORDER BY QTD DESC LIMIT 0 , 20";
+			" B.VC_NAME,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE ,  B.NM_STATUS ORDER BY QTD DESC LIMIT 0 , 20";*/
 	
+	
+	private static String SELECT_RANKING_BY_DAYS = "SELECT   U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE," +
+		" U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , B.NM_BLOG_ID, B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  " +
+		" B.DT_INSERTDATE , B.NM_STATUS, COUNT(NM_COMMENT_ID) AS QTD " +
+		" FROM TB_BLOG_COMMENT C" +
+		" JOIN TB_BLOG_POST P " +
+		    " ON C.NM_POST_ID_FK = NM_POST_ID " +
+		" JOIN  TB_BLOG B  " +
+		    " ON NM_BLOG_ID = P.NM_BLOG_ID_FK AND B.NM_STATUS = 1 " +
+		" JOIN TB_BLOG_USER U " +
+			" ON NM_USER_ID = B.NM_USER_ID_FK " +
+		" WHERE " +
+		" TO_DAYS(C.DT_INSERT_DATE)  >  ((TO_DAYS(NOW())) - ?) " +
+		" GROUP BY  " + 
+		" U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE, " +
+		" U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , B.NM_BLOG_ID, " +
+		" B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE , " +
+		" B.NM_STATUS  " +
+		
+		" ORDER BY QTD DESC LIMIT 0 , 20";
+	
+	private static String SELECT_RANKING_QUERY = "SELECT   U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE," +
+	"U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , B.NM_BLOG_ID, B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  " +
+	"B.DT_INSERTDATE , B.NM_STATUS, COUNT(NM_COMMENT_ID) AS QTD " +
+	"FROM TB_BLOG_COMMENT C" +
+	" JOIN TB_BLOG_POST P " +
+	    "ON C.NM_POST_ID_FK = NM_POST_ID " +
+	"JOIN  TB_BLOG B  " +
+	    "ON NM_BLOG_ID = P.NM_BLOG_ID_FK AND B.NM_STATUS = 1 " +
+	" JOIN TB_BLOG_USER U " +
+		"ON NM_USER_ID = B.NM_USER_ID_FK " +
+	
+	" GROUP BY  " + 
+	"U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE, " +
+	"U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , B.NM_BLOG_ID, " +
+	" B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE , " +
+	"B.NM_STATUS  " +
+	
+	"ORDER BY QTD DESC LIMIT 0 , 20";
 	
 		
-	public Collection getRanking() throws SQLException,Exception {
+	public Collection getRanking(int days) throws SQLException,Exception {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -50,8 +89,16 @@ public class RankingDAOImpl extends AbstractDAO implements RakingDAO {
 
 			
 			getConnection();
+			if(days > 0){
+				ps = conn.prepareStatement(SELECT_RANKING_BY_DAYS);
+				ps.setInt(1,days);
+			}
+			else
+			{
+				ps = conn.prepareStatement(SELECT_RANKING_QUERY);				
+			}
 			
-			ps = conn.prepareStatement(SELECT_RANKING_QUERY);
+			
 
 			rs = ps.executeQuery();
 			int colocacao = 1;
@@ -100,7 +147,7 @@ public class RankingDAOImpl extends AbstractDAO implements RakingDAO {
 	
 	public Object execute(String method, ArrayList parameters) throws Exception {
 		if (method.equals("getRanking")) {
-			return getRanking();
+			return getRanking(((Integer)parameters.get(0)).intValue());
 		}
 		return super.execute(method, parameters);
 	}

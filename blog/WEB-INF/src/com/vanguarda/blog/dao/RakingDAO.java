@@ -17,6 +17,6 @@ import java.util.Collection;
  */
 public interface RakingDAO {
 	
-	public Collection getRanking() throws SQLException,Exception;
+	public Collection getRanking(int days) throws SQLException,Exception;
 
 }

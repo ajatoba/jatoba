@@ -235,7 +235,7 @@ public class PostAction extends DispatchAction {
 					ArrayList posts = new ArrayList();
 					posts.add(post);
 
-					BlogManager.getInstance().setRanking(req);
+					BlogManager.getInstance().setRanking(req,30);
 					BlogManager.getInstance().setHistory(req, id);
 					req.setAttribute(Constants.BLOG_BEAN, blog);
 					req.setAttribute("posts", posts);
@@ -421,7 +421,7 @@ public class PostAction extends DispatchAction {
 					Collection posts = blog.getPosts();
 					User user = blog.getBloggerUser();
 
-					BlogManager.getInstance().setRanking(req);
+					BlogManager.getInstance().setRanking(req,0);
 					BlogManager.getInstance().setHistory(req, id);
 					BlogManager.getInstance().setFavorites(req, user.getId());
 

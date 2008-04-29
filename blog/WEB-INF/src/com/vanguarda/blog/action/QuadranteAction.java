@@ -248,8 +248,9 @@ public class QuadranteAction extends DispatchAction {
 			}
 			
 			HttpSession session = req.getSession();
-			
-			Collection rankings= (Collection) CacheManager.getInstance().hitCache(DaoFactory.getInstance("RANKINGDAO"),"getRanking",null);
+			ArrayList p = new ArrayList();
+			p.add(new Integer(1));
+			Collection rankings= (Collection) CacheManager.getInstance().hitCache(DaoFactory.getInstance("RANKINGDAO"),"getRanking",p);
 			
 			Topic topic = ((TopicDAO)(ForumDaoFactory.getInstance(ForumConstants.MAPPING_TOPIC_DAO))).loadTopTopic();
 			

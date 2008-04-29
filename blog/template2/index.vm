@@ -31,6 +31,45 @@
 <!-- FOOTER -->
 #parse("footer.vm")
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+    <TITLE>$blogTitle</TITLE>    
+	<link href="/$blogPath/blog.css" rel="stylesheet" type="text/css" />    
+</HEAD>
 
+<BODY style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; ">
+
+<!-- BARRA GLOBO.COM-->
+#parse("menu_frontpage.vm")
+
+<div id="back">
+<div id="fundo_maior">
+<div id="blog">
+		<!-- HEADER -->
+		#parse("header_frontpage.vm")
+				
+		<div id="meio">
+			<div id="esquerda">
+			<!-- BARRA LATERAL-->
+			#parse("sidebar.vm")
+			</div>
+			
+			<div id="direita">		
+			<!-- BODY -->
+			#parse("body_frontpage.vm")
+			</div>
+		</div>
+	
+<!-- FOOTER -->
+#parse("footer.vm")
+<!-- TAG DE AUDIÊNCIA -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-4276956-1";
+urchinTracker();
+</script>
+</BODY>
 </BODY>
 </HTML>

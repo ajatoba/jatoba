@@ -149,9 +149,9 @@
 		
 		<action path="/quadrant"
 			type="com.vanguarda.blog.action.QuadranteAction" scope="request"
-			parameter="act" name="quadrantForm" validate="false">
+			parameter="act" validate="false">
 			
-			<forward name="quadrant_home" path="/layout/home.jsp" />
+			<forward name="quadrant_home" path="/blogs/home.jsp" />
 			
 					
 		</action>

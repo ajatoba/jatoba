@@ -25,7 +25,7 @@ public class FavoriteDAOImpl extends AbstractDAO implements FavoriteDAO {
 		"AND C.NM_STATUS = 1 AND B.NM_STATUS = 1 " +
 		"GROUP BY  U.NM_USER_ID,U.VC_FIRSTNAME,	U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE, " +
 		"U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK ,  B.VC_NAME,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE ,  B.NM_STATUS " + 
-		"ORDER BY U.VC_FIRSTNAME LIMIT 0 , 10";
+		"ORDER BY U.VC_FIRSTNAME LIMIT 0 , 20";
 
 
 	public void add(String[] favorites, BlogUser user) throws SQLException,Exception{

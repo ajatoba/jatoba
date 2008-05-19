@@ -39,12 +39,12 @@ import com.vanguarda.blog.dao.DaoFactory;
 import com.vanguarda.blog.dao.ForumDaoFactory;
 import com.vanguarda.blog.dao.QuadranteDAO;
 import com.vanguarda.blog.dao.TopicDAO;
-import com.vanguarda.blog.dao.impl.BlogDAOImpl;
 import com.vanguarda.blog.form.QuadrantForm;
 import com.vanguarda.blog.helper.FileHelper;
 import com.vanguarda.blog.util.CacheManager;
 import com.vanguarda.blog.util.Constants;
 import com.vanguarda.blog.util.ForumConstants;
+import com.vanguarda.blog.util.LoggerUtil;
 
 public class QuadranteAction extends DispatchAction {
 
@@ -184,6 +184,7 @@ public class QuadranteAction extends DispatchAction {
 		
 		try {
 			
+			LoggerUtil.debug("Iniciando action de publicaçao  da home dinamica");
 			String page = "http://"+(String)BlogManager.getInstance().getProperties().get(Constants.LOCALHOST_PROPERTY)+"/index.html";
 			String path = (String)BlogManager.getInstance().getProperties().get(Constants.ROOTPATH_PROPERTY);
 			FileHelper.writerStaticFile(path,"index.html","http://"+(String)BlogManager.getInstance().getProperties().get(Constants.LOCALHOST_PROPERTY)+":"+req.getLocalPort()+"/blog/quadrant.do?act=loadSite");
@@ -198,6 +199,7 @@ public class QuadranteAction extends DispatchAction {
 			
 			
 		} catch (Exception e) {
+			LoggerUtil.error("Ocorreu um erro na publicaçao da home dinamica" , e);
 			e.printStackTrace();
 			// TODO: handle exception
 		}
@@ -209,6 +211,8 @@ public class QuadranteAction extends DispatchAction {
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
 		try {
+			
+			LoggerUtil.debug("Iniciando action de publicaçao do preview da home dinamica");
 			String page = "http://"+(String)BlogManager.getInstance().getProperties().get(Constants.LOCALHOST_PROPERTY)+"/index_teste.html";
 			String path = (String)BlogManager.getInstance().getProperties().get(Constants.ROOTPATH_PROPERTY);
 			FileHelper.writerStaticFile(path,"index_teste.html","http://"+(String)BlogManager.getInstance().getProperties().get(Constants.LOCALHOST_PROPERTY)+":"+req.getLocalPort()+"/blog/quadrant.do?act=loadSite");
@@ -223,6 +227,7 @@ public class QuadranteAction extends DispatchAction {
 			
 			
 		} catch (Exception e) {
+			LoggerUtil.error("Ocorreu um erro na publicaçao do preview da home dinamica" , e);
 			e.printStackTrace();
 			// TODO: handle exception
 		}
@@ -236,6 +241,8 @@ public class QuadranteAction extends DispatchAction {
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
 		try {
+			
+			LoggerUtil.debug("Iniciando action da Home dinamica");
 			ArrayList quadrantes = (ArrayList) dao.listaQuadrantes(Constants.STATUS_ACTIVE);
 			Map map = new HashMap();
 			
@@ -263,6 +270,8 @@ public class QuadranteAction extends DispatchAction {
 			return mapping.findForward(Constants.QUADRANT_HOME_FORWARD);
 			
 		} catch (Exception e) {
+			
+			LoggerUtil.error("Ocorreu um erro ao carregar home dinamica", e);
 			
 			ActionMessages errors = new ActionMessages();
 			errors.add(Constants.ERROR_PARAMETER, new ActionMessage(Constants.QUADRANT_MESSAGE_ERROR));

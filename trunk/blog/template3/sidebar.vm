@@ -19,7 +19,7 @@ switch(tamanho)
 case 'tt1': document.getElementById(id).className = 'tt2'; break;
 case 'tt2': document.getElementById(id).className = 'tt3'; break;
 case 'tt3': document.getElementById(id).className = 'tt4'; break;
-default : alert("chegou ao Maior tamanho");
+
 
 }
 
@@ -35,7 +35,7 @@ switch(tamanho)
 case 'tt4': document.getElementById(id).className = 'tt3'; break;
 case 'tt3': document.getElementById(id).className = 'tt2'; break;
 case 'tt2': document.getElementById(id).className = 'tt1'; break;
-default : alert("chegou ao Menor tamanho");
+
 
 }
 

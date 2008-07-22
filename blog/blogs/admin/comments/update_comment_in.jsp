@@ -35,10 +35,16 @@
 </div>
 <div id="barra_repeat">
 	<div id="barra">
-    	<a href="/blog/blogs/admin/post.do?act=list" style="text-decoration:none;"><span>&nbsp;SEUS POSTS&nbsp;</span></a>&nbsp;&nbsp;&nbsp;<a href="/blog/blogs/admin/post/add_post_in.jsp" style="text-decoration:none;"><span>&nbsp;CRIAR NOVO POST&nbsp;</span></a>&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1);" style="text-decoration:none;"><span>&nbsp;VOLTAR AOS COMENTÁRIOS&nbsp;</span></a>
+    	<a href="/blog/blogs/admin/post.do?act=list" style="text-decoration:none;"><span>&nbsp;SEUS POSTS&nbsp;</span></a>&nbsp;&nbsp;&nbsp;
+    	<a href="/blog/blogs/admin/post/add_post_in.jsp" style="text-decoration:none;"><span>&nbsp;CRIAR NOVO POST&nbsp;</span></a>&nbsp;&nbsp;&nbsp;
+  		<a href="/blog/blogs/admin/post.do?act=publish&id=${blogId}" style="text-decoration:none;"><span>ATUALIZAR BLOG</span></a>&nbsp;&nbsp;&nbsp;
+  		<a href="/blog/admin/blog.do?act=list" style="text-decoration:none;"><span>LISTAR OUTROS BLOGS</span></a>&nbsp;&nbsp;&nbsp;
+		<a href="/blog/blogs/admin/blogUser.do?act=load" style="text-decoration:none;"><span>ATUALIZAR DADOS</span></a>&nbsp;&nbsp;&nbsp;
+		<span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>
+
+    	<a href="javascript:history.go(-1);" style="text-decoration:none; font-size:10px;"><span>&nbsp;VOLTAR</span></a>
         
-        	<span style="font-size:12px; color:#FFFFFF; line-height:10px; margin-left:113px; font-weight:normal;">Usuário:&nbsp;</span><span style="font-size:13px; font-weight:bold; color:#FFFFFF;">Login</span>&nbsp;&nbsp;&nbsp;
-            <span style=" vertical-align:middle; line-height:41px;"><a href="/blog/blogs/blogUser.do?act=logout" ><img src="/bloglog/admin/imgs/logout.jpg" style="margin-top:6px; border:none;"/></a></span>      </div>
+</div>
 </div>
 <div id="meio_repeat">
 	<div id="meio">

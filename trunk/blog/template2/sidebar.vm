@@ -50,7 +50,7 @@ default : alert("chegou ao Menor tamanho");
 	$blogDescription
 </div>
 <div>
-<iframe scrolling="No" frameborder="0" src="/$blogPath/selo_left.html" style="width:500; height:80px; border:0px;"></iframe>
+<iframe scrolling="No" frameborder="0" src="selo_left.html" style="width:224px; margin-bottom:10px; height:57px; border:0px;"></iframe>
 </div>		
 <div id="busca">
 	<div class="espproc1"></div>

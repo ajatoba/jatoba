@@ -11,13 +11,47 @@ function Perfil(){
 	window.open('/$blogPath/perfil.html','resultado','width=519,height=600,toolbar=0,scrollbars=yes');
 }
 
+function Aumenta(id){
+var tamanho = document.getElementById(id).className;
+
+switch(tamanho)
+{
+case 'tt1': document.getElementById(id).className = 'tt2'; break;
+case 'tt2': document.getElementById(id).className = 'tt3'; break;
+case 'tt3': document.getElementById(id).className = 'tt4'; break;
+default : alert("chegou ao Maior tamanho");
+
+}
+
+}
+
+
+function Diminui(id){
+
+var tamanho = document.getElementById("3507").className;
+
+switch(tamanho)
+{
+case 'tt4': document.getElementById(id).className = 'tt3'; break;
+case 'tt3': document.getElementById(id).className = 'tt2'; break;
+case 'tt2': document.getElementById(id).className = 'tt1'; break;
+default : alert("chegou ao Menor tamanho");
+
+}
+
+
+}
+
+
 </script>
 
 
 <div id="descblog"><br class="espacinho">
 	$blogDescription
 </div>
-		
+<div>
+<iframe scrolling="No" frameborder="0" src="/$blogPath/selo_left.html" style="width:500; height:80px; border:0px;"></iframe>
+</div>		
 <div id="busca">
 	<div class="espproc1"></div>
 	<div class="proc">PROCURAR</div>

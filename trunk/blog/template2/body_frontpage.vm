@@ -56,6 +56,7 @@
 		
 	    <p class="data">Escrito em:$post.insertDate.date/$mes/$ano </p>
 		<p class="titulo">$post.title </p>
+		<p align="right" class="titulo" style="width:500px; display:table;" > <span onclick="Diminui(3507); " style="cursor:hand; font-size:13px; float:right; line-height:20px; ">A-</span><span onclick="Aumenta(3507);" style="cursor:hand; font-size:16px;float:right; margin-right:6px; line-height:20px;">A+</span><span style="font-size:8px; line-height:10px; float:right;margin-right:9px;">Tamanho da<br /> letra</span></p>
 		<p>$post.content </p>
 
 

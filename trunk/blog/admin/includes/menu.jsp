@@ -16,7 +16,6 @@
     <td width="20%"><b><a href="/blog/admin/blog.do?act=list">Blogs</a></b></td>
     <td width="20%"><b><a href="/blog/admin/blogUser.do?act=list">Blogueiros</a></b></td>
     <td width="20%"><b><a href="/blog/admin/userCommentator.do?act=listCommentador">Usuarios</a></b></td>
-    <td width="20%"><b><a href="/blog/admin/topic.do?act=list">Tópicos</a></b></td>
     <td width="20%"><b><a href="/blog/admin/quadrant.do?act=list">Home dinamica</a></b></td>
     <td width="20%"><b><a href="#" onClick="window.open('/blog/admin/users/update_password_in.jsp','','scrollbars=yes,height=400,width=600');">Atualização de Senhas</a></b></td>
 	<td width="20%"><b><a href="/blog/adminUser.do?act=logout">Logout</a></b></td>

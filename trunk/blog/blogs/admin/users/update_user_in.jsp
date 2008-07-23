@@ -86,28 +86,33 @@
    <html:hidden property="id" value="${blogUser.id}"/>
    
  
-    <span class="style14">Nome: </span>
-    <html:text property="firstName" readonly="true" value="${blogUser.firstName}" />
-    <br/>
-    <span class="style14">Sobrenome:</span> 
-     <html:text property="lastName" readonly="true" value="${blogUser.lastName}"/>
-    <br/>
-    <span class="style14">E -mail: </span>
-    <html:text property="email" readonly="true" value="${blogUser.email}" />
-    <br/>
-    
-    
-    <html:hidden property="status" value="${blogUser.status}" />
-    <br/>
-    <span class="style14">Login:</span> 
-    <html:text property="login" readonly="true" value="${blogUser.login}"/>
-    <br/>
-    <span class="style14">Senha:</span>
-    <html:password property="password" value="${blogUser.password}"/>
-  </p>
-  <p>
+    <table>
+  <tr>
+    <td><span class="style14">Nome: </span></td>
+    <td><html:text property="firstName" readonly="true" value="${blogUser.firstName}" /></td>
+  </tr>
+  <tr>
+    <td><span class="style14">Sobrenome:</span></td>
+    <td><html:text property="lastName" readonly="true" value="${blogUser.lastName}"/></td>
+  </tr>
+  <tr>
+    <td><span class="style14">E -mail: </span></td>
+    <td><html:text property="email" readonly="true" value="${blogUser.email}" /></td>
+  </tr>
+  <tr>
+    <td><span class="style14">Login:</span></td>
+    <td><html:text property="login" readonly="true" value="${blogUser.login}"/></td>
+  </tr>
+  <tr>
+    <td><span class="style14">Senha:</span></td>
+    <td><html:password property="password" value="${blogUser.password}"/></td>
+  </tr>
+</table>
+<html:hidden property="status" value="${blogUser.status}" /> 
+  
+
     <html:submit  value="Alterar"/>
-  </p>
+
   
 </html:form>
 </div>

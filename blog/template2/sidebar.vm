@@ -50,7 +50,7 @@ case 'tt2': document.getElementById(id).className = 'tt1'; break;
 	$blogDescription
 </div>
 <div>
-<iframe scrolling="No" frameborder="0" src="selo_left.html" style="width:224px; margin-bottom:10px; height:57px; border:0px;"></iframe>
+<iframe scrolling="No" frameborder="0" src="/$blogPath/selo_left.html" style="width:224px; margin-bottom:10px; height:57px; border:0px;"></iframe>
 </div>		
 <div id="busca">
 	<div class="espproc1"></div>
@@ -59,7 +59,7 @@ case 'tt2': document.getElementById(id).className = 'tt1'; break;
 	<form name="form_busca" action="/blog/post.do?act=search" method="POST" >
 		<input name="palavra_chave" type="text" class="txt"/>
 		<input name="id" type="hidden" value="$blogId"/>
-		<a href="#"><img src="/$blogPath/img/btn_buscar.jpg" onClick="javascript:submitForm()"></a>
+		<a href="#"><img src="/$blogPath/img/btn_buscar.jpg" onclick="javascript:submitForm()"></a>
 	</form>	
 </div>
 

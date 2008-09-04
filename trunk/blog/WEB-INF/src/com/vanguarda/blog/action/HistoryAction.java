@@ -67,7 +67,8 @@ public class HistoryAction extends DispatchAction {
 		
 		String key = "";
 		
-		for(int i = 0; i < 12; i++ )
+		//Mostra os arquivos dos últimos 36 meses, conforme requisitos
+		for(int i = 0; i < 36; i++ )
 		{
 			History history = new History();
 			

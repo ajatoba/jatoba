@@ -60,7 +60,7 @@
 			<td align="center" style="font-size:16px; font-family:Trebuchet MS; font-weight:bold; color:#147ABA;">
 				Seu post foi cadastrado com sucesso, clique no botão abaixo para publicar.
 			    <br /><br />
-			    <a href="/blog/blogs/admin/post.do?act=publish&id=${blogId}"><img src="http://www3.bloglog.com.br/bloglog/admin/img/publicar.jpg" width="77" height="26" border="0" /></a></td>
+			    <a href="/blog/blogs/admin/post.do?act=publish&id=${blogId}"><img src="/bloglog/admin/imgs/publicar.jpg" width="77" height="26" border="0" /></a></td>
 			</tr>
         </table>	
 		</td>

@@ -57,12 +57,12 @@ body {
 
 <table width="864" align="center" border="0" cellpadding="0" cellspacing="0">
   <tr bgcolor="#51585E"> 
-    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>id</b></span></td>
-    <td width="364"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>blogueiro</b></span></td>
-    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>cadastrado em</b></span></td>
-    <td width="100" align="center"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>status</b></span></td>
-    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>excluir</b></span></td>
-    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>editar</b></span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">id</span></td>
+    <td width="364"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">blogueiro</span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">cadastrado em</span></td>
+    <td width="100" align="center"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">status</span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">excluir</span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">editar</span></td>
   </tr>
   
   <logic:iterate name="blogs" id="b" indexId="i">

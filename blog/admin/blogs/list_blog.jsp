@@ -28,22 +28,36 @@
 
 <pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="50">
 
-<table border ="0" align="center"><tr><td><a href="/blog/admin/blog.do?act=addForm">[[NOVO]]</a></td></tr></table>
-<table width="913" border="0">
-  <tr bgcolor="#FFFFCC"> 
-    <td width="5%"><b>id</b></td>
-    <td width="30%"><b>blogueiro</b></td>
-    <td width="10%"><b>cadastrado em</b></td>
-    <td width="5%" align="center"><b>status</b></td>
-    <td width="5%"><b>excluir</b></td>
-    <td width="20%"><b>editar</b></td>
+<table id="Table_01" width="864" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<a href="/blog/admin/blog.do?act=addForm"><img src="img/menu_criar_01.jpg" alt="" name="menu_criar_01" width="173" height="46" border="0" id="menu_criar_01" /></a></td>
+<td>
+			<img id="menu_criar_02" src="/bloglog/admin/img/menu_criar_02.jpg" width="173" height="46" alt="" /></td>
+		<td>
+			<img id="menu_criar_03" src="/bloglog/admin/img/menu_criar_03.jpg" width="172" height="46" alt="" /></td>
+		<td>
+			<img id="menu_criar_04" src="/bloglog/admin/img/menu_criar_04.jpg" width="173" height="46" alt="" /></td>
+		<td>
+			<img id="menu_criar_05" src="/bloglog/admin/img/menu_criar_05.jpg" width="173" height="46" alt="" /></td>
+	</tr>
+</table>
+
+<table width="864" border="0">
+  <tr bgcolor="#51585E"> 
+    <td width="5%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>id</b></span></td>
+    <td width="50%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>blogueiro</b></span></td>
+    <td width="10%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>cadastrado em</b></span></td>
+    <td width="5%" align="center"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>status</b></span></td>
+    <td width="5%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>excluir</b></span></td>
+    <td width="20%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>editar</b></span></td>
   </tr>
   
   <logic:iterate name="blogs" id="b" indexId="i">
   <pg:item>
   <tr>   
     <td width="5%"><bean:write name="b" property="id"/></td>
-    <td width="30%"><bean:write name="b" property="name"/></td>
+    <td width="50%"><bean:write name="b" property="name"/></td>
     <td width="10%"><bean:write name="b" property="insertDate" format="dd/MM/yyyy"/></td>
     <td width="5%" align="center">
     <c:choose>

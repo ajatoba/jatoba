@@ -6,7 +6,7 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-   <body>
+   <body border="0" cellpadding="0" cellspacing="0">
    <script>
 	function confirmaDelecao(url)
 	{
@@ -26,23 +26,24 @@
 <%@ include file="/admin/includes/menu.jsp"%>
 <br>
 
-<pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="150">
+<pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="50">
 
-<table border ="0" ><tr><td><a href="/blog/admin/blog.do?act=addForm">[[NOVO]]</a></td></tr></table>
-<table width="770" border="0">
+<table border ="0" align="center"><tr><td><a href="/blog/admin/blog.do?act=addForm">[[NOVO]]</a></td></tr></table>
+<table width="913" border="0">
   <tr bgcolor="#FFFFCC"> 
-    <td width="5%"><b>Id</b></td>
-    <td><b>Nome</b></td>
-    <td width="10%"><b>Data</b></td>
-    <td width="5%" align="center"><b>Status</b></td>
-    <td width="20%"><b></b></td>
+    <td width="5%"><b>id</b></td>
+    <td width="30%"><b>blogueiro</b></td>
+    <td width="10%"><b>cadastrado em</b></td>
+    <td width="5%" align="center"><b>status</b></td>
+    <td width="5%"><b>excluir</b></td>
+    <td width="20%"><b>editar</b></td>
   </tr>
   
   <logic:iterate name="blogs" id="b" indexId="i">
   <pg:item>
   <tr>   
     <td width="5%"><bean:write name="b" property="id"/></td>
-    <td><bean:write name="b" property="name"/></td>
+    <td width="30%"><bean:write name="b" property="name"/></td>
     <td width="10%"><bean:write name="b" property="insertDate" format="dd/MM/yyyy"/></td>
     <td width="5%" align="center">
     <c:choose>
@@ -54,8 +55,9 @@
     </c:otherwise>
     </c:choose>
     </td>
-    <td width="20%"><a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">[[ALTERAR]]</a> <a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')">[[DELETAR]]</a>
-    <a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">[[POSTS]]</a>
+    <td width="5%"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')">X</a></td>
+    <td width="20%"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a>  <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> 
+    
     </td>
   </tr>
   </pg:item>

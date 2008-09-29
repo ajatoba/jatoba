@@ -11,13 +11,13 @@
   <Resource
     name="jdbc/blog"
     type="javax.sql.DataSource"
-    username="bloglog3_bloglog"
-    password="pqp1000x"
+    username="bloglog"
+    password="bloglog"
     maxActive="300"
     maxIdle="50"
     maxWait="10000"
     driverClassName="org.gjt.mm.mysql.Driver"
-    url="jdbc:mysql://www3.bloglog.com.br/bloglog3_bloglog"
+    url="jdbc:mysql://www3.bloglog.com.br/bloglog"
     />
 
 	  <Realm  

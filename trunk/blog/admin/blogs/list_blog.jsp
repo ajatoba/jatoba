@@ -81,7 +81,7 @@ body {
     </c:otherwise>
     </c:choose>
     </td>
-    <td width="100"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')">X</a></td>
+    <td width="100"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')"><img src="/bloglog/admin/img/btn_exc.jpg" border="0"/></a></td>
     <td width="100"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a>  <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> 
     
     </td>
@@ -92,7 +92,7 @@ body {
 <p align="center">
 <pg:index>
 	<pg:prev>
-		<a href="<%=pageUrl%>&act=list">[<< Prev]</a>	
+		<a href="<%=pageUrl%>&act=list"><img src="/bloglog/admin/img/admin_ant.jpg" border="0"/></a>	
 	</pg:prev>
 	
 	<pg:pages>
@@ -100,7 +100,7 @@ body {
 	</pg:pages>
 	
 	<pg:next>
-		<a href="<%= pageUrl%>&act=list">[Next >>]</a>
+		<a href="<%= pageUrl%>&act=list"><img src="/bloglog/admin/img/admin_prox.jpg" border="0"/></a>
 	</pg:next>
 </pg:index>
 </p>

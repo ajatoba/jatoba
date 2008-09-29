@@ -28,10 +28,10 @@
 
 <pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="50">
 
-<table id="Table_01" width="864" border="0" cellpadding="0" cellspacing="0">
+<table id="Table_01" width="864" align="center" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td>
-			<a href="/blog/admin/blog.do?act=addForm"><img src="img/menu_criar_01.jpg" alt="" name="menu_criar_01" width="173" height="46" border="0" id="menu_criar_01" /></a></td>
+			<a href="/blog/admin/blog.do?act=addForm"><img src="/bloglog/admin/img/menu_criar_01.jpg" alt="" name="menu_criar_01" width="173" height="46" border="0" id="menu_criar_01" /></a></td>
 <td>
 			<img id="menu_criar_02" src="/bloglog/admin/img/menu_criar_02.jpg" width="173" height="46" alt="" /></td>
 		<td>
@@ -43,7 +43,7 @@
 	</tr>
 </table>
 
-<table width="864" border="0">
+<table width="864" align="center" border="0" cellpadding="0" cellspacing="0">
   <tr bgcolor="#51585E"> 
     <td width="5%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>id</b></span></td>
     <td width="50%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>blogueiro</b></span></td>

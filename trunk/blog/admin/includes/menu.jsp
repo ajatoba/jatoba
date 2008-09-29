@@ -19,7 +19,7 @@
         <div style="float:left"><a href="/blog/admin/blogUser.do?act=list"><img src="/bloglog/admin/img/btn_blogueiros.jpg" alt="" name="btn_blogueiros" width="128" height="45" border="0" id="btn_blogueiros" /></a></div>
         <div style="float:left"><a href="/blog/admin/userCommentator.do?act=listCommentador"><img src="/bloglog/admin/img/btn_users.jpg" alt="" name="btn_users" width="109" height="45" border="0" id="btn_users" /></a></div>
         <div style="float:left"><a href="/blog/admin/quadrant.do?act=list"><img src="/bloglog/admin/img/btn_home.jpg" alt="" name="btn_home" width="156" height="45" border="0" id="btn_home" /></a></div>
-        <div style="float:left"><a href="# onClick=&quot;window.open('/blog/admin/users/update_password_in.jsp','','scrollbars=yes,height=400,width=600');"><img src="/bloglog/admin/img/btn_senha.jpg" alt="" name="btn_senha" width="167" height="45" border="0" id="btn_senha" /></a></div>
+        <div style="float:left"><a href="#" onClick=&quot;window.open('/blog/admin/users/update_password_in.jsp','','scrollbars=yes,height=400,width=600');"><img src="/bloglog/admin/img/btn_senha.jpg" alt="" name="btn_senha" width="167" height="45" border="0" id="btn_senha" /></a></div>
         <div style="float:left; width:241px; height:45px;"></div>
       </td>
   </tr>

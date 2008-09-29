@@ -57,21 +57,21 @@ body {
 
 <table width="864" align="center" border="0" cellpadding="0" cellspacing="0">
   <tr bgcolor="#51585E"> 
-    <td width="5%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>id</b></span></td>
-    <td width="50%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>blogueiro</b></span></td>
-    <td width="10%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>cadastrado em</b></span></td>
-    <td width="5%" align="center"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>status</b></span></td>
-    <td width="5%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>excluir</b></span></td>
-    <td width="20%"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>editar</b></span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>id</b></span></td>
+    <td width="364"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>blogueiro</b></span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>cadastrado em</b></span></td>
+    <td width="100" align="center"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>status</b></span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>excluir</b></span></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF"><b>editar</b></span></td>
   </tr>
   
   <logic:iterate name="blogs" id="b" indexId="i">
   <pg:item>
   <tr>   
-    <td width="5%"><bean:write name="b" property="id"/></td>
-    <td width="50%"><bean:write name="b" property="name"/></td>
-    <td width="10%"><bean:write name="b" property="insertDate" format="dd/MM/yyyy"/></td>
-    <td width="5%" align="center">
+    <td width="100"><bean:write name="b" property="id"/></td>
+    <td width="364"><bean:write name="b" property="name"/></td>
+    <td width="100"><bean:write name="b" property="insertDate" format="dd/MM/yyyy"/></td>
+    <td width="100" align="center">
     <c:choose>
     <c:when test="${b.status == 1}">
 	    <img src="/bloglog/admin/img/ativo.jpg" border="0" />		    
@@ -81,8 +81,8 @@ body {
     </c:otherwise>
     </c:choose>
     </td>
-    <td width="5%"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')">X</a></td>
-    <td width="20%"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a>  <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> 
+    <td width="100"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')">X</a></td>
+    <td width="100"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a>  <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> 
     
     </td>
   </tr>

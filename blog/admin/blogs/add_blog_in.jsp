@@ -5,8 +5,20 @@
 <%@ taglib uri="/tags/struts-html" prefix="html" %>
 
 <html:html>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
 <body>
- <%@ include file="/admin/includes/menu.jsp"%>
+<TABLE width="913" border="0" align="center">
+  <TR>
+    <th scope="col"> <%@ include file="/admin/includes/menu.jsp"%>
  
  <br/>
    
@@ -53,6 +65,8 @@
 	  </logic:present>
 	</center>
 </p>
-<%@ include file="/admin/includes/footer.html"%>
+<%@ include file="/admin/includes/footer.html"%></th>
+  </TR>
+</TABLE>
 </body>
 </html:html>

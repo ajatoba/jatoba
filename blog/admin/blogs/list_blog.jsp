@@ -68,8 +68,8 @@ body {
   <logic:iterate name="blogs" id="b" indexId="i">
   <pg:item>
   <tr>   
-    <td width="100"><bean:write name="b" property="id"/></td>
-    <td width="364"><bean:write name="b" property="name"/></td>
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; color:#3998f7"><bean:write name="b" property="id"/></span></td>
+    <td width="364"><span style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#2f3439"><bean:write name="b" property="name"/></span></td>
     <td width="100"><bean:write name="b" property="insertDate" format="dd/MM/yyyy"/></td>
     <td width="100" align="center">
     <c:choose>
@@ -82,7 +82,7 @@ body {
     </c:choose>
     </td>
     <td width="100"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')"><img src="/bloglog/admin/img/btn_exc.jpg" border="0"/></a></td>
-    <td width="100"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a>  <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> 
+    <td width="100"><span style="color:#2f3439"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a></span> <span style="color:#2f3439"> <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> </span>
     
     </td>
   </tr>

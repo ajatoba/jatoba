@@ -6,53 +6,63 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
 <body>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
 <%@ include file="/admin/includes/menu.jsp"%>
+</td></tr></table>
 <br>
 
 <pg:pager url="blogUser.do" maxIndexPages="5" maxPageItems="150">
 
-<table border ="0" ><tr><td><a href="users/add_user_in.jsp">[[NOVO]]</a></td></tr></table>
-<html:form action="/admin/blogUser.do?act=search" method="post">
-		<table border="0">
-			<tr>
-				<td colspan="2"><b>Busca</b></td>
-				
-			</tr>
-			<tr>
-				<td>Nome:</td>
-				<td><html:text property="firstName"/> </td>
-			</tr>
-			<tr>
-				<td>Sobrenome:</td>
-				<td><html:text property="lastName"/> </td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><html:text property="email"/></td>
-			</tr>
-			<tr>
-				<td> <html:submit value="Buscar"/> </td>
-				<td></td>
-			</tr>
-		</table>
-	</html:form>
-<table width="770" border="0">
-  <tr bgcolor="#FFFFCC"> 
-    <td width="30%"><b>Nome</b></td>
-    <td width="30%"><b>E-mail</b></td>
-    <td width="15%"><b>Login</b></td>
-    <td width="5%"><b>Status</b></td>
-    <td ><b></b></td>
+<table width="857" align="center" height="37" border="0" cellpadding="0" cellspacing="0" background="/bloglog/admin/img/admin_master_fundo_01.jpg">
+  <tr>
+    <th width="140" scope="col"><a href="users/add_user_in.jsp"><img src="/bloglog/admin/img/criar_blogueiro.jpg" width="123" height="24" border="0" /></a></th>
+    <th>
+    <html:form action="/admin/blogUser.do?act=search" method="post">
+     <table width="100%">
+     	<tr>
+        	<th scope="col"><div align="right"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #2D363C;">nome : <html:text property="firstName" size="10"/></span></div> 
+    <th width="180" scope="col"><div align="left"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #2D363C;">sobrenome : 
+      <html:text property="lastName" size="10"/>
+    </span></div></th>
+    <th width="140" scope="col"><div align="left"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #2D363C;">email : 
+      <html:text property="email" size="10"/>
+    </span></div></th>
+    <th width="80" scope="col"><html:submit value="Buscar"/></th>
+        </tr>
+     </table>
+     </html:form>
+    </th>
+  </tr>
+</table>
+<table width="857" align="center" border="0" cellpadding="0" cellspacing="0">
+    <tr bgcolor="#51585E"> 
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">blogueiro</span></td>
+    <td width="400"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">email</span></td>
+    <td width="207"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">login</span></td>
+    <td width="50" align="center"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">status</span></td>
+    <td width="50"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">excluir</span></td>
+    <td width="50"><span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF">editar</span></td>
   </tr>
   
   <logic:iterate name="users" id="u" indexId="i">
   <pg:item>
   <tr>   
-    <td width="30%"><bean:write name="u" property="firstName"/> </td>
-    <td width="30%"><bean:write name="u" property="email"/></td>
-    <td width="15%"><bean:write name="u" property="login"/></td>
-    <td width="5%">
+    <td width="100"><span style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#2f3439"><bean:write name="u" property="firstName"/><span> </td>
+    <td width="400"><bean:write name="u" property="email"/></td>
+    <td width="207"><bean:write name="u" property="login"/></td>
+    <td width="50">
     <c:choose>
     <c:when test="${u.status == 1}">
 	    <img src="/bloglog/admin/img/ativo.jpg" border="0" />		    
@@ -62,7 +72,9 @@
     </c:otherwise>
     </c:choose>
     </td>
-    <td ><a href="/blog/admin/blogUser.do?act=load&id=<bean:write name="u" property="id"/>">[[ALTERAR]]</a> <a href="/blog/admin/blogUser.do?act=delete&id=<bean:write name="u" property="id"/>">[[DELETAR]]</a></td>
+    <td width="50"><a href="/blog/admin/blogUser.do?act=delete&id=<bean:write name="u" property="id"/>"><img src="/bloglog/admin/img/btn_exc.jpg" border="0"/></a></td>
+    <td width="50"><a href="/blog/admin/blogUser.do?act=load&id=<bean:write name="u" property="id"/>"><img src="/bloglog/admin/img/btn_edit.jpg" border="0"/></a></td>
+    
   </tr>
   </pg:item>
   </logic:iterate>
@@ -71,21 +83,24 @@
 <p align="center">
 <pg:index>
 	<pg:prev>
-		<a href="<%=pageUrl%>&act=list">[<< Prev]</a>	
+		<a href="<%=pageUrl%>&act=list"><img src="/bloglog/admin/img/admin_ant.jpg" border="0"/></a>	
 	</pg:prev>
 	
 	<pg:pages>
-		<a href="<%= pageUrl %>&act=list"><%= pageNumber %></a>
+		<span style="font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#2f3439"><a href="<%= pageUrl %>&act=list"><%= pageNumber %></a></span>
 	</pg:pages>
 	
 	<pg:next>
-		<a href="<%= pageUrl%>&act=list">[Next >>]</a>
+		<a href="<%= pageUrl%>&act=list"><img src="/bloglog/admin/img/admin_prox.jpg" border="0"/></a>
 	</pg:next>
 </pg:index>
 </p>
 
 </pg:pager>
 
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>   
 <%@ include file="/admin/includes/footer.html"%>
+</td></tr></table>
 </body>
 </html>

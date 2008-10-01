@@ -82,7 +82,7 @@ body {
     </c:choose>
     </td>
     <td width="100"><a href="#" onclick="confirmaDelecao('/blog/admin/blog.do?act=delete&id=<bean:write name="b" property="id"/>')"><img src="/bloglog/admin/img/btn_exc.jpg" border="0"/></a></td>
-    <td width="100"><span style="color:#2f3439"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a></span> <span style="color:#2f3439"> <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> </span>
+    <td width="100"><span style="color:#2f3439;"><a href="/blog/blogs/admin/post.do?act=list&blogId=<bean:write name="b" property="id"/>">post</a>&nbsp;|&nbsp;</span><span style="color:#2f3439;"> <a href="/blog/admin/blog.do?act=load&id=<bean:write name="b" property="id"/>">blog</a> </span>
     
     </td>
   </tr>

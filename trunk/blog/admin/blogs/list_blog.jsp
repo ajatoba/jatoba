@@ -38,7 +38,7 @@ body {
 </td></tr></table>
 <br>
 
-<pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="50">
+<pg:pager url="/blog/admin/blog.do" maxIndexPages="5" maxPageItems="500">
 
 <table id="Table_01" width="864" align="center" border="0" cellpadding="0" cellspacing="0">
 	<tr>

@@ -430,11 +430,13 @@ public class PostAction extends DispatchAction {
 					req.setAttribute("posts", posts);
 					req.setAttribute("blogPath", blog.getPath());
 					req.setAttribute(Constants.BLOGGER_USER_BEAN, user);
+					
 					req.setAttribute("keyWord", keyWord);
-
 					req.setAttribute("search", new Boolean(true));
+					
+					//return new ActionForward(blog.getTemplate().getBlogPath());
 
-					return new ActionForward(blog.getTemplate().getBlogPath());
+					return new ActionForward("/servlet/content");
 				} else {
 					return mapping.findForward("");
 				}

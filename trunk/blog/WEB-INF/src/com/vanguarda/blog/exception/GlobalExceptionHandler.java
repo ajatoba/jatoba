@@ -17,7 +17,8 @@ import org.apache.struts.config.ExceptionConfig;
 public class GlobalExceptionHandler extends ExceptionHandler
 {
 	public ActionForward execute(Exception exc, ExceptionConfig arg1, ActionMapping mapping, ActionForm arg3, HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-		
+		exc.printStackTrace();
+		req.setAttribute("mensagem_erro", exc.getMessage());
 		return mapping.findForward("error");
 	}
 }

@@ -312,12 +312,11 @@ public class PostAction extends DispatchAction {
 			VelocityEngine ve = new VelocityEngine();
 			Properties props = new Properties();
 
-			props.setProperty(VelocityEngine.FILE_RESOURCE_LOADER_PATH, req
-					.getRealPath(blog.getTemplate().getDescription()));
+			String docroot = (String) BlogManager.getInstance().getProperties().get("docroot");
 			
-			/*props.setProperty(VelocityEngine.FILE_RESOURCE_LOADER_PATH, req
-					.getRealPath("/template1"));*/
-
+			props.setProperty(VelocityEngine.FILE_RESOURCE_LOADER_PATH, 
+					docroot + blog.getTemplate().getDescription());
+			
 			ve.init(props);
 
 			//pegando o template

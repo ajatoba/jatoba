@@ -356,7 +356,8 @@ public class BlogAction extends DispatchAction {
 				req.setAttribute("blogPath",blog.getPath());
 				req.setAttribute(Constants.BLOGGER_USER_BEAN,user);
 				
-				return new ActionForward(blog.getTemplate().getBlogPath());
+				//return new ActionForward(blog.getTemplate().getBlogPath());
+				return new ActionForward("/servlet/content");
 				
 			} catch (Exception e) {
 				e.printStackTrace();

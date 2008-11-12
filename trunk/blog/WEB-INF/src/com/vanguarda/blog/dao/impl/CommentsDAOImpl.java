@@ -47,6 +47,9 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 
 	private static final String UPDATE_COUNT_COMMENTS_QUERY = "UPDATE TB_BLOG_POST SET NM_COUNT_COMMNTS = ? WHERE NM_POST_ID = ?";
 
+	private static final String ADD_ANSWER_QUERY = "UPDATE TB_BLOG_COMMENT SET VC_ANSWER = ? WHERE NM_COMMENT_ID = ?";
+
+	
 	public void add(Comment comment) throws SQLException,Exception {
 		
 
@@ -142,6 +145,32 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 		}
 	}
 
+	public void addAnswer(Comment comment) throws SQLException,Exception {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+
+			getConnection();
+			
+			ps = conn.prepareStatement(ADD_ANSWER_QUERY);
+			
+			ps.setString(1, comment.getAnswer());
+			ps.setInt(2, comment.getId());
+
+			ps.executeUpdate();
+
+
+		} catch (Exception e) {
+
+			throw e;
+
+		} finally {
+			closeAll(rs, ps);
+		}
+	}
+	
 	public void updateCountComments(int postId, int countAtual,
 			Connection conn, int action) throws SQLException,Exception {
 

@@ -29,13 +29,13 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 		+ "C.VC_COMMENTATOR_REMOTE_ADDR,C.DT_INSERT_DATE,C.VC_ANSWER, C.NM_COMMENTATOR_GROUP_ID_FK";
 	
 	private static final String SELECT_POST_QUERY = "P.NM_POST_ID, P.NM_BLOG_ID_FK, P.VC_TITLE, " +
-	"P.VC_CONTENT, P.NM_IS_CONTROLL, P.DT_INSERT_DATE,P.NM_STATUS,P.NM_COUNT_COMMNTS";
+	"P.VC_CONTENT, P.NM_IS_CONTROLL, P.DT_INSERT_DATE,P.NM_STATUS,P.NM_COUNT_COMMNTS,VC_AUTHOR";
 	
 	private static final String TEMPLATE_SELECT = "T.NM_TEMPLATE_ID , T.VC_NAME , T.VC_DESCRIPTION , T.VC_BLOG_PATH, T.VC_COMMUNITY_PATH , " +
 	"T.VC_FORUM_PATH, T.VC_STATUS ";
 	
 	private static final String SELECT_USER_QUERY = " U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS,"
-			+ "U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK ";
+			+ "U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK, U.VC_GENDER ";
 	
 	private static final String SELECT_USER_QUERY2 = " U2.NM_USER_ID  ";
 	
@@ -46,11 +46,11 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	
 	
 	private static final String INSERT_QUERY = "INSERT INTO TB_BLOG_POST ( NM_BLOG_ID_FK, VC_TITLE, " +
-			"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS) "
-			+ "VALUES(?,?,?,?,NOW(),?) ";
+			"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS,VC_AUTHOR) "
+			+ "VALUES(?,?,?,?,NOW(),?,?) ";
 	
 	private static final String UPDATE_QUERY = "UPDATE TB_BLOG_POST SET VC_TITLE = ?, " +
-	"VC_CONTENT = ?, NM_IS_CONTROLL =  ? , NM_STATUS = ? WHERE NM_POST_ID = ? ";
+	"VC_CONTENT = ?, NM_IS_CONTROLL =  ? , NM_STATUS = ?, VC_AUTHOR = ? WHERE NM_POST_ID = ? ";
 	
 		
 	
@@ -75,14 +75,14 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	 " ORDER BY C.DT_INSERT_DATE DESC" ;
 	
 	private static final String LIST_POSTS_QUERY = "SELECT NM_POST_ID, NM_BLOG_ID_FK, VC_TITLE, " +
-	"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS,NM_COUNT_COMMNTS,"+SELECT_BLOG_QUERY+" FROM TB_BLOG_POST,TB_BLOG_USER, " +
+	"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS,NM_COUNT_COMMNTS,VC_AUTHOR,"+SELECT_BLOG_QUERY+" FROM TB_BLOG_POST,TB_BLOG_USER, " +
 			"TB_BLOG AS B WHERE NM_STATUS = ? " +
 	" AND NM_BLOG_ID_FK = NM_BLOG_ID"+	
 	" ORDER BY DT_INSERT_DATE DESC ";
 
 	
 	private static final String LIST_POSTS_BY_BLOG_QUERY = "SELECT NM_POST_ID, NM_BLOG_ID_FK, VC_TITLE, " +
-	"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS,NM_COUNT_COMMNTS FROM TB_BLOG_POST " +
+	"VC_CONTENT, NM_IS_CONTROLL, DT_INSERT_DATE,NM_STATUS,NM_COUNT_COMMNTS,VC_AUTHOR FROM TB_BLOG_POST " +
 			" WHERE NM_STATUS = ? AND " +
 	"NM_BLOG_ID_FK = ? "+
 	
@@ -114,6 +114,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 			ps.setString(3, post.getContent());			
 			ps.setInt(4,post.isControll()?1:0);
 			ps.setInt(5,post.getStatus());
+			ps.setString(6,post.getAuthor());
 
 			ps.execute();
 
@@ -148,6 +149,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 			}
 			
 			
+			System.out.println(LOAD_POST_BY_ID_QUERY);
 					
 			ps.setInt(1,status);
 			ps.setInt(2,id);	
@@ -164,6 +166,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				post.setInsertDate(new java.util.Date(rs.getDate("P.DT_INSERT_DATE").getTime()));
 				post.setStatus(rs.getInt("P.NM_STATUS"));
 				post.setCountComments(rs.getInt("NM_COUNT_COMMNTS"));
+				post.setAuthor(rs.getString("P.VC_AUTHOR"));
 				
 				
 				blog.setDescription(rs.getString("B.VC_DESCRIPTION"));
@@ -193,6 +196,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				user.setPassword(rs.getString("U.VC_PASSWORD"));
 				user.setEmail(rs.getString("U.VC_EMAIL"));
 				user.setStatus(rs.getInt("U.NM_STATUS"));
+				user.setGender(rs.getString("U.VC_GENDER"));
 				user.setBlog(blog);
 				
 				blog.setBlogUser(user);
@@ -273,7 +277,8 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 			ps.setString(2, post.getContent());			
 			ps.setInt(3,post.isControll()?1:0);
 			ps.setInt(4,post.getStatus());
-			ps.setInt(5,post.getId());
+			ps.setString(5, post.getAuthor());
+			ps.setInt(6,post.getId());
 
 			ps.executeUpdate();
 
@@ -346,6 +351,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				post.setInsertDate(new java.util.Date(rs.getDate("DT_INSERT_DATE").getTime()));
 				post.setStatus(rs.getInt("NM_STATUS"));
 				post.setCountComments(rs.getInt("NM_COUNT_COMMNTS"));
+				post.setAuthor(rs.getString("VC_AUTHOR"));
 				
 				list.add(post);
 				
@@ -430,6 +436,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 					post.setInsertDate(rs.getDate("P.DT_INSERT_DATE")!= null?new java.util.Date(rs.getDate("P.DT_INSERT_DATE").getTime()):null);	
 					post.setBlog(blog);
 					post.setStatus(rs.getInt("P.NM_STATUS"));
+					post.setAuthor(rs.getString("P.VC_AUTHOR"));
 					posts.add(post);
 				}
 
@@ -483,6 +490,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 				post.setInsertDate(new java.util.Date(rs.getDate("DT_INSERT_DATE").getTime()));
 				post.setStatus(rs.getInt("NM_STATUS"));
 				post.setCountComments(rs.getInt("NM_COUNT_COMMNTS"));
+				post.setAuthor(rs.getString("VC_AUTHOR"));
 				
 				list.add(post);
 				

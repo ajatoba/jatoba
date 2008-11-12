@@ -163,7 +163,7 @@ public class UserCommentatorAction extends DispatchAction {
 			user.setGender(userForm.getGender());
 			user.setState(userForm.getState());
 			user.setCity(userForm.getCity());
-
+			
 			dao.add(user);
 			HttpSession session = req.getSession();
 			session.setAttribute(Constants.USER_BEAN, user);

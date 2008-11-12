@@ -23,10 +23,10 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 	
 	
 	private static final String SELECT_USER_VALUES = " U.NM_USER_ID,U.VC_FIRSTNAME, U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS,"
-		+ "U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK ";   
+		+ "U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK, U.VC_GENDER ";   
 	
 	private static final String POST_SELECT = "P.NM_POST_ID, P.NM_BLOG_ID_FK, P.VC_TITLE, " +
-	"P.VC_CONTENT, P.NM_IS_CONTROLL, P.DT_INSERT_DATE,P.NM_STATUS,P.NM_COUNT_COMMNTS";
+	"P.VC_CONTENT, P.NM_IS_CONTROLL, P.DT_INSERT_DATE,P.NM_STATUS,P.NM_COUNT_COMMNTS,VC_AUTHOR";
 	
 	private static final String TEMPLATE_SELECT = "T.NM_TEMPLATE_ID , T.VC_NAME , T.VC_DESCRIPTION , T.VC_BLOG_PATH, T.VC_COMMUNITY_PATH , " +
 			"T.VC_FORUM_PATH, T.VC_STATUS ";
@@ -164,6 +164,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 				user.setPassword(rs.getString("U.VC_PASSWORD"));
 				user.setEmail(rs.getString("U.VC_EMAIL"));
 				user.setStatus(rs.getInt("U.NM_STATUS"));
+				user.setGender(rs.getString("U.VC_GENDER"));
 				blog.setBlogUser(user);
 
 				
@@ -176,6 +177,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 				post.setInsertDate(rs.getDate("P.DT_INSERT_DATE")!= null?new java.util.Date(rs.getDate("P.DT_INSERT_DATE").getTime()):null);	
 				post.setBlog(blog);
 				post.setStatus(rs.getInt("P.NM_STATUS"));
+				post.setAuthor(rs.getString("P.VC_AUTHOR"));
 				posts.add(post);
 
 			}
@@ -246,6 +248,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 				user.setPassword(rs.getString("U.VC_PASSWORD"));
 				user.setEmail(rs.getString("U.VC_EMAIL"));
 				user.setStatus(rs.getInt("U.NM_STATUS"));
+				user.setGender(rs.getString("U.VC_GENDER"));
 				blog.setBlogUser(user);
 
 				if(rs.getInt("P.NM_POST_ID") > 0)
@@ -257,8 +260,10 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 					post.setControll(rs.getInt("P.NM_IS_CONTROLL")>0);
 					post.setCountComments(rs.getInt("P.NM_COUNT_COMMNTS"));
 					post.setInsertDate(rs.getDate("P.DT_INSERT_DATE")!= null?new java.util.Date(rs.getDate("P.DT_INSERT_DATE").getTime()):null);	
+					//post.setInsertDate(new Date(rs.getDate("P.DT_INSERT_DATE").getTime()));
 					post.setBlog(blog);
 					post.setStatus(rs.getInt("P.NM_STATUS"));
+					post.setAuthor(rs.getString("P.VC_AUTHOR"));
 					posts.add(post);
 				}
 
@@ -508,6 +513,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 					user.setPassword(rs.getString("U.VC_PASSWORD"));
 					user.setEmail(rs.getString("U.VC_EMAIL"));
 					user.setStatus(rs.getInt("U.NM_STATUS"));
+					user.setGender(rs.getString("U.VC_GENDER"));
 					blog.setBlogUser(user);
 
 					if(rs.getInt("P.NM_POST_ID") > 0)
@@ -521,6 +527,7 @@ public class BlogDAOImpl extends AbstractDAO implements BlogDAO {
 						post.setInsertDate(rs.getDate("P.DT_INSERT_DATE")!= null?new java.util.Date(rs.getDate("P.DT_INSERT_DATE").getTime()):null);	
 						post.setBlog(blog);
 						post.setStatus(rs.getInt("P.NM_STATUS"));
+						post.setAuthor(rs.getString("P.VC_AUTHOR"));
 						posts.add(post);
 					}
 

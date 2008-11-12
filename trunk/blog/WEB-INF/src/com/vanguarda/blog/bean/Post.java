@@ -25,8 +25,17 @@ public class Post {
 	
 	private Collection comments;
 	
+	private String author;
+	
+	
 
 
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 	/**
 	 * @return Returns the content.
 	 */

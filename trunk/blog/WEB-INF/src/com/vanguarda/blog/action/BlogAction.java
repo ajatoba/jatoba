@@ -287,39 +287,10 @@ public class BlogAction extends DispatchAction {
 				parameters.add(new Integer(id));
 				
 				Blog blog = null;
-				
-//				if(mes == null || mes.length() < 1 || ano == null || ano.length() < 1)
-//				{
-//					/*					
-//					Date dataAtual = new Date();
-//					DataUtil datautil = new DataUtil(dataAtual);
-//					
-//					insertDate = new Date (dataAtual.getYear(),dataAtual.getMonth(),1);
-//					endDate = new Date    (dataAtual.getYear(),dataAtual.getMonth(),datautil.numeroDiasMes()-1);
-//					*/
-//					Integer qtdPosts = new Integer((String) BlogManager.getInstance().getProperties().get("posts_on_index"));
-//					parameters.add(qtdPosts);
-//					
-//					blog = (Blog) CacheManager.getInstance().hitCache(DaoFactory.getInstance(Constants.MAPPING_BLOG_DAO),"loadLastPosts",parameters);
-//					
-//				}
-//				else
-//				{					
-//					DataUtil datautil = new DataUtil(1,Integer.parseInt(mes),Integer.parseInt(ano));				
-//					
-//					insertDate = datautil.toDate();
-//					datautil.somaDias(datautil.numeroDiasMes());
-//					endDate = datautil.toDate();
-//
-//					parameters.add(insertDate);
-//					parameters.add(endDate);
-//					blog = (Blog) CacheManager.getInstance().hitCache(DaoFactory.getInstance(Constants.MAPPING_BLOG_DAO),"loadByDate",parameters);
-//					
-//				}
-				
+						
 				if(mes == null || mes.length() < 1 || ano == null || ano.length() < 1)
 				{
-//					
+	
 					Date d = new Date();					
 					DataUtil datautil = new DataUtil(1,d.getMonth()+ 1 ,d.getYear()+ 1900);				
 					
@@ -343,9 +314,7 @@ public class BlogAction extends DispatchAction {
 				parameters.add(endDate);
 				LoggerUtil.debug("CARREGANDO BLOG "+id+ "POSTS DO DIA: "+insertDate.getDate()+" DO: "+insertDate.getMonth()+" ATÉ O DIA : "+endDate.getDate()+" DE:" +endDate.getMonth()+"de: "+endDate.getYear());
 				blog = (Blog) CacheManager.getInstance().hitCache(DaoFactory.getInstance(Constants.MAPPING_BLOG_DAO),"loadByDate",parameters);
-				
-				
-								
+
 				Collection posts = blog.getPosts();
 				BlogUser user = blog.getBloggerUser();
 				

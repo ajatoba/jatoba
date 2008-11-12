@@ -72,6 +72,11 @@ public class TemplateControlServlet extends HttpServlet{
 			context.put("blogStatus", String.valueOf(blog.getStatus()));
 			context.put("blogPath", String.valueOf(blog.getPath()));
 			context.put("blogPosts", blog.getPosts());
+			
+			ArrayList<Post> ps = (ArrayList<Post>)blog.getPosts();
+			
+			System.out.println(ps.get(0).getInsertDate());
+			
 			ArrayList p = new ArrayList();
 			p.add(new Integer(0));
 			context.put("ranking", (Collection) CacheManager.getInstance()

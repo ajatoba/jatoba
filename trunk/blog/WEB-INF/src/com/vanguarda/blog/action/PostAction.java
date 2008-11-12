@@ -60,6 +60,7 @@ public class PostAction extends DispatchAction {
 			post.setControll(postForm.isControll());
 			post.setStatus(postForm.getStatus());
 			post.setTitle(postForm.getTitle());
+			post.setAuthor(postForm.getAuthor());
 			dao.add(post);
 
 			req.setAttribute("blogId",String.valueOf(user.getBlog().getId()));
@@ -109,6 +110,7 @@ public class PostAction extends DispatchAction {
 			post.setControll(postForm.isControll());
 			post.setStatus(postForm.getStatus());
 			post.setTitle(postForm.getTitle());
+			post.setAuthor(postForm.getAuthor());
 			dao.update(post);
 			
 			req.setAttribute("blogId",String.valueOf(user.getBlog().getId()));

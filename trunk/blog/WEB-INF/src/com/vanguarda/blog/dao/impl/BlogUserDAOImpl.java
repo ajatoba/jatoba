@@ -19,13 +19,13 @@ import com.vanguarda.blog.util.LoggerUtil;
 public class BlogUserDAOImpl extends UserDAOImpl implements BlogUserDAO {
 
 	private static final String SELECT_USER_VALUES = " NM_USER_ID,VC_FIRSTNAME,VC_LASTNAME,VC_EMAIL,DT_INSERTDATE,NM_STATUS,"
-			+ "VC_LOGIN,VC_PASSWORD, NM_GROUP_ID_FK ";
+			+ "VC_LOGIN,VC_PASSWORD, NM_GROUP_ID_FK,VC_GENDER ";
 
 	private static final String INSERT_QUERY = "INSERT INTO TB_BLOG_USER (VC_FIRSTNAME,VC_LASTNAME,VC_EMAIL,"
-			+ "DT_INSERTDATE,NM_STATUS, VC_LOGIN,VC_PASSWORD, NM_GROUP_ID_FK) VALUES(?,?,?,NOW(),?,?,?,?) ";
+			+ "DT_INSERTDATE,NM_STATUS, VC_LOGIN,VC_PASSWORD, NM_GROUP_ID_FK,VC_GENDER) VALUES(?,?,?,NOW(),?,?,?,?,?) ";
 
 	private static final String UPDATE_QUERY = "UPDATE TB_BLOG_USER SET VC_FIRSTNAME = ?,VC_LASTNAME = ?,VC_EMAIL = ?,"
-			+ "NM_STATUS = ?, VC_LOGIN = ? , VC_PASSWORD = ? WHERE NM_USER_ID = ?";
+			+ "NM_STATUS = ?, VC_LOGIN = ? , VC_PASSWORD = ?, VC_GENDER = ? WHERE NM_USER_ID = ?";
 
 	private static final String LOAD_QUERY = "SELECT " + SELECT_USER_VALUES
 			+ " FROM TB_BLOG_USER WHERE NM_USER_ID = ? ";
@@ -74,6 +74,7 @@ public class BlogUserDAOImpl extends UserDAOImpl implements BlogUserDAO {
 			ps.setString(5, user.getLogin());
 			ps.setString(6, user.getPassword());
 			ps.setInt(7, Constants.USER_BLOGGER);
+			ps.setString(8, user.getGender());
 			ps.execute();
 		} catch (SQLException sqle) {
 
@@ -106,7 +107,9 @@ public class BlogUserDAOImpl extends UserDAOImpl implements BlogUserDAO {
 			ps.setInt(4, user.getStatus());
 			ps.setString(5, user.getLogin());
 			ps.setString(6, user.getPassword());
-			ps.setInt(7, user.getId());
+			ps.setString(7, user.getGender());
+			ps.setInt(8, user.getId());
+			
 
 			ps.executeUpdate();
 		} catch (SQLException sqle) {
@@ -148,6 +151,7 @@ public class BlogUserDAOImpl extends UserDAOImpl implements BlogUserDAO {
 				user.setPassword(rs.getString("VC_PASSWORD"));
 				user.setEmail(rs.getString("VC_EMAIL"));
 				user.setStatus(rs.getInt("NM_STATUS"));
+				user.setGender(rs.getString("VC_GENDER"));
 
 			}
 

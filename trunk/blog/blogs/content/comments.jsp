@@ -52,11 +52,11 @@ function submitSearch(){
 <logic:iterate name="comments" id="c" indexId="i">
 <pg:item>
 <div class="coment">
-  <dt class="nome_boneco"> ${c.user.gender}
-    <c:if test="${c.user.group.id == 2}"> <a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/img/user_icon.gif" border="0"/></a> </c:if>
+  <dt class="nome_boneco"> ${c.user.gender} &nbsp <bean:write name="c" property="insertDate" format="dd/MM"/>
+    - <c:if test="${c.user.group.id == 2}"> <a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/img/user_icon.gif" border="0"/></a> </c:if>
     <bean:write name="c" property="commentatorName" />
-    |
-    <bean:write name="c" property="insertDate" format="dd/MM"/>
+    
+    
   </dt>
   <dt class="denuncie"><a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?postId=<bean:write name="post" property="id"/>&commentId=
     <bean:write name="c" property="id" />
@@ -66,7 +66,7 @@ function submitSearch(){
  
   <dt class="txt_comments">
   <c:if test="${c.user.id == user.id}">
-                <font color="red">
+                <font color="#0C90FF">
                 </c:if>
                 <bean:write name="c" property="content"/>
                 <c:if test="${c.user.id == user.id}">

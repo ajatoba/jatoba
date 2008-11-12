@@ -68,6 +68,16 @@
 			flashUploadURL="/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Flash">							
 		</FCK:editor></td>
           </tr>
+          
+          <tr>
+            <td height="32" colspan="2" valign="bottom"><span class="style2">Autor </span></td>
+            </tr>
+          <tr>
+            <td height="25" colspan="2">
+                <html:text property="author" value="${blogUser.firstName}" style="line-height:18px; width:450px; background-color:#FFFFFF; border:1px solid #B8D4E9;"/>
+                
+            </td>
+          </tr>
           <tr>
             <td width="321" height="36" valign="bottom"><span class="style2">Status: </span>
              

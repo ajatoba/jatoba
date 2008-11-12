@@ -22,7 +22,7 @@ import com.vanguarda.blog.util.LoggerUtil;
 	
 public class UserDAOImpl extends AbstractDAO implements AdminUserDAO{
 	
-	private static final String LOGIN_QUERY = "SELECT NM_USER_ID,VC_FIRSTNAME,VC_LASTNAME,VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS," +
+	private static final String LOGIN_QUERY = "SELECT NM_USER_ID,VC_GENDER,VC_FIRSTNAME,VC_LASTNAME,VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS," +
 	"VC_LOGIN,VC_PASSWORD, NM_GROUP_ID_FK, NM_BLOG_ID,VC_NAME,VC_DESCRIPTION,B.DT_INSERTDATE,B.NM_STATUS,VC_PATH FROM TB_BLOG_USER AS U LEFT JOIN " +
 	"TB_BLOG AS B ON NM_USER_ID_FK = NM_USER_ID WHERE VC_LOGIN = ? AND (U.NM_STATUS = 1 or U.NM_STATUS = 2) ";
  
@@ -84,6 +84,7 @@ public class UserDAOImpl extends AbstractDAO implements AdminUserDAO{
 				user.setStatus(rs.getInt("U.NM_STATUS"));
 				user.setLogin(rs.getString("VC_LOGIN"));
 				user.setPassword(rs.getString("VC_PASSWORD"));
+				user.setGender(rs.getString("VC_GENDER"));
 				user.setGroup(group);
 
 			}else{

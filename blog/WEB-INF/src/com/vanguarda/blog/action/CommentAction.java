@@ -22,6 +22,7 @@ import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.MessageResources;
 
 import com.vanguarda.blog.BlogManager;
+import com.vanguarda.blog.bean.Blog;
 import com.vanguarda.blog.bean.BlogUser;
 import com.vanguarda.blog.bean.Comment;
 import com.vanguarda.blog.bean.Post;
@@ -293,10 +294,21 @@ public class CommentAction extends DispatchAction
     	
 		try
 	    {
+			
 			messageResources = getResources(req);
 			
+			String id = req.getParameter("id");
+			ArrayList parameters = new ArrayList();
+			parameters.add(new Integer(id));
+			parameters.add(new Integer(1));
+			
 			String keyWord = req.getParameter("palavra_chave");
-			Collection comments = (Collection)req.getAttribute("comments");
+			
+			Post post = (Post) CacheManager.getInstance().hitCache(
+					DaoFactory.getInstance("POSTDAO"), "load", parameters);
+			
+			Collection<Comment> comments = post.getComments();
+					
 			Comment comment = null;
 			ArrayList<Comment>lista = null;
 	        if(comments != null && comments.size() > 0){
@@ -310,7 +322,64 @@ public class CommentAction extends DispatchAction
 		        	}
 	        	}	        		            
 	        }else{
-	        	throw new Exception("Erro ao Buscar Comentários");
+	        	throw new Exception("Comments Nulo");
+	        }
+	        
+	        if(lista==null || lista.size() <=0){
+	        	System.out.println("Nenhum resultado");
+	        	req.setAttribute("mensagem_erro", messageResources.getMessage("no_results"));
+	        }
+	        
+	        req.setAttribute("comments", lista);
+	        Blog blog = post.getBlog();
+			User user = blog.getBloggerUser();
+			req.setAttribute("blog", blog);
+			req.setAttribute("post", post);
+			req.setAttribute("status", new Integer(post.isControll() ? 1: 0));
+			req.setAttribute("blogUser", user);
+	        
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	    return new ActionForward("/blogs/content/comments.jsp");
+	}
+    
+    public ActionForward showMyComments(ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp)
+    throws Exception{
+		
+    	MessageResources messageResources = null;
+    	
+		try
+	    {
+			
+			messageResources = getResources(req);
+			
+			String id = req.getParameter("id");
+			ArrayList parameters = new ArrayList();
+			parameters.add(new Integer(id));
+			parameters.add(new Integer(1));
+			
+			int userId = Integer.parseInt(req.getParameter("userId"));
+						
+			Post post = (Post) CacheManager.getInstance().hitCache(
+					DaoFactory.getInstance("POSTDAO"), "load", parameters);
+			
+			Collection<Comment> comments = post.getComments();
+					
+			Comment comment = null;
+			ArrayList<Comment>lista = null;
+	        if(comments != null && comments.size() > 0){
+	            Iterator<Comment> it = comments.iterator();
+	            lista = new ArrayList<Comment>();
+	        	while(it.hasNext()){
+		        	comment = it.next();        	
+		        	
+		        	if(comment.getUser().getId()== userId){
+		        		lista.add(comment);
+		        	}
+	        	}	        		            
+	        }else{
+	        	throw new Exception("Comments Nulo");
 	        }
 	        
 	        if(lista==null || lista.size() <=0){
@@ -318,15 +387,46 @@ public class CommentAction extends DispatchAction
 	        }
 	        
 	        req.setAttribute("comments", lista);
+	        Blog blog = post.getBlog();
+			User user = blog.getBloggerUser();
+			req.setAttribute("blog", blog);
+			req.setAttribute("post", post);
+			req.setAttribute("status", new Integer(post.isControll() ? 1: 0));
+			req.setAttribute("blogUser", user);
 	        
-	    }
-	    catch(Exception e)
-	    {
+	    }catch(Exception e){
 	    	e.printStackTrace();
 	    }
-	    return mapping.findForward("comment_list");
+	    return new ActionForward("/blogs/content/comments.jsp");
 	}
 
+    public ActionForward addAnswer(ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp)
+    throws Exception
+{
+    
+    try
+    {
+        Comment c = new Comment();
+    
+        c.setAnswer(req.getParameter("answer"));
+        c.setId(Integer.parseInt(req.getParameter("commentId")));
+                
+        dao.addAnswer(c);
+                    
+        CacheManager.getInstance().clear();
+        
+    }
+    catch(Exception e)
+    {
+    	e.printStackTrace();
+        req.setAttribute("mensagem_erro", e.getMessage());
+    }
+    
+    resp.sendRedirect("/blog/post.do?act=loadSite&id="+req.getParameter("postId"));
+    return null;
+    
+}
+    
     private static CommentsDAO dao;
 
     static 

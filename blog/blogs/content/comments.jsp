@@ -11,7 +11,7 @@
 
 <html>
 <head>
-   
+
 
 <title> :: BlogLog :: - <bean:write name="blogUser" property="firstName"/> </title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -23,6 +23,10 @@
 
 <script>
     	opener.document.location.reload();
+    	
+function submitSearch(){
+	document.buscaComentarios.submit();
+}
     	</script>
 		
 <div class="princ">
@@ -39,7 +43,22 @@
 		<dt class="tp_laranja">Por: <bean:write name="blog" property="name"/></dt>
 		<dt class="tp_azul"><bean:write name="post" property="title" /> (<bean:write name="post" property="insertDate" format="dd/MM"/>)</dt>
 	</div>
-	<div class="posts_top"></div>
+	
+	<div class="post">
+	
+	<dt class="txt">
+	Busca de Comentários:
+		<form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
+			<input type="text" name="palavra_chave">
+			<input type="button" value="OK" onClick="javascript:submitSearch();">
+		</form>
+	</dt>
+	<c:if test="${user.id > 0}">
+	<dt class="txt">
+	<a href="comment.do?act=showMyComments&id=${post.id}&userId=${user.id}">Mostrar somente os meus</a>
+	</dt>
+	</c:if>
+	</div>
 
 	<pg:pager url="post.do" maxIndexPages="5" maxPageItems="100">
       <logic:present name="comments"> 
@@ -47,13 +66,21 @@
       	<pg:item>
 			<div class="post">
 				<dt>
-				
+				sexo: ${c.user.gender}
 				<c:if test="${c.user.group.id == 2}">				
 					<a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/img/user_icon.gif" border="0"/></a>
 				</c:if>
 				<bean:write name="c" property="commentatorName" /> | <bean:write name="c" property="insertDate" format="dd/MM"/> <a href="#"><!--bean:write name="c" property="commentatorEmail" /--></a> |                      
 		            <a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?postId=<bean:write name="post" property="id"/>&commentId=<bean:write name="c" property="id" />','','scrollbars=no,height=258,width=500')">Denuncie</a></dt>
-				<div><bean:write name="c" property="content"/>
+				<div>
+					
+				<c:if test="${c.user.id == user.id}">
+				<font color="red">
+				</c:if>
+				<bean:write name="c" property="content"/>
+				<c:if test="${c.user.id == user.id}">
+				</font>
+				</c:if>
 				<logic:notEmpty name="c" property="answer">
 					<br/>
 					<table  width="100%">
@@ -63,6 +90,29 @@
 						</tr>
 					</table>
 				</logic:notEmpty>
+				
+				<logic:empty name="c" property="answer">
+					<br/>
+					<c:if test="${blogUser.id == user.id}">
+					
+					<html:form method="post" action="comment.do?act=addAnswer">
+					<table  width="100%">
+						<tr>
+							<td height="23" colspan="2" valign="bottom" class="style2">Responder</td>
+						</tr>
+						<tr>
+							<td height="178" colspan="2" valign="top">
+							<html:hidden property="commentId" value="${c.id}"/>
+							<html:hidden property="postId" value="${post.id}"/>
+							<html:textarea property="answer" cols="50" rows="5" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
+							<html:submit value="Responder"/>
+							</td>
+						</tr>
+					</table>
+					
+					</html:form>
+					</c:if>
+				</logic:empty>
 				</div>
 				
 				

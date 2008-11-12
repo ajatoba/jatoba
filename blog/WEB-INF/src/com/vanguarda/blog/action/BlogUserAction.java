@@ -141,6 +141,7 @@ public class BlogUserAction extends DispatchAction {
 			user.setLogin(userForm.getLogin());
 			user.setPassword(userForm.getPassword());
 			user.setStatus(userForm.getStatus());
+			user.setGender(userForm.getGender());
 
 			dao.add(user);
 
@@ -224,6 +225,7 @@ public class BlogUserAction extends DispatchAction {
 			user.setLogin(userForm.getLogin());
 			user.setPassword(userForm.getPassword());
 			user.setStatus(userForm.getStatus());
+			user.setGender(userForm.getGender());
 
 			dao.update(user);
 

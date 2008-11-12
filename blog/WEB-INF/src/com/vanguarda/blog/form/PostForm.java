@@ -25,7 +25,14 @@ public class PostForm extends ActionForm {
 	
 	private int status = 1;
 	
-		 
+	private String author;
+	
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}	 
 	/**
 	 * @return Returns the blog.
 	 */

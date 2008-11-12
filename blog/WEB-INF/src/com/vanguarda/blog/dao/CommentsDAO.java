@@ -17,6 +17,8 @@ public interface CommentsDAO {
 	public void delete(Comment comment) throws SQLException,Exception;
 	
 	public Collection listCommentsByPost(int status,Post post) throws SQLException,Exception;
+	
+	public void addAnswer(Comment comment) throws SQLException,Exception;
 
 	
 	 

@@ -38,6 +38,14 @@ public class BlogUserForm  extends ActionForm{
 	
 	private String newPassword;
 	
+	private String gender;
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 		/**
 	 * @return Returns the email.
 	 */

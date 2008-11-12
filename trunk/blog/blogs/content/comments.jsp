@@ -5,6 +5,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="/tags/pager-taglib" prefix="pg" %>
 <%@ page contentType="text/html;charset=iso-8859-1"%>
+<%
+java.util.Collection comentarios = null;
+comentarios = (java.util.ArrayList)request.getAttribute("comments");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,9 +41,14 @@ function submitSearch(){
   <dt class="btn">
     <c:if test="${user.id > 0}"> <a href="comment.do?act=showMyComments&id=${post.id}&userId=${user.id}"><img src="/bloglog/admin/comments/img/meus_comentarios.jpg" width="161" height="29" border="0" /></a> </c:if>
   </dt>
+  
+    <dt class="btn">
+    <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}">Mostrar TODOS</a> </c:if>
+  </dt>
+  
 </div>
 <div class="busca">
-  <dt class="qtd">50 comentários</dt>
+  <dt class="qtd"><%=comentarios.size()%> comentários</dt>
   <dt class="search">
     <form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
       <input type="text" name="palavra_chave">
@@ -96,8 +105,8 @@ function submitSearch(){
                             <html:hidden property="commentId" value="${c.id}"/>
                             <html:hidden property="postId" value="${post.id}"/>
                             <html:textarea property="answer" cols="50" rows="5" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
-                            <html:submit value="Responder"/>
-                            </td>
+                            <dt class="resposta">
+                            <html:image onclick="javascript:submit();" src="/bloglog/admin/comments/img/btn_responder.jpg" border="0"/>
                         </tr>
                     </table>
                     
@@ -111,7 +120,7 @@ function submitSearch(){
         </logic:iterate>
     </logic:present>     
   
-  <dt class="resposta"><img src="/bloglog/admin/comments/img/btn_responder.jpg" border="0" width="104" height="38" /></dt>
+  
   <dt class="separator"></dt>
 </div>
 <div class="paginacao">

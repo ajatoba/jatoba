@@ -18,55 +18,60 @@ String blogId = (String)request.getAttribute("blogId");
 
 </head>
 
-<body bgcolor="#E3F0F9" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-	<div style="margin-left:auto; margin-right:auto; width:570px; background-color:#FFFFFF; height:395px;">
-		<div style="height:23px; background-color:#147ABA;"><img src="/bloglog/content/add_coment/img_add/tit_login.jpg" style="margin-left:12px;"></div>
+<body bgcolor="#E4EFF5" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <div style="margin-left:auto; margin-right:auto; width:794px;  height:395px;display:table;">
+        <div style="height:19px;"><img src="/bloglog/admin/login/img/top_login.jpg" width="794" height="19" /></div>
 
-<br>
-<br>
-<br />
-<br>
+<div style="width:748px; height:339px; margin-left:25px;  display:table; margin-right:20px; background-color:#C9DEE9;">
 <form name="userCommentatorForm" method="post" action="/blog/user.do?act=login">
-		<input type="hidden" name="postId" value="<%=postId%>"/>
-		<input type="hidden" name="countComments" value="<%=countComments%>"/>
-		<input type="hidden" name="path" value="<%=path%>"/>
-		<input type="hidden" name="from" value="site"/>
-		<input type="hidden" name="status" value="<%=status%>"/>
-		<input type="hidden" name="blogId" value="<%=blogId%>"/>
+        <input type="hidden" name="postId" value="<%=postId%>"/>
+        <input type="hidden" name="countComments" value="<%=countComments%>"/>
+        <input type="hidden" name="path" value="<%=path%>"/>
+        <input type="hidden" name="from" value="site"/>
+        <input type="hidden" name="status" value="<%=status%>"/>
+        <input type="hidden" name="blogId" value="<%=blogId%>"/>
 
-  <table width="100" border="0" align="center">
-    <tr> 
-      <td style="font-size:11px; font-weight:bold; color:#147ABA; font-family:Trebuchet MS;">Login:</td>
-      <td>&nbsp;</td>
-      <td> 
-        <input type="text" name="login" style="height:18px; width:100px; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; line-height:16px; font-family:Trebuchet MS;">
-      </td>
-    </tr>
-    <tr> 
-      <td height="44" style="font-size:11px; font-weight:bold; color:#147ABA; font-family:Trebuchet MS;">Senha:</td>
-      <td>&nbsp;</td>
-      <td> 
-        <input type="password" name="password" style="height:18px; width:100px; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; line-height:16px; font-family:Trebuchet MS;">
-      </td>
-    </tr>
-    <tr>
-      <td height="57">&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>
-        <input type="submit" name="Submit" value="Entrar" style="background-color:#147ABA; color:#FFFFFF; font-weight:bold; border:1px solid #147ABA; cursor:hand;">
-      </td>
-    </tr>
-  </table>
+      <table width="271" border="0" align="center" cellpadding="1" cellspacing="1" style="margin-top:60px;" >
+        <tr> 
+          <td colspan="2" align="left"><img src="/bloglog/admin/login/img/identifique_login.jpg" /></td>
+        </tr>
+        <tr> 
+          <td width="265" style="font-size:12px; color:#2D3941; font-family:Arial;"><a href="/blog/blogs/content/add_user_in.jsp?postId=<%=postId%>&countComments=<%=countComments%>&path=<%=path%>&from=site&status=<%=status%>" style="font-size:12px; color:#2D3941; text-decoration:underline; font-family:Trebuchet MS;"> 
+            Clique aqui</a> para se cadastrar</td>
+        </tr>
+        <tr>
+          <td height="37" valign="bottom" style="font-size:12px;  color:#2D3941; font-family:Arial;">Login:</td>
+        </tr>
+        <tr> 
+          <td><input type="text" name="login" style="height:26px; width:258px; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; line-height:26px; font-family:Trebuchet MS;"> 
+          </td>
+        </tr>
+        <tr> 
+          <td height="24" valign="bottom" style="font-size:12px;  color:#2D3941; font-family:Arial;">Senha:</td>
+        </tr>
+        <tr> 
+          <td><input type="password" name="password" style="height:26px; width:258px; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; border:1px; border-color:#A5C1D2; line-height:26px; font-family:Trebuchet MS;"> 
+          </td>
+        </tr>
+        <tr> 
+          <td height="57" colspan="2">
+          
+          <table width="254">
+              <tr><td width="126"><input  type="image" src="/bloglog/admin/login/img/entrar_login.jpg" name="Submit" value="Entrar" style="background-color:#147ABA; color:#FFFFFF; font-weight:bold; border:0px solid #147ABA; cursor:hand;" /></td><td width="116"><a href="/blog/blogs/content/remind_password_in.jsp" style="font-size:12px; color:#F47320; text-decoration:underline; font-family:Trebuchet MS;"> lembrar/login senha</a>       
+</td></tr></table></td>
+        </tr>
+      </table>
   <center>
   <logic:present name="mensagem_erro">
-  	<font color="red"><bean:write name="mensagem_erro"/></font>
+    <font color="red"><bean:write name="mensagem_erro"/></font>
   </logic:present>
   <br>
-<a href="/blog/blogs/content/add_user_in.jsp?postId=<%=postId%>&countComments=<%=countComments%>&path=<%=path%>&from=site&status=<%=status%>" style="font-size:10px; color:#F47320; text-decoration:underline; font-family:Trebuchet MS;"> Cadastre-se</a>		
+      
 &nbsp;&nbsp;&nbsp;
-<a href="/blog/blogs/content/remind_password_in.jsp" style="font-size:10px; color:#F47320; text-decoration:underline; font-family:Trebuchet MS;"> Esqueci minha senha</a>		
   </center>
 </form>
+</div>
+<div><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
 </div>
 </body>
 </html:html>

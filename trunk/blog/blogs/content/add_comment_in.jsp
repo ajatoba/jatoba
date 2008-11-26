@@ -18,6 +18,7 @@
 <html>
 <head>
 <title> :: BlogLog ::  </title>
+<link href="/bloglog/admin/css/insert.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
  
 </head>
@@ -25,20 +26,20 @@
 var maximo = 1024;
 function contaText(input)
 {
-	var getValInput = input.value.length;
-	if (maximo >= getValInput)
-	{
-		var divMostraNumero = document.getElementById("nRestantes").innerHTML = maximo - getValInput;
-		
-	}else{
-		var divMostraNumero = document.getElementById("nRestantes").innerHTML = 0;
-		input.value = input.value.substring(0,maximo);
-		alert('número maximo de caracteres atingido');
-	
-	}
-	
-	divMostraNumero = null;
-	nDigitados = null;
+    var getValInput = input.value.length;
+    if (maximo >= getValInput)
+    {
+        var divMostraNumero = document.getElementById("nRestantes").innerHTML = maximo - getValInput;
+        
+    }else{
+        var divMostraNumero = document.getElementById("nRestantes").innerHTML = 0;
+        input.value = input.value.substring(0,maximo);
+        alert('número maximo de caracteres atingido');
+    
+    }
+    
+    divMostraNumero = null;
+    nDigitados = null;
 }
 
 function mascara(o,f){
@@ -63,77 +64,72 @@ function soNumeros(v){
 <c:if test="${user.group.id == 3 }">
 <a href="/blog/user.do?act=loadSite"></a>
 </c:if>
-	<logic:present name="comment_sucesso">    
+    <logic:present name="comment_sucesso">    
          <script>
          
-		//window.parent.location.href='/blog/post.do?act=loadSite&id=<%=request.getParameter("postId")%>';
-		window.parent.location.reload();
+        //window.parent.location.href='/blog/post.do?act=loadSite&id=<%=request.getParameter("postId")%>';
+        window.parent.location.reload();
 
-    	</script>
-  		<font color="red"><bean:write name="comment_sucesso"/></font>
+        </script>
+        <font color="red"><bean:write name="comment_sucesso"/></font>
     </logic:present> 
 <html:form method="post" action="/comment.do?act=add">
-		<html:hidden property="postId" value="<%=request.getParameter(\"postId\")%>"/>
-		<html:hidden property="countComments" value="<%=request.getParameter(\"countComments\")%>"/>
-		<html:hidden property="path" value="<%=request.getParameter(\"path\")%>"/>
-		<html:hidden property="from" value="site"/>
-		<html:hidden property="status" value="<%=request.getParameter(\"status\")%>"/>
-		<html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
-		<html:hidden property="blogId"  value="<%=request.getParameter(\"blogId\")%>"/>
-		
-<div style=" margin-left:5px; margin-right:5px; width:570px; background-color:#FFFFFF; height:395px;">
+        <html:hidden property="postId" value="<%=request.getParameter(\"postId\")%>"/>
+        <html:hidden property="countComments" value="<%=request.getParameter(\"countComments\")%>"/>
+        <html:hidden property="path" value="<%=request.getParameter(\"path\")%>"/>
+        <html:hidden property="from" value="site"/>
+        <html:hidden property="status" value="<%=request.getParameter(\"status\")%>"/>
+        <html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
+        <html:hidden property="blogId"  value="<%=request.getParameter(\"blogId\")%>"/>
+        
+<div class="top"><img src="/bloglog/admin/cadastro/img/top_cadastro.jpg" width="748" height="19" /></div>
+<div class="cad_01">
+<dt class="cadastre">Inserir comentário</dt>
+<dt class="edit">Editar meus dados</dt>
 
-	<logic:present name="mensagem_erro">
-  	 	<font style="font-size:11px; font-weight:bold; color:red; font-family:Trebuchet MS;">
-		<bean:write name="mensagem_erro"/>
-		</font>
-    </logic:present> 
-    
-	<logic:present name="comment_sucesso"> 
-		<font style="font-size:11px; font-weight:bold; color:red; font-family:Trebuchet MS;">
-		<bean:write name="comment_sucesso"/>
-		</font>
-	</logic:present>
-	
-		<div style="height:23px; background-color:#147ABA;"><img src="/bloglog/content/add_coment/img_add/tit_add.jpg" style="margin-left:12px;"/></div>
-		
-		<div style=" width:452px; display:table; margin-left:auto; margin-right:auto; margin-top:65px;">
-			<div style="width:240px; float:left;">
-				<dt style="font-size:11px; font-weight:bold; color:#147ABA;">Nome</dt>
-				<dt><html:text property="commentatorName" readonly="true" value="${user.firstName}" style='height:16px; width:208px; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; line-height:16px; font-family:Trebuchet MS;'/></dt>
-			</div>
-			<div style="float:left; width:210px;">
-				<dt style="font-size:11px; font-weight:bold; color:#147ABA;">E-mail</dt>
-				<dt><html:text property="commentatorEmail" readonly="true" value="${user.email}" style='height:16px; width:208px; background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; line-height:16px; font-family:Trebuchet MS;'/></dt>
-			</div>
-		</div>
-		<div style="width:452px; display:table; margin-left:auto; margin-right:auto; margin-top:8px;">
-			<div style="float:left; width:452px;">
-				<dt style="font-size:11px; font-weight:bold; color:#147ABA;">Comentário</dt>
-				<dt><html:textarea property="content" cols="40" rows="10" style='background-color:#F8F8F8; border:1px solid #B7D3E9; font-size:12px; line-height:16px; width:448px; height:80px; font-family:Trebuchet MS;' onkeyup='contaText(this);'/>	</dt>
-			</div>
-		</div>
-		
-		
-		<div style="width:450px; margin-left:auto; margin-right:auto; font-size:10px; color:#848484; height:27px; background:url(../img_add/ptos2.jpg) bottom repeat-x;">limite de 1024 caracteres | restantes : <span id="nRestantes"><script>document.write(maximo);</script></span></div>
-		<img src="/blog/captcha.jpg" border="1" style='float:left; margin-top:8px; margin-left:58px; margin-right:12px;'/>
-		<div style="margin-right:auto; margin-top:15px; float:left; font-size:10px; color:#757575;">
-		Digite oque se vê<br /> escrito na imagem:
-		</div>				
-		<html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/>
-		
-		
-		<html:submit value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:1px solid #FF6600; cursor:hand;"/>
-		 <font color="red">
-		 
-		 <logic:present name="message">
-		 	<br><br><br><center>Entre com o valor da imagem corretamente.</center>
-		 </logic:present>
+</div>
+<div class="msg">Serão aceitos apenas comentários objetivos e que tenham relaçao direta com o assunto em questão. Não serão aceitos comentários com palavras de baixo calão tampouco os que ameacem algum blogueiro ou usuário.</div>
+<div class="content">
+<table width="700px" border="0" align="center">
+  <tr>
+    <td width="50%" colspan="3">Nome</td>
+    <td>Email</td>
+  </tr>
+  <tr>
+    <td width="350px" colspan="3"><html:text property="commentatorName" readonly="true" value="${user.firstName}" style='height:16px; width:330px; background-color:#F8F8F8; border:1px solid #A2C2CF; font-size:12px; color:#1296FF; line-height:16px; '/></td>
+    <td><html:text property="commentatorEmail" readonly="true" value="${user.email}" style='height:16px; width:300px; background-color:#F8F8F8; border:1px solid #A2C2CF; font-size:12px; color:#1296FF; line-height:16px;'/></td>
+  </tr>
+  <tr>
+    <td width="50%" colspan="3">Comentário</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4"><html:textarea property="content" cols="40" rows="10" style='background-color:#F8F8F8; border:1px solid #A2C2CF; font-family:Arial; font-size:12px; color:#1296FF; line-height:16px; width:700px; height:80px; ' onkeyup='contaText(this);'/>    </td>
+    </tr>
+  <tr>
+    <td colspan="4" class="limite">Limite de 1024 caracteres | restantes : <span id="nRestantes"><script>document.write(maximo);</script></span></td>
+  </tr>
+  <tr>
+    <td colspan="4"><img src="/bloglog/img/sep_insert.jpg" width="700" height="15" /></td>
+  </tr>
+  <tr>
+    <td><img src="/blog/captcha.jpg" border="1" style='float:left;  margin-right:12px;'/></td>
+    <td "width:40%">Digite o que se vê escrito na imagem:</td>
+    <td><html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
+    <td> <html:image src="/bloglog/img/btn_comentar.jpg" value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:0px; cursor:hand;"/></td>
+  </tr>
+</table>
+
+</div>
+         
+         <logic:present name="message">
+            <br><br><br><center>Entre com o valor da imagem corretamente.</center>
+         </logic:present>
     
   
     </font>
-	</div>
+    </div>
 
       
-	</html:form>
-	</body>
+    </html:form>
+    </body>

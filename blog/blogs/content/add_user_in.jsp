@@ -20,7 +20,7 @@ String rndCrypt = RandomTool.createCrypted();
 <html:html>
 <HEAD>
     <TITLE>BlogLog</TITLE>    
-	<link href="/bloglog/admin/css/cadastro.css" rel="stylesheet" type="text/css" />
+    <link href="/bloglog/admin/css/cadastro.css" rel="stylesheet" type="text/css" />
 </HEAD>
 
 <BODY>
@@ -42,19 +42,19 @@ function soNumeros(v){
 
 </script>
 <center>
-	<logic:present name="mensagem_erro">
-		<font color="red"><bean:write name="mensagem_erro"/></font>
-	</logic:present>
+    <logic:present name="mensagem_erro">
+        <font color="red"><bean:write name="mensagem_erro"/></font>
+    </logic:present>
 </center>
 
 <html:form method="post" action="user.do?act=add">
 <html:hidden property="id" />
 <html:hidden property="postId" value="<%=postId%>"/>
-		<html:hidden property="countComments" value="<%=countComments%>"/>
-		<html:hidden property="path" value="<%=path%>"/>
-		<html:hidden property="from" value="site"/>
-		<html:hidden property="status" value="<%=status%>"/>
-		<html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
+        <html:hidden property="countComments" value="<%=countComments%>"/>
+        <html:hidden property="path" value="<%=path%>"/>
+        <html:hidden property="from" value="site"/>
+        <html:hidden property="status" value="<%=status%>"/>
+        <html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
 
 <div style="width:800px;">
 <div class="top"><img src="/bloglog/admin/cadastro/img/top_cadastro.jpg" width="748" height="19" /></div>
@@ -75,48 +75,48 @@ function soNumeros(v){
 <dt class="sexo">Sexo</dt>
 
 <dt class="txt_nome2" style="margin-top:10px;"><input name="dia" type="text" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/> 
-			/
-			  <input name="mes" type="text" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/> 
-			  /
-			  <input name="ano" type="text" style=" width:39px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
+            /
+              <input name="mes" type="text" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/> 
+              /
+              <input name="ano" type="text" style=" width:39px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
 <dt class="sexo2" ><input type="radio" name="gender" value="M" selected/> Masculino&nbsp;&nbsp;
-		    <input type="radio"  name="gender" value="F"/> Feminino</dt>
+            <input type="radio"  name="gender" value="F"/> Feminino</dt>
             
             <dt class="estado">Estado</dt>
             <dt class="cidade">Cidade</dt>
             <dt class="estado"><html:select property="state" style="width:239px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;">
-			<html:option  value="AC">Acre</html:option>
-			<html:option  value="AL">Alagoas</html:option>
-			<html:option  value="AP">Amapá</html:option>
-			<html:option  value="AM">Amazonas</html:option>
-			<html:option  value="BA">Bahia</html:option>
+            <html:option  value="AC">Acre</html:option>
+            <html:option  value="AL">Alagoas</html:option>
+            <html:option  value="AP">Amapá</html:option>
+            <html:option  value="AM">Amazonas</html:option>
+            <html:option  value="BA">Bahia</html:option>
 
-			<html:option  value="CE">Ceará</html:option>
-			<html:option  value="DF">Distrito Federal</html:option>
-			<html:option  value="ES">Espírito Santo</html:option>
-			<html:option  value="GO">Goias</html:option>
-			<html:option  value="MA">Maranhão</html:option>
+            <html:option  value="CE">Ceará</html:option>
+            <html:option  value="DF">Distrito Federal</html:option>
+            <html:option  value="ES">Espírito Santo</html:option>
+            <html:option  value="GO">Goias</html:option>
+            <html:option  value="MA">Maranhão</html:option>
 
-			<html:option  value="MT">Mato Grosso</html:option>
-			<html:option  value="MS">Mato Grosso do Sul</html:option>
-			<html:option  value="MG">Minas Gerais</html:option>
-			<html:option  value="PA">Pará</html:option>
-			<html:option  value="PB">Paraíba</html:option>
-			<html:option  value="PR">Paraná</html:option>
+            <html:option  value="MT">Mato Grosso</html:option>
+            <html:option  value="MS">Mato Grosso do Sul</html:option>
+            <html:option  value="MG">Minas Gerais</html:option>
+            <html:option  value="PA">Pará</html:option>
+            <html:option  value="PB">Paraíba</html:option>
+            <html:option  value="PR">Paraná</html:option>
 
-			<html:option  value="PE">Pernambuco</html:option>
-			<html:option  value="PI">Piauí</html:option>
-			<html:option  value="RJ">Rio de Janeiro</html:option>
-			<html:option  value="RN">Rio Grande do Norte</html:option>
-			<html:option  value="RS">Rio Grande do Sul</html:option>
-			<html:option  value="RO">Rondônia</html:option>
+            <html:option  value="PE">Pernambuco</html:option>
+            <html:option  value="PI">Piauí</html:option>
+            <html:option  value="RJ">Rio de Janeiro</html:option>
+            <html:option  value="RN">Rio Grande do Norte</html:option>
+            <html:option  value="RS">Rio Grande do Sul</html:option>
+            <html:option  value="RO">Rondônia</html:option>
 
-			<html:option  value="RR">Roraima</html:option>
-			<html:option  value="SC">Santa Catarina</html:option>
-			<html:option  value="SP">São Paulo</html:option>
-			<html:option  value="SE">Sergipe</html:option>
-			<html:option  value="TO">Tocantins</html:option>
-		</html:select> </dt>
+            <html:option  value="RR">Roraima</html:option>
+            <html:option  value="SC">Santa Catarina</html:option>
+            <html:option  value="SP">São Paulo</html:option>
+            <html:option  value="SE">Sergipe</html:option>
+            <html:option  value="TO">Tocantins</html:option>
+        </html:select> </dt>
             <dt class="cidade"><html:text property="city" style=" width:200px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
             
 
@@ -153,9 +153,9 @@ function soNumeros(v){
 
 </div>
 <div class="bottom"><img src="/bloglog/admin/cadastro/img/bottom_cadastro.jpg" width="748" height="16" /></div>
-	<logic:present name="mensagem_imagem_incorreta">
-				<font color="red"><bean:write name="mensagem_imagem_incorreta"/></font>
-			</logic:present>
+    <logic:present name="mensagem_imagem_incorreta">
+                <font color="red"><bean:write name="mensagem_imagem_incorreta"/></font>
+            </logic:present>
 
 </html:form>
 

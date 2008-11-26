@@ -117,11 +117,12 @@ function submitSearch(){
   </dt>
   
   </pg:item>
+  <dt class="separator"></dt>
         </logic:iterate>
     </logic:present>     
   
   
-  <dt class="separator"></dt>
+
 </div>
 <div class="paginacao">
   <dt class="left">

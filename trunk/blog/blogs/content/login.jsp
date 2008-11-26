@@ -31,7 +31,7 @@ String blogId = (String)request.getAttribute("blogId");
         <input type="hidden" name="status" value="<%=status%>"/>
         <input type="hidden" name="blogId" value="<%=blogId%>"/>
 
-      <table width="271" border="0" align="center" cellpadding="1" cellspacing="1" style="margin-top:60px;" >
+      <table width="271" border="0" align="center" cellpadding="1" cellspacing="1" style="margin-top:55px;" >
         <tr> 
           <td colspan="2" align="left"><img src="/bloglog/admin/login/img/identifique_login.jpg" /></td>
         </tr>
@@ -55,8 +55,8 @@ String blogId = (String)request.getAttribute("blogId");
         </tr>
         <tr> 
           <td height="57" colspan="2">
-          
-          <table width="254">
+		  
+		  <table width="254" border="0" cellpadding="0" cellspacing="0">
               <tr><td width="126"><input  type="image" src="/bloglog/admin/login/img/entrar_login.jpg" name="Submit" value="Entrar" style="background-color:#147ABA; color:#FFFFFF; font-weight:bold; border:0px solid #147ABA; cursor:hand;" /></td><td width="116"><a href="/blog/blogs/content/remind_password_in.jsp" style="font-size:12px; color:#F47320; text-decoration:underline; font-family:Trebuchet MS;"> lembrar/login senha</a>       
 </td></tr></table></td>
         </tr>

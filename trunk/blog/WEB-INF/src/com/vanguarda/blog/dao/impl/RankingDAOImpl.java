@@ -53,7 +53,7 @@ public class RankingDAOImpl extends AbstractDAO implements RakingDAO {
 		" B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE , " +
 		" B.NM_STATUS  " +
 		
-		" ORDER BY QTD DESC LIMIT 0 , 20";
+		" ORDER BY QTD DESC LIMIT 0 , 50";
 	
 	private static String SELECT_RANKING_QUERY = "SELECT   U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE," +
 	"U.NM_STATUS,U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK , B.NM_BLOG_ID, B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  " +
@@ -72,7 +72,7 @@ public class RankingDAOImpl extends AbstractDAO implements RakingDAO {
 	" B.VC_NAME,B.VC_PATH,  B.VC_DESCRIPTION  ,  B.DT_INSERTDATE , " +
 	"B.NM_STATUS  " +
 	
-	"ORDER BY QTD DESC LIMIT 0 , 20";
+	"ORDER BY QTD DESC LIMIT 0 , 50";
 	
 		
 	public Collection getRanking(int days) throws SQLException,Exception {

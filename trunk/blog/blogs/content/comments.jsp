@@ -13,7 +13,7 @@ comentarios = (java.util.ArrayList)request.getAttribute("comments");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Comentï¿½rios - Bloglog</title>
 <link href="/bloglog/admin/comments/coments.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -48,7 +48,7 @@ function submitSearch(){
   
 </div>
 <div class="busca">
-  <dt class="qtd"><%=comentarios.size()%> comentários</dt>
+  <dt class="qtd"><%=comentarios.size()%> comentï¿½rios</dt>
   <dt class="search">
     <form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
       <input type="text" name="palavra_chave">
@@ -67,7 +67,7 @@ function submitSearch(){
     
     
   </dt>
-  <dt class="denuncie"><a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?postId=<bean:write name="post" property="id"/>&commentId=
+  <dt class="denuncie"><a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?id=<bean:write name="post" property="id"/>&commentId=
     <bean:write name="c" property="id" />
     ','','scrollbars=no,height=258,width=500')"><img src="/bloglog/admin/comments/img/btn_denuncie.jpg" border="0" width="65" height="19" style="margin-top:20px;" /></a></dt>
  
@@ -103,7 +103,7 @@ function submitSearch(){
                         <tr>
                             <td height="178" colspan="2" valign="top">
                             <html:hidden property="commentId" value="${c.id}"/>
-                            <html:hidden property="postId" value="${post.id}"/>
+                            <html:hidden property="" value="${post.id}"/>
                             <html:textarea property="answer" cols="50" rows="5" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
                             <dt class="resposta">
                             <html:image onclick="javascript:submit();" src="/bloglog/admin/comments/img/btn_responder.jpg" border="0"/>
@@ -117,10 +117,9 @@ function submitSearch(){
   </dt>
   
   </pg:item>
-  <dt class="separator"></dt>
+    <dt class="separator"></dt>
         </logic:iterate>
     </logic:present>     
-  
   
 
 </div>
@@ -151,12 +150,12 @@ function submitSearch(){
         <font color="red"><bean:write name="comment_sucesso"/></font>
     </logic:present>    
     
-<div class="area_comment"><img src="/bloglog/admin/comments/img/top_com.jpg" width="800" height="37" /></div>
+<div class="area_comment"></div>
 <div class="box">
-  <div class="box_comment">
-   <dt> <iframe name=arquivos src="/blog/blogs/content/add_comment_in.jsp?postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe></dt>
+  <div>
+   <dt> <iframe width="800px" name=arquivos src="/blog/blogs/content/add_comment_in.jsp?id=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe></dt>
   </div>
-  <div class="fim_comment"></div>
+  <div></div>
 </div>
 
 <logic:present name="mensagem_erro">

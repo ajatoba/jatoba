@@ -64,27 +64,39 @@ function soNumeros(v){
 </div>
 <div style=" width:748px; margin-left:26px;"><img src="/bloglog/admin/cadastro/img/separator.jpg" width="748" height="13" /></div>
 <div class="infos">
-<dt class="nome">Nome Completo</dt>
-<dt class="email">Email</dt>
-<dt class="txt_nome"><html:text property="firstName" style=" width:220px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
-<dt class="txt_email"><html:text property="email" style=" width:220px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
-<dt class="txt_nome"></dt>
-<dt class="email2"><input name="" type="checkbox" value="" /> Desejo receber informações do bloglog.</dt>
-
-<dt class="nasc">Data de Nascimento</dt>
-<dt class="sexo">Sexo</dt>
-
-<dt class="txt_nome2" style="margin-top:10px;"><input name="dia" type="text" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/> 
+<table width="90%" border="0" align="right">
+  <tr>
+    <td class="nome">Nome Completo</td>
+    <td class="email">Email</td>
+  </tr>
+  <tr>
+    <td><html:text property="firstName" style=" width:220px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></td>
+    <td><html:text property="email" style=" width:220px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="email2"><input name="" type="checkbox" value="" />
+      Desejo receber informações do bloglog.</td>
+  </tr>
+  <tr>
+    <td class="nasc">Data de Nascimento</td>
+    <td class="sexo">Sexo</td>
+  </tr>
+  <tr>
+    <td><input name="dia" type="text" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/> 
             /
               <input name="mes" type="text" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/> 
               /
-              <input name="ano" type="text" style=" width:39px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
-<dt class="sexo2" ><input type="radio" name="gender" value="M" selected/> Masculino&nbsp;&nbsp;
-            <input type="radio"  name="gender" value="F"/> Feminino</dt>
-            
-            <dt class="estado">Estado</dt>
-            <dt class="cidade">Cidade</dt>
-            <dt class="estado"><html:select property="state" style="width:239px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;">
+              <input name="ano" type="text" style=" width:39px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></td>
+    <td class="sexo2"><input type="radio" name="gender" value="M" selected/> Masculino&nbsp;&nbsp;
+            <input type="radio"  name="gender" value="F"/> Feminino</td>
+  </tr>
+  <tr>
+    <td class="estado">Estado</td>
+    <td class="cidade">Cidade</td>
+  </tr>
+  <tr>
+    <td><html:select property="state" style="width:239px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;">
             <html:option  value="AC">Acre</html:option>
             <html:option  value="AL">Alagoas</html:option>
             <html:option  value="AP">Amapá</html:option>
@@ -116,9 +128,11 @@ function soNumeros(v){
             <html:option  value="SP">São Paulo</html:option>
             <html:option  value="SE">Sergipe</html:option>
             <html:option  value="TO">Tocantins</html:option>
-        </html:select> </dt>
-            <dt class="cidade"><html:text property="city" style=" width:200px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
-            
+        </html:select></td>
+    <td><html:text property="city" style=" width:200px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></td>
+  </tr>
+</table>
+        
 
 
 </div>
@@ -140,8 +154,8 @@ function soNumeros(v){
 <table width="95%" border="0">
   <tr>
     <td width="17%"><!--img src="/blog/servlet/rndImage?rndimg=<%//rndCrypt%>" border="0"/--><img src="/blog/captcha.jpg" border="0"/></td>
-    <td width="25%"><span style="font-size:10px; color:#293641;">Digite aqui o n&deg; de segurança</span><br /><html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
-    <td width="43%">&nbsp;</td>
+    <td width="49%"><span style="font-size:10px; color:#293641;">Digite aqui o n&deg; de segurança</span>&nbsp;<html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
+    <td width="19%">&nbsp;</td>
     <td width="15%" rowspan="2"><html:image src="/bloglog/admin/cadastro/img/cadastrar.jpg"  value="Cadastrar"  style=" margin-top:15px; float:left; display:table; margin-left:8px; cursor:hand; background-color:#FF6600; color:#FFFFFF; font-weight:bold; "/></td>
   </tr>
   <tr>

@@ -13,7 +13,7 @@ comentarios = (java.util.ArrayList)request.getAttribute("comments");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coment�rios - Bloglog</title>
+<title>Comentarios - Bloglog</title>
 <link href="/bloglog/admin/comments/coments.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -43,17 +43,16 @@ function submitSearch(){
   </dt>
   
     <dt class="btn">
-    <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}">Mostrar TODOS</a> </c:if>
+    <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}"><img src="/bloglog/admin/comments/img/back.jpg" width="98" height="31" border="0" /></a> </c:if>
   </dt>
   
 </div>
 <div class="busca">
-  <dt class="qtd"><%=comentarios.size()%> coment�rios</dt>
+  <dt class="qtd"><%=comentarios.size()%> coment&aacute;rios </dt>
   <dt class="search">
     <form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
-      <input type="text" name="palavra_chave">
-      <input type="image" src"/bloglog/admin/comments/img/buscar.jpg" value="OK" onClick="javascript:submitSearch();">
-    </form>
+      <input type="text" name="palavra_chave" class="form_search"><a href="javascript:submitSearch();"><img src="http://www3.bloglog.com.br/bloglog/admin/comments/img/buscar.jpg" style="margin-top:10px;" width="31" height="27" border="0">  </a></form>
+    
   </dt>
 </div>
 <pg:pager url="post.do" maxIndexPages="5" maxPageItems="100">

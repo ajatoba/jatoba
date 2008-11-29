@@ -42,19 +42,27 @@ function submitSearch(){
     <c:if test="${user.id > 0}"> <a href="comment.do?act=showMyComments&id=${post.id}&userId=${user.id}"><img src="/bloglog/admin/comments/img/meus_comentarios.jpg" width="161" height="29" border="0" /></a> </c:if>
   </dt>
   
-    <dt class="btn">
-    <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}"><img src="/bloglog/admin/comments/img/back.jpg" width="98" height="31" border="0" /></a> </c:if>
-  </dt>
+ 
   
 </div>
 <div class="busca">
   <dt class="qtd"><%=comentarios.size()%> coment&aacute;rios </dt>
-  <dt class="search">
-    <form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
-      <input type="text" name="palavra_chave" class="form_search"><a href="javascript:submitSearch();"><img src="http://www3.bloglog.com.br/bloglog/admin/comments/img/buscar.jpg" style="margin-top:10px;" width="31" height="27" border="0">  </a></form>
+  <dt class="search"><form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
+  <table width="40%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input type="text" name="palavra_chave" class="form_search"></td>
+    <td><a href="javascript:submitSearch();"> <img src="http://www3.bloglog.com.br/bloglog/admin/comments/img/buscar.jpg" style="margin-top:0px;" width="31" height="27" border="0">  </a></td>
+  </tr>
+</table></form>
+
+    
+     
     
   </dt>
 </div>
+<div style="margin-left:20px; margin-top:10px;">
+    <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}"><img src="/bloglog/admin/comments/img/back.jpg" width="98" height="31" border="0" /></a> </c:if>
+  </div>
 <pg:pager url="post.do" maxIndexPages="5" maxPageItems="100">
 <logic:present name="comments">
 <logic:iterate name="comments" id="c" indexId="i">

@@ -82,7 +82,13 @@ function soNumeros(v){
         <html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
         <html:hidden property="blogId"  value="<%=request.getParameter(\"blogId\")%>"/>
         
-<div class="top"><img src="/bloglog/admin/cadastro/img/top_cadastro.jpg" width="748" height="19" /></div>
+<div class="top">
+<table width="100%" bgcolor="#C9DEE9;" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="/bloglog/admin/cadastro/img/top_cadastro.jpg" width="748" height="19" /></td>
+  </tr>
+</table>
+</div>
 <div class="cad_01">
 <dt class="cadastre">Inserir comentário</dt>
 <dt class="edit">Editar meus dados</dt>

@@ -110,7 +110,7 @@ function submitSearch(){
                         <tr>
                             <td height="178" colspan="2" valign="top">
                             <html:hidden property="commentId" value="${c.id}"/>
-                            <html:hidden property="" value="${post.id}"/>
+                            <html:hidden property="postId" value="${post.id}"/>
                             <html:textarea property="answer" cols="50" rows="5" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
                             <dt class="resposta">
                             <html:image onclick="javascript:submit();" src="/bloglog/admin/comments/img/btn_responder.jpg" border="0"/>

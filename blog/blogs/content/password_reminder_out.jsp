@@ -12,22 +12,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 
-<body bgcolor="#E3F0F9" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-	<div style="margin-left:auto; margin-right:auto; width:570px; background-color:#FFFFFF; height:395px;">
-		<div style="height:23px; background-color:#147ABA;"><img src="/bloglog/content/add_coment/img_add/tit_login.jpg" style="margin-left:12px;"></div>
+<body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <div style="margin-left:auto; margin-right:auto; width:748px; background-color:#C9DEE9; height:395px;">
+        
 <br/><br/>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="center">  	
-  	<logic:present name="error">
-  	 	<font style="font-size:11px; font-weight:bold; color:red; font-family:Trebuchet MS;"><bean:write name="error"/></font>
+    <td align="center">     
+    <logic:present name="error">
+        <font style="font-family:Arial, Helvetica, sans-serif; color:#2D353D;"><bean:write name="error"/></font>
     </logic:present> 
     
     <logic:present name="sucesso">
-  		<font style="font-size:11px; font-weight:bold; color:red; font-family:Trebuchet MS;"><bean:write name="sucesso"/></font>
+        <font style="font-family:Arial, Helvetica, sans-serif; color:#2D353D;"><bean:write name="sucesso"/></font>
     </logic:present> 
-  	
-  	</td>
+    
+    </td>
   <tr>
 </table>
 

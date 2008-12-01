@@ -71,7 +71,7 @@ String blogId = (String)request.getAttribute("blogId");
   </center>
 </form>
 </div>
-<div><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
+<div style="height:14px;"><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
 </div>
 </body>
 </html:html>

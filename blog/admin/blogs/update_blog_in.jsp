@@ -6,9 +6,12 @@
 
 <html:html>
 <body>
- <%@ include file="/admin/includes/menu.jsp"%>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>   
+<%@ include file="/admin/includes/menu.jsp"%>
+</td></tr>
  
- <br/>
+<tr><td>
    
 <html:form method="post" action="/admin/blog.do?act=update">
 <html:hidden property="id" value="${blog.id}"/>
@@ -48,6 +51,9 @@
 	  </logic:present>
 	</center>
 </p>
+</td></tr>
+<tr><td>
 <%@ include file="/admin/includes/footer.html"%>
+</td></tr></table>
 </body>
 </html:html>

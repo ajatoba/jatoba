@@ -13,7 +13,12 @@
 </head>  
   
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
 <%@ include file="/admin/includes/menu.jsp"%>
+</td></tr>
+<tr>
+<td>
 <br>
 <br>
 
@@ -48,10 +53,21 @@
   </p>
   
 </html:form>
+
+</td>
+</tr>
+<tr><td>
 <p>  <center>
   <logic:present name="mensagem_erro">
   	<font color="red"><bean:write name="mensagem_erro"/></font>
   </logic:present>
   </center></p>
+  </td>
+  </tr>
+  </table>
+  <table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>   
+<%@ include file="/admin/includes/footer.html"%>
+</td></tr></table>
 </body>
 </html:html>

@@ -64,6 +64,12 @@ body {
     <th scope="col"></th>
     <th scope="col"></th>
   </tr>
+   <tr height="100">
+    <th scope="row"></th>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
   <tr>
     <th scope="row"><img src="/bloglog/admin/img/fundo_new_blog_01.jpg" width="215" height="73" /></th>
     <td><img src="/bloglog/admin/img/fundo_new_blog_02.jpg" width="215" height="73" /></td>

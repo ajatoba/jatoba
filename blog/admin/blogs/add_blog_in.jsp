@@ -34,10 +34,10 @@ body {
     <th scope="col"><div align="left" style="font-family:Arial, Helvetica, sans-serif; size:12px; color:#32332f">Status:</div></th>
   </tr>
   <tr>
-    <th scope="col"><div align="left"><html:text property="name" style="border-color:#32332f; border:1px; font-family:Arial, Helvetica, sans-serif; size:60px; font-size:10px;"/></div></th>
-    <th scope="col"><div align="left"><html:text property="path" style="border-color:#32332f; border:1px; font-family:Arial, Helvetica, sans-serif; size:60px; font-size:10px;"/></div></th>
-    <th scope="col"><div align="left"><html:text property="description" style="border-color:#32332f; border:1px; font-family:Arial, Helvetica, sans-serif; size:60px; font-size:10px;"/></div></th>
-    <th scope="col"><div align="left"><html:select property="status" style="border-color:#32332f; border:1px; font-family:Arial, Helvetica, sans-serif; font-size:10px;">
+    <th scope="col"><div align="left"><html:text property="name" border:1px #32332f solid; font-family:Arial, Helvetica, sans-serif; size:60px; font-size:10px;"/></div></th>
+    <th scope="col"><div align="left"><html:text property="path" border:1px #32332f solid; font-family:Arial, Helvetica, sans-serif; size:60px; font-size:10px;"/></div></th>
+    <th scope="col"><div align="left"><html:text property="description" border:1px #32332f solid; font-family:Arial, Helvetica, sans-serif; size:60px; font-size:10px;"/></div></th>
+    <th scope="col"><div align="left"><html:select property="status" border:1px #32332f solid; font-family:Arial, Helvetica, sans-serif; font-size:10px;">
       <html:option value="-1">Selecione</html:option>
       <html:option value="1">Ativo</html:option>
       <html:option value="0">Inativo</html:option>

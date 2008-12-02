@@ -51,7 +51,7 @@ function submitSearch(){
   <table width="40%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><input type="text" name="palavra_chave" class="form_search"></td>
-    <td><a href="javascript:submitSearch();"> <img src="http://www3.bloglog.com.br/bloglog/admin/comments/img/buscar.jpg" style="margin-top:0px;" width="31" height="27" border="0">  </a></td>
+    <td><a href="javascript:submitSearch();"> <img src="http://www3.bloglog.com.br/bloglog/admin/comments/img/buscar.jpg" width="31" height="27" border="0"></a></td>
   </tr>
 </table></form>
 
@@ -68,8 +68,8 @@ function submitSearch(){
 <logic:iterate name="comments" id="c" indexId="i">
 <pg:item>
 <div class="coment">
-  <dt class="nome_boneco">  &nbsp <bean:write name="c" property="insertDate" format="dd/MM"/>
-    - <c:if test="${c.user.group.id == 2}"> <a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/admin/comments/img/${c.user.gender}.gif"/></a> </c:if>
+  <dt class="nome_boneco"> ${c.user.gender} &nbsp <bean:write name="c" property="insertDate" format="dd/MM"/>
+    - <c:if test="${c.user.group.id == 2}"> <a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/img/user_icon.gif" border="0"/></a> </c:if>
     <bean:write name="c" property="commentatorName" />
     
     
@@ -90,10 +90,15 @@ function submitSearch(){
                 </c:if>
                 <logic:notEmpty name="c" property="answer">
                     <br/>
-                    <table  width="100%">
+                    <table  width="742" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
                         <tr>
-                            <td width="10%"></td>
-                            <td width="90%"><i><b> ${blog.blogUser.firstName} ${blog.blogUser.lastName}:</b> <bean:write name="c" property="answer"/> </i></td>
+                            <td><img src="/bloglog/img/top_resposta.jpg" width="742" height="38" /></td>
+                        </tr>
+                        <tr>
+                            <td><span style="margin-left:15px;"><b> ${blog.blogUser.firstName} ${blog.blogUser.lastName}:</b></span> <br /><br /><span style="margin-left:15px;"><bean:write name="c" property="answer"/> </span></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/bloglog/img/bottom_resposta.jpg" width="742" height="18" /></td>
                         </tr>
                     </table>
                 </logic:notEmpty>
@@ -103,17 +108,24 @@ function submitSearch(){
                     <c:if test="${blogUser.id == user.id}">
                     
                     <html:form method="post" action="comment.do?act=addAnswer">
-                    <table  width="100%">
+                    <table  width="742" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
                         <tr>
-                            <td height="23" colspan="2" valign="bottom" class="style2">Responder</td>
+                            <td><img src="/bloglog/img/top_resposta.jpg" width="742" height="38" /></td>
                         </tr>
                         <tr>
-                            <td height="178" colspan="2" valign="top">
+                            <td align="center">
                             <html:hidden property="commentId" value="${c.id}"/>
                             <html:hidden property="postId" value="${post.id}"/>
-                            <html:textarea property="answer" cols="50" rows="5" style=" background-color:#FFFFFF; border:1px solid #B7D3E9; width:450px;"/>
-                            <dt class="resposta">
-                            <html:image onclick="javascript:submit();" src="/bloglog/admin/comments/img/btn_responder.jpg" border="0"/>
+                            <html:textarea property="answer" cols="50" rows="5" style="background-color:#C9DEE9; border:1px solid #A5C1D2; font-size:12px; color:#404043; width:710px;"/></td>
+                            </tr>
+                            <tr>
+                            <td>
+                            <html:image onclick="javascript:submit();" style=" margin-left:630px;" src="/bloglog/admin/comments/img/btn_enviar.jpg" border="0"/>
+                        </td>
+                        
+                        </tr>
+                        <tr>
+                            <td><img src="/bloglog/img/bottom_resposta.jpg" width="742" height="18" /></td>
                         </tr>
                     </table>
                     

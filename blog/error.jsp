@@ -10,16 +10,9 @@
 </head>
 
 <body>
-<div class="logo">
-<dt><img src="/bloglog/erro/img/logo.jpg" width="271" height="92" /></dt>
-<dt><img src="/bloglog/erro/img/ops.jpg" width="271" height="71" /></dt>
-<dt class="proc">Está procurando algum blog?<br />
-  <a href="http://bloglog.globo.com/az_new.html" target="_blank" style="color:#0292FD; font-weight:bold;">Clique aqui</a> para ver todos os blogs </dt>
-  <dt class="proc">Quer sugerir algum artista?<br />
-  <a href="http://bloglog.globo.com/equipe" target="_blank" style="color:#0292FD; font-weight:bold;">Clique aqui</a> para entrar no blog da equipe </dt>
-  <dt class="ir"><a href="http://bloglog.globo.com" target="_blank"><img src="/bloglog/erro/img/ir_portal.jpg" width="128" height="33" border="0" /></a></dt>
-
-
+<div class="01">
+<dt class="logo"><img src="/bloglog/erro/img/logo_erro.jpg" width="484" height="198" /></dt>
+<dt class="quiz"><img src="/bloglog/erro/img/quiz.jpg" width="484" height="177" /></dt>
 </div>
 
 <bean:write name="mensagem_erro"/>

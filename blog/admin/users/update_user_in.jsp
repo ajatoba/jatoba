@@ -6,10 +6,13 @@
 
 
 <html:html>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>  
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <%@ include file="/admin/includes/menu.jsp"%>
-<br>
-<br>
+</td></tr>
+<tr>
+<td>
 
 <html:form method="post" action="/admin/blogUser.do?act=update">
    <html:hidden property="id" value="${blogUser.id}"/>
@@ -42,11 +45,21 @@
   </p>
   
 </html:form>
+</td>
+</tr>
+<tr>
+<td>
 <p>  <center>
   <logic:present name="mensagem_erro">
   	<font color="red"><bean:write name="mensagem_erro"/></font>
   </logic:present>
   </center></p>
+</td>
+</tr>
+<tr>
+<td>  
   <%@ include file="/admin/includes/footer.html"%>
+  </td></tr>
+  </table>
   </body>
 </html:html>

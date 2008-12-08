@@ -5,6 +5,16 @@
 <%@ taglib uri="/tags/struts-html" prefix="html" %>
 
 <html:html>
+<style type="text/css">
+<!--
+body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+-->
+</style>
 <body>
 <table align="center" border="0" cellpadding="0" cellspacing="0">
 <tr><td>   

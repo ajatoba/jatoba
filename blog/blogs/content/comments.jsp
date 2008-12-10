@@ -69,7 +69,7 @@ function submitSearch(){
 <pg:item>
 <div class="coment">
   <dt class="nome_boneco"><bean:write name="c" property="insertDate" format="dd/MM"/>
-- <c:if test="${c.user.group.id == 2}"> <a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/admin/comments/img/${c.user.gender}.gif"/></a> </c:if>
+- <c:if test="${c.user.group.id == 2}"> <a href="/${c.user.blog.path}" border="0" target="_blank"><img src="/bloglog/admin/comments/img/${c.user.gender}.gif" border="0"/></a> </c:if>
 <bean:write name="c" property="commentatorName" />
     
     

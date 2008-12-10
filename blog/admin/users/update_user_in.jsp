@@ -24,6 +24,10 @@
     Sobrenome: 
      <html:text property="lastName" value="${blogUser.lastName}"/>
     <br/>
+    Sexo:
+    <input type="radio" name="gender" value="M" selected/> Masculino&nbsp;&nbsp;
+    <input type="radio"  name="gender" value="F"/> Feminino
+    <br>
     E -mail: 
     <html:text property="email" value="${blogUser.email}" />
     <br/>

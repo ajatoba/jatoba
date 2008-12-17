@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
+import java.util.List;  
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -66,8 +66,7 @@ public class RssAllBlogsHandler extends ActionHandler {
 		out.println("<link>");
 		out.println("<![CDATA[http://"
 				+ BlogManager.getInstance().getProperties().getProperty(
-						"localhost") + ":" + parameters.getPorta()
-				+ "//index.html" + "]]>");
+						"localhost") + "//index.html" + "]]>");
 		out.println("</link>");
 		out.println("<language>pt-br</language>");
 		out.println("<description><![CDATA[ Lista dos blogs ]]></description>");
@@ -86,7 +85,7 @@ public class RssAllBlogsHandler extends ActionHandler {
 			out.println("<link>");
 			out.println("<![CDATA[http://"
 					+ BlogManager.getInstance().getProperties().getProperty(
-							"localhost") + ":" + parameters.getPorta() + "/"
+							"localhost") + "/"
 					+ blog.getPath() + "]]>");
 			out.println("</link>");
 			

@@ -45,7 +45,7 @@ function submitSearch(){
  
   
 </div>
-<div class="busca">
+<div id="busca">
   <dt class="qtd"><%=comentarios.size()%> coment&aacute;rios </dt>
   <dt class="search"><form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>
   <table width="40%" border="0" cellspacing="0" cellpadding="0">
@@ -171,7 +171,6 @@ function submitSearch(){
   <div>
    <dt> <iframe width="800px" name=arquivos src="/blog/blogs/content/add_comment_in.jsp?postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe></dt>
   </div>
-  <div></div>
 </div>
 
 <logic:present name="mensagem_erro">

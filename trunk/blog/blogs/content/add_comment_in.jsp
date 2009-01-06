@@ -91,7 +91,7 @@ function soNumeros(v){
 </div>
 <div class="cad_01">
 <dt class="cadastre">Inserir comentário</dt>
-<dt class="edit"><a href="/blog/blogs/content/update_user_in.jsp" style="font-weight:bold; font-size:14px; color:#2B3538;">Editar meus dados</a></dt>
+<dt class="edit"><a href="/blog/user.do?act=loadSite&id=${user.id}" style="font-weight:bold; font-size:14px; color:#2B3538;">Editar meus dados</a></dt>
 
 </div>
 <div class="msg">Serão aceitos apenas comentários objetivos e que tenham relaçao direta com o assunto em questão. Não serão aceitos comentários com palavras de baixo calão tampouco os que ameacem algum blogueiro ou usuário.</div>

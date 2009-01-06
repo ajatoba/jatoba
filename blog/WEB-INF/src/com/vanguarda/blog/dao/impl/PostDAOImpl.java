@@ -37,7 +37,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 	private static final String SELECT_USER_QUERY = " U.NM_USER_ID,U.VC_FIRSTNAME,U.VC_LASTNAME,U.VC_EMAIL,U.DT_INSERTDATE,U.NM_STATUS,"
 			+ "U.VC_LOGIN,U.VC_PASSWORD, U.NM_GROUP_ID_FK, U.VC_GENDER ";
 	
-	private static final String SELECT_USER_QUERY2 = " U2.NM_USER_ID  ";
+	private static final String SELECT_USER_QUERY2 = " U2.NM_USER_ID, U2.VC_GENDER ";
 	
 	private static final String SELECT_BLOG_QUERY = " B.NM_BLOG_ID,B.VC_NAME ,  B.VC_PATH,B.VC_DESCRIPTION  " +
 	",  B.DT_INSERTDATE ,  B.NM_STATUS";
@@ -222,6 +222,7 @@ public class PostDAOImpl extends AbstractDAO implements PostDAO {
 					commentator.setGroup(group);
 					commentator.setFirstName(rs.getString("C.VC_COMMENTATOR_NAME"));
 					commentator.setEmail(rs.getString("C.VC_COMMENTATOR_EMAIL"));
+					commentator.setGender(rs.getString("U2.VC_GENDER"));
 										
 					
 					comment.setId(rs.getInt("C.NM_COMMENT_ID"));

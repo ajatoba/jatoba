@@ -8,6 +8,7 @@ package com.vanguarda.blog.dao.impl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import com.vanguarda.blog.bean.User;
 import com.vanguarda.blog.bean.Group;
@@ -77,15 +78,18 @@ public class UserCommentatorDAOImpl extends UserDAOImpl implements
 
 			getConnection();
 
-			ps = conn
-					.prepareStatement("UPDATE TB_BLOG_USER SET VC_FIRSTNAME = ?,VC_LASTNAME = ?,VC_EMAIL = ?,NM_STATUS = ?, VC_LOGIN = ? , VC_PASSWORD = ? WHERE NM_USER_ID = ?");
+			ps = conn.prepareStatement("UPDATE TB_BLOG_USER SET VC_FIRSTNAME = ?,VC_LASTNAME = ?," +
+					"VC_EMAIL = ?, VC_GENDER = ?, VC_STATE = ?, VC_CITY = ?, DT_BIRTHDATE = ? WHERE NM_USER_ID = ?");
 			ps.setString(1, user.getFirstName());
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getEmail());
-			ps.setInt(4, user.getStatus());
-			ps.setString(5, user.getLogin());
-			ps.setString(6, user.getPassword());
-			ps.setInt(7, user.getId());
+			ps.setString(4, user.getGender());
+			ps.setString(5, user.getState());
+			ps.setString(6, user.getCity());
+			ps.setDate(7, new java.sql.Date(user.getBirthDate().getYear(), user
+					.getBirthDate().getMonth(), user.getBirthDate().getDate()));
+			ps.setInt(8, user.getId());
+			
 			ps.executeUpdate();
 		} catch (SQLException sqle) {
 			if (sqle.getMessage().indexOf(user.getLogin()) > 0)

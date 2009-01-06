@@ -325,10 +325,23 @@ public class UserCommentatorAction extends DispatchAction {
 			HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
 		MessageResources messageResources = null;
+		HttpSession session = req.getSession();
+		
+		Object obj =  session.getAttribute(Constants.USER_BEAN);
+		if(obj == null)
+		{
+			obj =  session.getAttribute(Constants.BLOGGER_USER_BEAN);
+			
+			if(obj == null)
+			{
+				obj =  session.getAttribute(Constants.ADMIN_USER_BEAN);
+			}
+		}
 		try {
 
 			messageResources = getResources(req);
-			UserCommentator user = new UserCommentator();
+			//UserCommentator user = new UserCommentator();
+			UserCommentator user = (UserCommentator)obj;
 			UserCommentatorForm userForm = (UserCommentatorForm) form;
 			
 			
@@ -337,11 +350,7 @@ public class UserCommentatorAction extends DispatchAction {
 			user.setId(userForm.getId());
 			user.setFirstName(userForm.getFirstName());
 			user.setEmail(userForm.getEmail());
-			user.setGroup(new Group(Constants.USER_BLOGGER));
 			user.setLastName(userForm.getLastName());
-			user.setLogin(userForm.getLogin());
-			user.setPassword(userForm.getPassword());
-			user.setStatus(1);
 			user.setBirthDate(new Date(userForm.getAno() - 1900, userForm
 					.getMes() - 1, userForm.getDia()));
 			user.setGender(userForm.getGender());
@@ -350,13 +359,13 @@ public class UserCommentatorAction extends DispatchAction {
 
 			dao.update(user);
 
-			HttpSession session = req.getSession();
+			
 			session.setAttribute(Constants.USER_BEAN, user);
 
 			if ("home".equals(origin))
 				return mapping.findForward("add_user_out");
 			else
-				return mapping.findForward(Constants.USER_ADD_FORWARD);
+				return mapping.findForward("login_sucess");
 
 		} catch (LoginExistsException lee) {
 

@@ -23,11 +23,8 @@
 
 <div class="add_den">
 		<html:form method="post" action="/censure.do?act=censured">
-		<html:hidden property="postId" value="<%=request.getParameter("postId")%>"/>
+		<html:hidden property="postId" value="<%=request.getParameter("id")%>"/>
 		<html:hidden property="commentId" value="<%=request.getParameter("commentId")%>"/>
-		
-		<html:hidden property="postId" value="<%=request.getParameter("postId")%>"/>
-		
 		<div class="topadd"><img src="/bloglog/content/add_coment/img_add/tit_denuncie.jpg" /></div>
 		
 		<div class="inputs">

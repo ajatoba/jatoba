@@ -48,14 +48,13 @@ function soNumeros(v){
 </center>
 
 <html:form method="post" action="user.do?act=update">
-<html:hidden property="id" />
 
 <input type="hidden" name="postId" value="<%=postId%>" />
 <input type="hidden" name="countComments" value="<%=countComments%>" />
 <input type="hidden" name="path" value="<%=path%>" />
 <input type="hidden" name="from" value="site" />
 <input type="hidden" name="status" value="<%=status%>" />
-
+<html:hidden property="id"/>
 <div style="width:800px;">
 <div class="top"><img src="/bloglog/admin/cadastro/img/top_cadastro.jpg" width="748" height="19" /></div>
 <div class="cad_01">
@@ -89,8 +88,8 @@ function soNumeros(v){
               <html:text property="mes" style=" width:30px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"></html:text>
               /
               <html:text property="ano" style=" width:39px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"></html:text></td>
-    <td class="sexo2"><input type="radio" name="gender" value="M" selected/> Masculino&nbsp;&nbsp;
-            <input type="radio"  name="gender" value="F"/> Feminino</td>
+    <td class="sexo2"><html:radio property="gender" value="M"/> Masculino&nbsp;&nbsp;
+            <html:radio property="gender" value="F"/> Feminino</td>
   </tr>
   <tr>
     <td class="estado">Estado</td>
@@ -140,9 +139,9 @@ function soNumeros(v){
 <div class="login">
 <dt class="login_header"><img src="/bloglog/admin/cadastro/img/crie_ident.jpg" width="209" height="50" /></dt>
 <dt class="login_txt">Login</dt>
-<dt class="login_frm"><html:text property="login" style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
+<dt class="login_frm"><html:text property="login" readonly="true" style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
 <dt class="senha_txt">Senha</dt>
-<dt class="senha_frm"><html:password property="password" style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
+<dt class="senha_frm"><html:password property="password" readonly="true" style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
 <dt class="txt_msg">Só serão aceitos números e letras sem acento</dt>
 
 </div>

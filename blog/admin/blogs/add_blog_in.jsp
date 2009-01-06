@@ -74,7 +74,7 @@ body {
     <th scope="row"><img src="/bloglog/admin/img/fundo_new_blog_01.jpg" width="215" height="73" /></th>
     <td><img src="/bloglog/admin/img/fundo_new_blog_02.jpg" width="215" height="73" /></td>
     <td><img src="/bloglog/admin/img/fundo_new_blog_03.jpg" width="289" height="73" /></td>
-    <td><html:image src="/bloglog/admin/img/btn_enviar_new_blog.jpg" width="140" height="73" value="Cadastrar"/></td>
+    <td><img src="/bloglog/admin/img/btn_enviar_new_blog.jpg" width="140" height="73" value="Cadastrar"/></td>
   </tr>
 </table>
    

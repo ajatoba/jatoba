@@ -74,12 +74,9 @@ function submitSearch(){
     
     
   </dt>
-  <dt class="denuncie"><a href="#" onClick="window.open('/blog/blogs/content/add_denuncia_in.jsp?id=<bean:write name="post" property="id"/>&commentId=
-    <bean:write name="c" property="id" />
-    ','','scrollbars=no,height=258,width=500')"><img src="/bloglog/admin/comments/img/btn_denuncie.jpg" border="0" width="65" height="19" style="margin-top:20px;" /></a></dt>
- 
- 
- 
+  <dt class="denuncie">
+  <a href="#" onClick="javascript:window.open('/blog/blogs/content/add_denuncia_in.jsp?id=${post.id}&commentId=${c.id}','Denuncie','scrollbars=no,height=258,width=500');"><img src="/bloglog/admin/comments/img/btn_denuncie.jpg" border="0" width="65" height="19" style="margin-top:20px;" /></a></dt>
+
   <dt class="txt_comments">
   <c:if test="${c.user.id == user.id}">
                 <font color="#0C90FF">

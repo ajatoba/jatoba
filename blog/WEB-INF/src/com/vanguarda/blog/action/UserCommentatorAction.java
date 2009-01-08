@@ -284,8 +284,12 @@ public class UserCommentatorAction extends DispatchAction {
 				commentatorForm.setState(userCommentator.getState());
 				
 				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(userCommentator.getBirthDate());
 				
+				if(userCommentator.getBirthDate() != null){
+					calendar.setTime(userCommentator.getBirthDate());
+				}else{
+					calendar.setTime(new Date());					
+				}
 				commentatorForm.setAno(calendar.get(Calendar.YEAR));
 				commentatorForm.setMes(calendar.get(Calendar.MONTH));
 				commentatorForm.setDia(calendar.get(Calendar.DATE));

@@ -8,6 +8,7 @@ package com.vanguarda.blog.action;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -140,6 +141,7 @@ public class CommentAction extends DispatchAction
             c.setCommentatorHomepage(cForm.getCommentatorHomepage());
             c.setCommentatorRemoteAddr(req.getRemoteAddr());
             c.setStatus(cForm.getStatus());
+            c.setInsertDate(new Date());
             c.setCensured(cForm.isCensured());
             if(user != null)
                 c.setUser(user);

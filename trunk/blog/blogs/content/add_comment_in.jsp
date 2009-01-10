@@ -125,7 +125,7 @@ function soNumeros(v){
     <td> <html:image src="/bloglog/img/btn_comentar.jpg" value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:0px; cursor:hand;"/></td>
   </tr>
 </table>
-
+<div style="display:table; font-size:0px"><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
 </div>
          
          <logic:present name="message">

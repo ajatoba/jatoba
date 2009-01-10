@@ -41,9 +41,6 @@ function submitSearch(){
   <dt class="btn">
     <c:if test="${user.id > 0}"> <a href="comment.do?act=showMyComments&id=${post.id}&userId=${user.id}"><img src="/bloglog/admin/comments/img/meus_comentarios.jpg" width="161" height="29" border="0" /></a> </c:if>
   </dt>
-  
- 
-  
 </div>
 <div id="busca">
   <dt class="qtd"><%=comentarios.size()%> coment&aacute;rios </dt>
@@ -133,7 +130,7 @@ function submitSearch(){
   </dt>
   
   </pg:item>
-    <dt class="separator"></dt>
+    <dt class="separator"><center><img src="/bloglog/admin/comments/img/separator.jpg" border="0" width="750" height="5" /></center></dt>
         </logic:iterate>
     </logic:present>     
   
@@ -169,7 +166,7 @@ function submitSearch(){
 <div class="area_comment"></div>
 <div class="box">
   <div>
-   <dt> <iframe width="800px" name=arquivos src="/blog/blogs/content/add_comment_in.jsp?postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe></dt>
+   <dt style="background-color:#E4EFF5;"><iframe width="800px" name=arquivos src="/blog/blogs/content/add_comment_in.jsp?postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe></dt>
   </div>
 </div>
 

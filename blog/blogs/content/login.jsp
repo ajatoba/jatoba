@@ -66,12 +66,10 @@ String blogId = (String)request.getAttribute("blogId");
     <font color="red"><bean:write name="mensagem_erro"/></font>
   </logic:present>
   <br>
-      
-&nbsp;&nbsp;&nbsp;
   </center>
 </form>
 </div>
-<div style="height:14px;"><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
+<div style="display:table; font-size:0px"><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
 </div>
 </body>
 </html:html>

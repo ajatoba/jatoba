@@ -67,7 +67,7 @@ VERRSÃO DE 19-01-2008
 <div style="margin-left:20px; display:table; margin-top:10px;">
     <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}"><img src="/bloglog/admin/comments/img/back.jpg" width="98" height="31" border="0" /></a> </c:if>
   </div>
-<pg:pager url="post.do" maxIndexPages="5" maxPageItems="100">
+<pg:pager url="post.do" maxIndexPages="10" maxPageItems="50">
 <logic:present name="comments">
 <logic:iterate name="comments" id="c" indexId="i">
 <pg:item>

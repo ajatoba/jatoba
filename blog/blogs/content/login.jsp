@@ -22,7 +22,7 @@ String blogId = (String)request.getAttribute("blogId");
     <div style="margin-left:auto; margin-right:auto; width:794px;  height:395px;display:table;">
         <div style="height:19px;"><img src="/bloglog/admin/login/img/top_login.jpg" width="794" height="19" /></div>
 
-<div style="width:748px; height:339px; margin-left:25px;  display:table; margin-right:20px; background-color:#C9DEE9;">
+<div style="width:748px; height:339px; margin-left:26px;  display:table; margin-right:20px; background-color:#C9DEE9; background:url(/bloglog/admin/login/img/bottom_login.jpg) #C9DEE9 no-repeat bottom;">
 <form name="userCommentatorForm" method="post" action="/blog/user.do?act=login">
         <input type="hidden" name="postId" value="<%=postId%>"/>
         <input type="hidden" name="countComments" value="<%=countComments%>"/>
@@ -65,11 +65,9 @@ String blogId = (String)request.getAttribute("blogId");
   <logic:present name="mensagem_erro">
     <font color="red"><bean:write name="mensagem_erro"/></font>
   </logic:present>
-  <br>
   </center>
+ 
 </form>
-</div>
-<div style="display:table; font-size:0px"><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>
 </div>
 </body>
 </html:html>

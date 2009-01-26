@@ -13,7 +13,7 @@ comentarios = (java.util.ArrayList)request.getAttribute("comments");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Comentarios - Bloglog</title>
+<title>Comentários - Bloglog</title>
 <link href="/bloglog/admin/comments/coments.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,7 +46,7 @@ function submitSearch(){
   </dt>
 </div>
 <!--
-VERRSÃO DE 19-01-2008
+VERRSï¿½O DE 26 -01-2008
 -->
 <div id="busca">
 <dt class="ini_busca"></dt>
@@ -55,7 +55,7 @@ VERRSÃO DE 19-01-2008
   <table width="40%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><input type="text" name="palavra_chave" class="form_search"></td>
-    <td><a href="javascript:submitSearch();"> <img src="http://www3.bloglog.com.br/bloglog/admin/comments/img/buscar.jpg" width="31" height="27" border="0"></a></td>
+    <td><a href="javascript:submitSearch();"> <img src="/bloglog/admin/comments/img/buscar.jpg" width="31" height="27" border="0"></a></td>
   </tr>
 </table></form>
 
@@ -67,7 +67,7 @@ VERRSÃO DE 19-01-2008
 <div style="margin-left:20px; display:table; margin-top:10px;">
     <c:if test="${user.id > 0}"> <a href="/blog/post.do?act=loadSite&id=${post.id}"><img src="/bloglog/admin/comments/img/back.jpg" width="98" height="31" border="0" /></a> </c:if>
   </div>
-<pg:pager url="post.do" maxIndexPages="10" maxPageItems="50">
+<pg:pager url="post.do" maxIndexPages="5" maxPageItems="30">
 <logic:present name="comments">
 <logic:iterate name="comments" id="c" indexId="i">
 <pg:item>
@@ -121,21 +121,18 @@ VERRSÃO DE 19-01-2008
                             <td>
                             <html:image onclick="javascript:submit();" style=" margin-left:630px;" src="/bloglog/admin/comments/img/btn_enviar.jpg" border="0"/>
                         </td>
-                        
                         </tr>
                         <tr>
                             <td><img src="/bloglog/img/bottom_resposta.jpg" width="742" height="18" /></td>
                         </tr>
                     </table>
-                    
                     </html:form>
                     </c:if>
                 </logic:empty>
-  
-  </dt>
-  
+ </dt>
+   <dt class="separator"><center><img src="/bloglog/admin/comments/img/separator.jpg" border="0" width="750" height="5" /></center></dt>
   </pg:item>
-  <dt class="separator"><center><img src="/bloglog/admin/comments/img/separator.jpg" border="0" width="750" height="5" /></center></dt>
+ 
         </logic:iterate>
           
     </logic:present>     

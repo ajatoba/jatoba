@@ -81,15 +81,14 @@ function soNumeros(v){
         <html:hidden property="status" value="<%=request.getParameter(\"status\")%>"/>
         <html:hidden property="wordEnc" value="<%=rndCrypt%>"/>
         <html:hidden property="blogId"  value="<%=request.getParameter(\"blogId\")%>"/>
-        
-<div class="top">
-<table width="100%" bgcolor="#C9DEE9;" border="0" cellspacing="0" cellpadding="0">
+<div class="ini_form"></div>        
+<div class="form">        
+<table width="750" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><img src="/bloglog/admin/cadastro/img/top_cadastro.jpg" width="748" height="19" /></td>
   </tr>
-</table>
-</div>
-<div class="cad_01">
+  <tr>
+    <td><div class="cad_01">
 <dt class="cadastre">Inserir comentário</dt>
 <dt class="edit"><a href="/blog/user.do?act=loadSite&id=${user.id}" style="font-weight:bold; font-size:14px; color:#2B3538;">Editar meus dados</a></dt>
 
@@ -111,7 +110,7 @@ function soNumeros(v){
   </tr>
   <tr>
     <td colspan="4"><html:textarea property="content" cols="40" rows="10" style='background-color:#F8F8F8; border:1px solid #A2C2CF; font-family:Arial; font-size:12px; color:#1296FF; line-height:16px; width:700px; height:80px; ' onkeyup='contaText(this);'/>    </td>
-    </tr>
+  </tr>
   <tr>
     <td colspan="4" class="limite">Limite de 1024 caracteres | restantes : <span id="nRestantes"><script>document.write(maximo);</script></span></td>
   </tr>
@@ -124,9 +123,14 @@ function soNumeros(v){
     <td><html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
     <td> <html:image src="/bloglog/img/btn_comentar.jpg" value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:0px; cursor:hand;"/></td>
   </tr>
+
+</table></td>
+  </tr>
+  <tr>
+    <td><img src="/bloglog/admin/login/img/bottom_login.jpg" width="750" height="14" /></td>
+  </tr>
 </table>
-</div>
-  <div style="display:table; font-size:0px"><img src="/bloglog/admin/login/img/bottom_login.jpg" width="794" height="14" /></div>       
+      </div>
          <logic:present name="message">
             <br><br><br><center>Entre com o valor da imagem corretamente.</center>
          </logic:present>

@@ -30,6 +30,7 @@ import org.apache.struts.util.MessageResources;
 import com.vanguarda.blog.BlogManager;
 import com.vanguarda.blog.bean.Blog;
 import com.vanguarda.blog.bean.BlogUser;
+import com.vanguarda.blog.bean.Post;
 import com.vanguarda.blog.bean.Template;
 import com.vanguarda.blog.dao.BlogDAO;
 import com.vanguarda.blog.dao.BlogUserDAO;
@@ -275,6 +276,10 @@ public class BlogAction extends DispatchAction {
 		String mes = req.getParameter("mes");
 		String ano = req.getParameter("ano");
 		
+		String permalinkString = req.getParameter("permalink");
+		boolean isPermalink = permalinkString != null ? (new Boolean(
+				permalinkString)).booleanValue() : false;
+
 		
 		if(id!= null)
 		{
@@ -310,22 +315,52 @@ public class BlogAction extends DispatchAction {
 				}			
 				
 				
+				Collection posts = null;
+				
 				parameters.add(insertDate);
 				parameters.add(endDate);
-				LoggerUtil.debug("CARREGANDO BLOG "+id+ "POSTS DO DIA: "+insertDate.getDate()+" DO: "+insertDate.getMonth()+" ATÉ O DIA : "+endDate.getDate()+" DE:" +endDate.getMonth()+"de: "+endDate.getYear());
+				//LoggerUtil.debug("CARREGANDO BLOG "+id+ "POSTS DO DIA: "+insertDate.getDate()+" DO: "+insertDate.getMonth()+" ATÉ O DIA : "+endDate.getDate()+" DE:" +endDate.getMonth()+"de: "+endDate.getYear());
+				System.out.println("CARREGANDO BLOG "+id+ "\nPOSTS DO DIA: "+insertDate.getDate()+" DO: "+insertDate.getMonth()+" ATÉ O DIA : "+endDate.getDate()+" DE:" +endDate.getMonth()+"de: "+endDate.getYear());
+				
 				blog = (Blog) CacheManager.getInstance().hitCache(DaoFactory.getInstance(Constants.MAPPING_BLOG_DAO),"loadByDate",parameters);
-
-				Collection posts = blog.getPosts();
+				
+				if(isPermalink){
+					System.out.println("PERMALINK");
+					
+					//Lendo o Post do Permalink
+					
+					//Obtendo id do Post
+					String postId = req.getParameter("postId");
+					
+					ArrayList parametersPost = new ArrayList();
+					parametersPost.add(new Integer(postId));
+					parametersPost.add(new Integer(1));
+					posts = new ArrayList();
+					Post post = (Post) CacheManager.getInstance().hitCache(
+							DaoFactory.getInstance("POSTDAO"), "load", parametersPost);
+					posts.add(post);
+					blog.setPosts(posts);
+					
+				}
+					
+				posts = blog.getPosts();				
+				
+				System.out.println("CARREGADO");
 				BlogUser user = blog.getBloggerUser();
 				
+				/*
 				BlogManager.getInstance().setRanking(req,0);
+				*/
 				BlogManager.getInstance().setHistory(req,id);
+								
 				req.setAttribute(Constants.BLOG_BEAN,blog);
 				req.setAttribute("posts",posts);				
 				req.setAttribute("blogPath",blog.getPath());
 				req.setAttribute(Constants.BLOGGER_USER_BEAN,user);
 				
+				System.out.println("REDIRECIONANDO");
 				//return new ActionForward(blog.getTemplate().getBlogPath());
+				
 				return new ActionForward("/servlet/content");
 				
 			} catch (Exception e) {

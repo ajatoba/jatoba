@@ -344,10 +344,11 @@ public class PostAction extends DispatchAction {
 			context.put("blogPosts", blog.getPosts());
 			ArrayList p = new ArrayList();
 			p.add(new Integer(0));
+			/*
 			context.put("ranking", (Collection) CacheManager.getInstance()
 					.hitCache(DaoFactory.getInstance("RANKINGDAO"),
 							"getRanking", p));
-
+			*/
 			context.put("history", req.getAttribute("history"));
 			context.put("favorites", req.getAttribute("favorites"));
 			context.put("urlRss", urlRss);

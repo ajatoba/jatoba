@@ -64,6 +64,7 @@ function soNumeros(v){
 <c:if test="${user.group.id == 3 }">
 <a href="/blog/user.do?act=loadSite"></a>
 </c:if>
+
     <logic:present name="comment_sucesso">    
          <script>
          
@@ -71,7 +72,16 @@ function soNumeros(v){
         window.parent.location.reload();
 
         </script>
-        <font color="red"><bean:write name="comment_sucesso"/></font>
+       <div class="msg_resposta"><bean:write name="comment_sucesso"/></div>
+    </logic:present> 
+    <logic:present name="comment_sucesso2">    
+         <script>
+         
+        //window.parent.location.href='/blog/post.do?act=loadSite&id=<%=request.getParameter("postId")%>';
+        window.parent.location.reload();
+
+        </script>
+        <div class="msg_resposta"><bean:write name="comment_sucesso2"/></div>
     </logic:present> 
 <html:form method="post" action="/comment.do?act=add">
         <html:hidden property="postId" value="<%=request.getParameter(\"postId\")%>"/>

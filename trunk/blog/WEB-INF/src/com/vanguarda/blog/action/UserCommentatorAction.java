@@ -114,6 +114,7 @@ public class UserCommentatorAction extends DispatchAction {
 			return mapping.findForward(Constants.BLOGUSER_LOGIN_ERROR_FORWARD);
 		}
 
+		req.setAttribute("reload", "true");
 		return mapping.findForward(Constants.LOGIN_FORWARD);
 
 	}

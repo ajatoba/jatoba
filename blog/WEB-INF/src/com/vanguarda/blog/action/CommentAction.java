@@ -319,7 +319,7 @@ public class CommentAction extends DispatchAction
 	        	while(it.hasNext()){
 		        	comment = it.next();        	
 		        	
-		        	if(comment.getContent().indexOf(keyWord) >= 0){
+		        	if((comment.getContent()).toLowerCase().indexOf(keyWord.toLowerCase()) >= 0){
 		        		lista.add(comment);
 		        	}
 	        	}	        		            
@@ -400,6 +400,8 @@ public class CommentAction extends DispatchAction
 			req.setAttribute("status", new Integer(post.isControll() ? 1: 0));
 			req.setAttribute("blogUser", user);
 	        
+			req.setAttribute("busca", "true");
+			
 	    }catch(Exception e){
 	    	e.printStackTrace();
 	    }

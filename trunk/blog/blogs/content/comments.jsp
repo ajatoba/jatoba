@@ -94,7 +94,7 @@ VERRS�O DE 26 -01-2008
                             <td><img src="/bloglog/img/top_resposta.jpg" width="742" height="38" /></td>
                         </tr>
                         <tr>
-                            <td><span style="margin-left:15px;"><b> ${blog.blogUser.firstName} ${blog.blogUser.lastName}:</b></span> <br /><br /><span style="margin-left:15px;"><bean:write name="c" property="answer"/> </span></td>
+                            <td><span style="margin-left:15px;"><b> ${blog.blogUser.firstName} ${blog.blogUser.lastName}:</b></span> <br /><br /><dt class="margin_resp"><bean:write name="c" property="answer"/> </dt></td>
                         </tr>
                         <tr>
                             <td><img src="/bloglog/img/bottom_resposta.jpg" width="742" height="18" /></td>
@@ -159,21 +159,28 @@ VERRS�O DE 26 -01-2008
     </p>
     </pg:pager>
 </div>
+<div class="msg_resposta">
     <logic:present name="mensagem_erro">
-        <font color="red"><bean:write name="mensagem_erro"/></font>
+        <bean:write name="mensagem_erro"/>
     </logic:present> 
     
     <logic:present name="comment_sucesso">
-        <font color="red"><bean:write name="comment_sucesso"/></font>
-    </logic:present>    
+        <bean:write name="comment_sucesso"/>
+    </logic:present>  
+    
+    <logic:present name="comment_sucesso2">
+        <bean:write name="comment_sucesso2"/>
+    </logic:present> 
+</div>       
 <div class="box">
   <div>
    <dt style="background-color:#E4EFF5;"><iframe width="800px" name=arquivos src="/blog/blogs/content/add_comment_in.jsp?postId=<bean:write name="post" property="id"/>&countComments=<bean:write name="post" property="countComments"/>&status=<bean:write name="status"/>&path=<bean:write name="blog" property="path"/>&message2=<%=request.getParameter("message2")!= null?request.getParameter("message2"):""%>" frameBorder="0" width="580" height="400" scrolling="no" align="center"></iframe></dt>
   </div>
 </div>
-
+<div class="msg_resposta">
 <logic:present name="mensagem_erro">
-        <font color="red"><bean:write name="mensagem_erro"/></font>
+        <bean:write name="mensagem_erro"/>
     </logic:present> 
+    </div> 
 </body>
 </html>

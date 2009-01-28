@@ -70,19 +70,11 @@ function soNumeros(v){
          
         //window.parent.location.href='/blog/post.do?act=loadSite&id=<%=request.getParameter("postId")%>';
         window.parent.location.reload();
+        alert('<bean:write name="comment_sucesso"/>');
 
         </script>
-       <div class="msg_resposta"><bean:write name="comment_sucesso"/></div>
     </logic:present> 
-    <logic:present name="comment_sucesso2">    
-         <script>
-         
-        //window.parent.location.href='/blog/post.do?act=loadSite&id=<%=request.getParameter("postId")%>';
-        window.parent.location.reload();
 
-        </script>
-        <div class="msg_resposta"><bean:write name="comment_sucesso2"/></div>
-    </logic:present> 
 <html:form method="post" action="/comment.do?act=add">
         <html:hidden property="postId" value="<%=request.getParameter(\"postId\")%>"/>
         <html:hidden property="countComments" value="<%=request.getParameter(\"countComments\")%>"/>
@@ -143,9 +135,7 @@ function soNumeros(v){
       </div>
          <logic:present name="message">
             <br><br><br><center>Entre com o valor da imagem corretamente.</center>
-         </logic:present>
-    
-  
+         </logic:present>  
     </font>
     </div>
 

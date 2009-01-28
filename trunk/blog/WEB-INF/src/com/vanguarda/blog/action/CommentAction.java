@@ -339,6 +339,10 @@ public class CommentAction extends DispatchAction
 			req.setAttribute("post", post);
 			req.setAttribute("status", new Integer(post.isControll() ? 1: 0));
 			req.setAttribute("blogUser", user);
+			
+			//se o usuário fez uma busca, coloco essa informação no request
+			if(keyWord != null)
+				req.setAttribute("busca", "true");
 	        
 	    }catch(Exception e){
 	    	e.printStackTrace();

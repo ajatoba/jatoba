@@ -59,6 +59,12 @@ function soNumeros(v){
 
 </script>
 
+<logic:present name="reload">  
+	<script>
+	window.parent.location.reload();	
+	</script>
+</logic:present> 
+
 <body style="background-color:#E3F0F9; font-family:Trebuchet MS; margin:0px;">
 
 <c:if test="${user.group.id == 3 }">

@@ -23,7 +23,7 @@ String blogId = (String)request.getAttribute("blogId");
         <div style="height:19px;"><img src="/bloglog/admin/login/img/top_login.jpg" width="794" height="19" /></div>
 
 <div style="width:748px; height:339px; margin-left:26px;  display:table; margin-right:20px; background-color:#C9DEE9; background:url(/bloglog/admin/login/img/bottom_login.jpg) #C9DEE9 no-repeat bottom;">
-<form name="userCommentatorForm" method="post" action="/blog/user.do?act=login">
+<form name="userCommentatorForm" method="post" action="/blog/user.do?act=login" >
         <input type="hidden" name="postId" value="<%=postId%>"/>
         <input type="hidden" name="countComments" value="<%=countComments%>"/>
         <input type="hidden" name="path" value="<%=path%>"/>

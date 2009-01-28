@@ -50,7 +50,7 @@ VERSAO DE 27-01-2008 - Revision 239
 -->
 <div id="busca">
 <dt class="ini_busca"></dt>
-  <dt class="qtd"><%=comentarios.size()%> coment&aacute;rios </dt>
+  <dt class="qtd"><%=comentarios.size()%> coment&aacute;rio<%if(comentarios.size()>1){%>s<%}%> </dt>
   <dt class="search">
   <%if(comentarios.size()>0){%>
   <form action="comment.do?act=search&id=${post.id}" name="buscaComentarios" method=POST>

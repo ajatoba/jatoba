@@ -101,23 +101,30 @@ function soNumeros(v){
 <dt class="edit"><a href="/blog/user.do?act=loadSite&id=${user.id}" style="font-weight:bold; font-size:14px; color:#2B3538;">Editar meus dados</a></dt>
 
 </div>
-<div class="msg">Serão aceitos apenas comentários objetivos e que tenham relaçao direta com o assunto em questão. Não serão aceitos comentários com palavras de baixo calão tampouco os que ameacem algum blogueiro ou usuário.</div>
+<div class="msg">
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>Serão aceitos apenas comentários objetivos e que tenham relaçao direta com o assunto em questão. Não serão aceitos comentários com palavras de baixo calão tampouco os que ameacem algum blogueiro ou usuário.</td>
+  </tr>
+</table>
+
+</div>
 <div class="content">
-<table width="700px" border="0" align="center">
+<table width="700" border="0" align="center">
   <tr>
-    <td width="50%" colspan="3">Nome</td>
-    <td>Email</td>
+    <td colspan="3">Nome</td>
+    <td width="271">Email</td>
   </tr>
   <tr>
-    <td width="350px" colspan="3"><html:text property="commentatorName" readonly="true" value="${user.firstName}" style='height:16px; width:330px; background-color:#F8F8F8; border:1px solid #A2C2CF; font-size:12px; color:#1296FF; line-height:16px; '/></td>
-    <td><html:text property="commentatorEmail" readonly="true" value="${user.email}" style='height:16px; width:300px; background-color:#F8F8F8; border:1px solid #A2C2CF; font-size:12px; color:#1296FF; line-height:16px;'/></td>
+    <td colspan="3"><html:text property="commentatorName" readonly="true" value="${user.firstName}" style='height:16px; width:300px; background-color:#F8F8F8; border:1px solid #A2C2CF; font-size:12px; color:#1296FF; line-height:16px; '/></td>
+    <td><html:text property="commentatorEmail" readonly="true" value="${user.email}" style='height:16px; width:245px; background-color:#F8F8F8; border:1px solid #A2C2CF; font-size:12px; color:#1296FF; line-height:16px;'/></td>
   </tr>
   <tr>
-    <td width="50%" colspan="3">Comentário</td>
+    <td colspan="3">Comentário</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td colspan="4"><html:textarea property="content" cols="40" rows="10" style='background-color:#F8F8F8; border:1px solid #A2C2CF; font-family:Arial; font-size:12px; color:#1296FF; line-height:16px; width:700px; height:80px; ' onkeyup='contaText(this);'/>    </td>
+    <td colspan="4"><html:textarea property="content" cols="40" rows="10" style='background-color:#F8F8F8; border:1px solid #A2C2CF; font-family:Arial; font-size:12px; color:#1296FF; line-height:16px; width:680px; height:80px; ' onkeyup='contaText(this);'/>    </td>
   </tr>
   <tr>
     <td colspan="4" class="limite">Limite de 1024 caracteres | restantes : <span id="nRestantes"><script>document.write(maximo);</script></span></td>
@@ -126,16 +133,15 @@ function soNumeros(v){
     <td colspan="4"><img src="/bloglog/img/sep_insert.jpg" width="700" height="15" /></td>
   </tr>
   <tr>
-    <td><img src="/blog/captcha.jpg" border="1" style='float:left;  margin-right:12px;'/></td>
-    <td "width:40%">Digite o que se vê escrito na imagem:</td>
-    <td><html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
-    <td> <html:image src="/bloglog/img/btn_comentar.jpg" value="Enviar"  style="float:right; margin-right:58px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:0px; cursor:hand;"/></td>
+    <td width="191"><img src="/blog/captcha.jpg" border="1" style='float:left;  margin-right:12px;'/></td>
+    <td width="211" "width:40%">Digite o que se vê escrito na imagem:</td>
+    <td width="15"><html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
+    <td> <html:image src="/bloglog/img/btn_comentar.jpg" value="Enviar"  style="float:right; margin-right:13px; margin-top:18px; background-color:#FF6600; color:#FFFFFF; font-weight:bold; border:0px; cursor:hand;"/></td>
   </tr>
-
 </table></td>
   </tr>
   <tr>
-    <td><img src="/bloglog/admin/login/img/bottom_login.jpg" width="750" height="14" /></td>
+    <td><img src="/bloglog/admin/login/img/bottom_login.jpg" width="748" height="14" /></td>
   </tr>
 </table>
       </div>

@@ -63,6 +63,7 @@ function soNumeros(v){
 <dt class="participe">Participe da comunidade Bloglog! Faça seus comentários, deixe sua opinião, converse com seu ídolo </dt>
 </div>
 <div style=" width:748px; margin-left:26px;"><img src="/bloglog/admin/cadastro/img/separator.jpg" width="748" height="13" /></div>
+<div class="ini_update"></div>
 <div class="infos">
 <table width="90%" border="0" align="right">
   <tr>
@@ -136,36 +137,39 @@ function soNumeros(v){
 
 
 </div>
+<div class="ini_login"></div>
 <div class="login">
-<dt class="login_header"><img src="/bloglog/admin/cadastro/img/crie_ident.jpg" width="209" height="50" /></dt>
+<dt class="login_header"><img src="/bloglog/admin/cadastro/img/crie_ident.jpg" width="177" height="29" /></dt>
 <dt class="login_txt">Login</dt>
-<dt class="login_frm"><html:text property="login" style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
+<dt class="login_frm"><html:text property="login"  style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
 <dt class="senha_txt">Senha</dt>
-<dt class="senha_frm"><html:password property="password" style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
+<dt class="senha_frm"><html:password property="password"  style=" width:168px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></dt>
 <dt class="txt_msg">Só serão aceitos números e letras sem acento</dt>
-
 </div>
+<div class="fim_login"></div>
 <div style=" width:748px; margin-left:26px;"><img src="/bloglog/admin/cadastro/img/separator.jpg" width="748" height="13" /></div>
 
+<div class="ini_captcha"></div>
 <div class="captcha">
-
-<dt style="margin-left:26px; float:left;"><!--img src="/blog/servlet/rndImage?rndimg=<%//rndCrypt%>" border="0"/-->
-</dt>
-<table width="95%" border="0">
+<dt class="ini_table_captcha"></dt>
+<dt class="table_captcha">
+<table width="700" border="0">
   <tr>
-    <td width="17%"><!--img src="/blog/servlet/rndImage?rndimg=<%//rndCrypt%>" border="0"/--><img src="/blog/captcha.jpg" border="0"/></td>
-    <td width="49%"><span style="font-size:10px; color:#293641;">Digite aqui o n&deg; de segurança</span>&nbsp;<html:text property="captcha" maxlength="3" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;" onkeypress="mascara(this,soNumeros)"/></td>
-    <td width="19%">&nbsp;</td>
-    <td width="15%" rowspan="2"><html:image src="/bloglog/admin/cadastro/img/cadastrar.jpg"  value="Cadastrar"  style=" margin-top:15px; float:left; display:table; margin-left:8px; cursor:hand; background-color:#FF6600; color:#FFFFFF; font-weight:bold; "/></td>
+    <td width="20%"><!--img src="/blog/servlet/rndImage?rndimg=" border="0"/--><img src="/blog/captcha.jpg" border="0"/></td>
+    <td width="43%"><span style="font-size:10px; color:#293641;">Digite aqui o n&deg; de segurança</span>&nbsp;<input type="text" name="captcha" maxlength="3" value="" onkeypress="mascara(this,soNumeros)" style=" width:65px; height:18px; border:1px solid #A1C4E0; background-color:#FFFFFF; text-align:center; color:#1679BA; line-height:18px;"></td>
+    <td width="15%">&nbsp;</td>
+    <td width="22%" rowspan="2"><input type="image" name="" src="/bloglog/admin/cadastro/img/cadastrar.jpg" value="Cadastrar" style=" margin-top:15px; float:left; display:table; margin-left:8px; cursor:hand; background-color:#FF6600; color:#FFFFFF; font-weight:bold; "></td>
   </tr>
   <tr>
     <td colspan="2"><span style="font-size:10px; color:#293641;">Se não conseguir visualizar o n&deg; ,<a href="#" style="color:#E86E21;"> clique aqui</a></span></td>
     <td>&nbsp;</td>
     </tr>
 </table>
-
-
+</dt>
+<dt class="fim_table_captcha"></dt>
 </div>
+<div class="fim_captcha"></div>
+<div class="ini_bottom"></div>
 <div class="bottom"><img src="/bloglog/admin/cadastro/img/bottom_cadastro.jpg" width="748" height="16" /></div>
     <logic:present name="mensagem_imagem_incorreta">
                 <font color="red"><bean:write name="mensagem_imagem_incorreta"/></font>

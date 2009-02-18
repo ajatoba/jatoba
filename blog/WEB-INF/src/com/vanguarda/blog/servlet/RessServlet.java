@@ -181,9 +181,13 @@ public class RessServlet extends HttpServlet {
 					out.println("</title>");
 
 					out.println("<link>");
+					/*
 					out.println("<![CDATA[http://" + BlogManager.getInstance().getProperties().getProperty("localhost") + ":"
 							+ req.getLocalPort()
-							+ "/blog/post.do?act=loadSite&id=" + post.getId()+"&permalink=true"
+							+ "/blog/post.do?act=loadSite&id=" + post.getId() +"&permalink=true"
+					*/
+					out.println("<![CDATA[http://" + BlogManager.getInstance().getProperties().getProperty("localhost") 
+							+ "/blog/blog.do?act=loadSite&id=" + blog.getId() + "&postId="+ post.getId() +"&permalink=true"
 							+ "]]>");
 					out.println("</link>");
 					out.print("<author>");

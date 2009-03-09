@@ -13,7 +13,7 @@ comentarios = (java.util.ArrayList)request.getAttribute("comments");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Comentários - Bloglog</title>
+<title>Coment&aacute;rios - Bloglog</title>
 <link href="/bloglog/admin/comments/coments.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -28,7 +28,14 @@ function submitSearch(){
 <div class="top">
   <dt class="ini_logo"></dt>	
   <dt class="logo"><img src="/bloglog/admin/comments/img/logo_top_comments.jpg" width="265" height="102" /></dt>
-  <dt class="banner"></dt>	
+  <dt class="banner">
+  <table class="table">
+  <tr>
+    <td><iframe src="/${blog.path}/bnn_comments.html" width="468" height="60" frameborder="0" allowtransparency="0" scrolling="no"></iframe>
+</td>
+  </tr>
+</table>
+</dt>	
 </div>
 <div class="sep"></div>
 <div class="tit">
@@ -52,7 +59,7 @@ function submitSearch(){
   </dt>
 </div>
 <!--
-VERSAO DE 27-01-2008 - Revision 239
+VERSAO DE 05-03-2009 - Revision 239
 -->
 <div id="busca">
 <dt class="ini_busca"></dt>
@@ -138,6 +145,7 @@ VERSAO DE 27-01-2008 - Revision 239
                 </logic:empty>
  </dt>
    <dt class="separator"><center><img src="/bloglog/admin/comments/img/separator.jpg" border="0" width="750" height="5" /></center></dt>
+ </div>
   </pg:item>
  
         </logic:iterate>

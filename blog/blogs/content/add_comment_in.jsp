@@ -104,7 +104,7 @@ function soNumeros(v){
 <div class="msg">
 <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td>Serão aceitos apenas comentários objetivos e que tenham relaçao direta com o assunto em questão. Não serão aceitos comentários com palavras de baixo calão tampouco os que ameacem algum blogueiro ou usuário.</td>
+    <td>Serão aceitos apenas comentários objetivos e que tenham relação direta com o assunto em questão. Não serão aceitos comentários com palavras de baixo calão tampouco os que ameacem algum blogueiro ou usuário.</td>
   </tr>
 </table>
 

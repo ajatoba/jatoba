@@ -435,6 +435,64 @@ public class CommentAction extends DispatchAction
     
 }
     
+    public ActionForward searchAll(ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp) throws Exception{
+	
+    	  	
+    	MessageResources messageResources = null;
+    	
+		try{
+			
+			messageResources = getResources(req);
+	        
+			String userEmail = req.getParameter("userEmail");           
+	        
+	        Collection<Comment> comments = dao.searchAll(userEmail);
+	        
+	        if(comments == null || comments.size() <= 0){
+	        	req.setAttribute("mensagem_erro", messageResources.getMessage("no_results"));
+	        }
+	        req.setAttribute("comments", comments);
+	        
+
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	    return mapping.findForward("comments_search");
+}
+
+    public ActionForward deleteComments(ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp)throws Exception{
+    
+    	
+    	MessageResources messageResources = null;
+    try
+    {
+        messageResources = getResources(req);
+
+        String idsToDelete = req.getParameter("idsToDelete");
+        
+        System.out.println("DELETE ************" + idsToDelete);
+        
+        dao.deleteComments(idsToDelete);
+        
+        Properties prop = new Properties();
+        InputStream stream = PostAction.class.getClassLoader().getResourceAsStream("resource.properties");
+        prop.load(stream);
+        String host = prop.getProperty("host");
+                   
+        
+        CacheManager.getInstance().clear();
+        
+        req.setAttribute("mensagem_sucesso", messageResources.getMessage("delete_comments_sucesso"));
+    }
+    catch(Exception e)
+    {
+    	e.printStackTrace();
+        req.setAttribute("mensagem_erro", e.getMessage());
+    }
+    req.setAttribute("comments", new ArrayList<Comment>());
+    return mapping.findForward("comments_search");
+}
+    
     private static CommentsDAO dao;
 
     static 

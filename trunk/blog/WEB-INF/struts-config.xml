@@ -91,7 +91,8 @@
 			<forward name="blog_error" path="/admin/blogs/form_blog_out.jsp" />	
 			<forward name="blog_list" path="/admin/blogs/list_blog.jsp" />
 			<forward name="blog_load" path="/admin/blogs/update_blog_in.jsp" />		
-			<forward name="blog_form" path="/admin/blogs/add_blog_in.jsp" />	
+			<forward name="blog_form" path="/admin/blogs/add_blog_in.jsp" />
+				
 					
 		</action>
 		
@@ -129,7 +130,8 @@
 			parameter="act" name="commentForm" validate="false">			
 			<forward name="comment_add" path="/admin/comments/form_comment_out.jsp" />	
 			<forward name="comment_list" path="/admin/comments/list_comment.jsp" />			
-			<forward name="comment_load" path="/admin/comments/update_comment_in.jsp" />		
+			<forward name="comment_load" path="/admin/comments/update_comment_in.jsp" />
+			<forward name="comments_search" path="/admin/blogs/comments_search.jsp" />			
 		</action>
 		
 		<action path="/admin/quadrant"

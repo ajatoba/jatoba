@@ -49,6 +49,12 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 
 	private static final String ADD_ANSWER_QUERY = "UPDATE TB_BLOG_COMMENT SET VC_ANSWER = ? WHERE NM_COMMENT_ID = ?";
 
+	private static final String SEARCH_ALL_QUERY = "SELECT NM_COMMENT_ID,NM_POST_ID_FK ,  C.VC_TITLE ,  "
+		+ "C.VC_CONTENT,  C.NM_STATUS,  VC_COMMENTATOR_NAME ,  VC_COMMENTATOR_EMAIL ,  VC_COMMENTATOR_HOMEPAGE ,  "
+		+ "VC_COMMENTATOR_REMOTE_ADDR,C.DT_INSERT_DATE,P.VC_TITLE, P.NM_COUNT_COMMNTS FROM TB_BLOG_COMMENT C, TB_BLOG_POST P"
+		+ " WHERE  NM_POST_ID_FK  = NM_POST_ID AND VC_COMMENTATOR_EMAIL = ? AND C.NM_STATUS > 0 ORDER BY C.DT_INSERT_DATE ASC";
+
+	private static final String DELETE_MULTIPLE_COMMENTS_QUERY = "UPDATE TB_BLOG_COMMENT SET NM_STATUS = 0 WHERE NM_COMMENT_ID IN ";
 	
 	public void add(Comment comment) throws SQLException,Exception {
 		
@@ -378,6 +384,82 @@ public class CommentsDAOImpl extends AbstractDAO implements CommentsDAO {
 			closeAll(rs, ps);
 		}
 
+	}
+
+	public Collection<Comment> searchAll(String userEmail)throws SQLException,Exception {
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Collection<Comment> list = new ArrayList <Comment>();
+		
+		Comment comment = null;
+		
+		try {
+			
+			getConnection();
+		
+			ps = conn.prepareStatement(SEARCH_ALL_QUERY);
+				
+			ps.setString(1, userEmail);
+			
+			rs = ps.executeQuery();
+		
+			while (rs.next()) {
+				comment = new Comment();
+		
+				comment.setId(rs.getInt("NM_COMMENT_ID"));
+				comment.setTitle(rs.getString("C.VC_TITLE"));
+				comment.setContent(rs.getString("VC_CONTENT"));
+				comment.setStatus(rs.getInt("C.NM_STATUS"));
+				comment.setCommentatorName(rs.getString("VC_COMMENTATOR_NAME"));
+				comment.setCommentatorEmail(rs
+						.getString("VC_COMMENTATOR_EMAIL"));
+				comment.setCommentatorHomepage(rs
+						.getString("VC_COMMENTATOR_HOMEPAGE"));
+				comment.setCommentatorRemoteAddr(rs
+						.getString("VC_COMMENTATOR_REMOTE_ADDR"));
+				comment.setInsertDate(new java.util.Date(rs.getDate(
+						"DT_INSERT_DATE").getTime()));
+		
+				Post p = new Post();
+				p.setId(rs.getInt("NM_POST_ID_FK"));
+				p.setCountComments(rs.getInt("P.NM_COUNT_COMMNTS"));
+				p.setTitle(rs.getString("P.VC_TITLE"));
+		
+				comment.setPost(p);
+		
+				list.add(comment);
+		
+			}
+		
+			return list;
+	
+			} finally {
+				closeAll(rs, ps);
+			}
+	
+	}
+
+	public void deleteComments(String idsToDelete)throws SQLException,Exception{
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;	
+
+		try {
+
+			getConnection();
+			
+			ps = conn.prepareStatement(DELETE_MULTIPLE_COMMENTS_QUERY + "("+idsToDelete+")");
+								
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			throw e;
+
+		} finally {			
+			closeAll(rs, ps);
+		}
 	}
 
 }

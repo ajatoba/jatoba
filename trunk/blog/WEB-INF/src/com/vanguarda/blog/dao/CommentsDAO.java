@@ -20,7 +20,9 @@ public interface CommentsDAO {
 	
 	public void addAnswer(Comment comment) throws SQLException,Exception;
 
+	public Collection<Comment> searchAll(String userEmail)throws SQLException,Exception;
 	
+	public void deleteComments(String idsToDelete)throws SQLException,Exception;
 	 
 }
  

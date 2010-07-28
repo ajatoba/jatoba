@@ -74,10 +74,9 @@ function soNumeros(v){
     <td><html:text property="firstName" style=" width:220px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></td>
     <td><html:text property="email" style=" width:220px; height:18px; border:1px solid #A2C2CF; background-color:#F8F8F8;"/></td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td class="email2"><input name="" type="checkbox" value="" />
-      Desejo receber informações do bloglog.</td>
+ <td class="email2" colspan="2">
+    <input name="" type="checkbox" checked="checked" value="" />
+      Aceito, receber informações e promoções do parceiro Compra Fácil e Bloglog. </td>
   </tr>
   <tr>
     <td class="nasc">Data de Nascimento</td>

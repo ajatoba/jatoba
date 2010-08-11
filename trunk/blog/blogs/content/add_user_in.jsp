@@ -76,7 +76,10 @@ function soNumeros(v){
   </tr>
  <td class="email2" colspan="2">
     <input name="" type="checkbox" checked="checked" value="" />
-      Aceito, receber informações e promoções do parceiro Compra Fácil e Bloglog. </td>
+      Aceito, receber informações e promoções do parceiro <img src="http://bloglog.globo.com/bloglog/img/logo_cfacil.jpg" /> e Bloglog. </td>
+  </tr>
+  <tr>
+  	<td></td>
   </tr>
   <tr>
     <td class="nasc">Data de Nascimento</td>

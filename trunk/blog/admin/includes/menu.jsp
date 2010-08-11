@@ -18,7 +18,7 @@
 		<div style="float:left"><a href="/blog/admin/blog.do?act=list"><img src="/bloglog/admin/img/btn_blogs_over.jpg" alt="" name="btn_blogs_over" width="86" height="45" border="0" id="btn_blogs_over" /></a></div>
         <div style="float:left"><a href="/blog/admin/blogUser.do?act=list"><img src="/bloglog/admin/img/btn_blogueiros.jpg" alt="" name="btn_blogueiros" width="128" height="45" border="0" id="btn_blogueiros" /></a></div>
         <div style="float:left"><a href="/blog/admin/userCommentator.do?act=listCommentador"><img src="/bloglog/admin/img/btn_users.jpg" alt="" name="btn_users" width="109" height="45" border="0" id="btn_users" /></a></div>
-        <div style="float:left"><a href="/blog/admin/comment.do?act=searchAll"><img src="/bloglog/admin/img/btn_users.jpg" alt="" name="btn_excluir" width="109" height="45" border="0" id="btn_users" /></a></div>
+        <div style="float:left"><a href="/blog/admin/comment.do?act=searchAll"><img src="/bloglog/admin/img/btn_excluir.jpg" alt="" name="btn_excluir" width="109" height="45" border="0" id="btn_users" /></a></div>
         <div style="float:left; width:156px; height:45px;"></div>
         <div style="float:left; width:167px; height:45px;"></div>
         <div style="float:left; width:241px; height:45px;"></div>
